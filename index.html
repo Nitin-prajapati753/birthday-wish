@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>मैजिकल बर्थडे विशिंग प्लेटफॉर्म</title>
+    <style>
+        body { 
+            background: linear-gradient(135deg, #1f1c2c 0%, #928dab 100%); 
+            text-align: center; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            color: white; 
+            margin: 0; 
+            overflow-x: hidden;
+            min-height: 100vh;
+            transition: background 1s ease;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .box { 
+            background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(12px);
+            padding: 35px 20px; 
+            border-radius: 20px; 
+            box-shadow: 0px 10px 40px rgba(0,0,0,0.5); 
+            width: 90%; 
+            max-width: 420px; 
+            z-index: 10;
+            border: 1px solid rgba(255,255,255,0.25);
+            animation: fadeIn 1.5s ease;
+        }
+        h1 { font-size: 2.1rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.6); color: #fff; margin-bottom: 5px; line-height: 1.3; }
+        .cake { font-size: 4.5rem; margin: 15px 0; animation: bounce 2s infinite; }
+        .quote-box { font-size: 1.2rem; font-style: italic; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 5px solid #ff4757; text-align: left; }
+        input, select { padding: 12px; width: 85%; border-radius: 25px; border: none; font-size: 1rem; margin-top: 15px; text-align: center; outline: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); background: white; color: #333; }
+        button { padding: 12px 25px; background: linear-gradient(to right, #ff416c, #ff4b2b); color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 1.1rem; margin-top: 20px; font-weight: bold; width: 90%; box-shadow: 0 4px 15px rgba(255,65,108,0.4); }
+        .share-btn { background: linear-gradient(to right, #11998e, #38ef7d); display: none; margin-top: 20px; text-decoration: none; padding: 15px; border-radius: 25px; color: white; font-weight: bold; font-size: 1.1rem; width: 85%; box-shadow: 0 4px 15px rgba(56,239,125,0.4); text-align: center; }
+        
+        /* गुब्बारे और स्टार्स का एनीमेशन */
+        .balloon { position: absolute; width: 30px; height: 40px; border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; bottom: -50px; animation: floatUp 8s infinite linear; opacity: 0.7; z-index: 1; }
+        @keyframes floatUp { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(-115vh) rotate(20deg); opacity: 0; } }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="box">
+        <!-- मुख्य संदेश -->
+        <h1 id="wishName">आपको जन्मदिन की हार्दिक शुभकामनाएं!</h1>
+        <div class="cake">🎂</div>
+        
+        <!-- स्पेशल शायरी/बधाई संदेश -->
+        <div class="quote-box" id="quoteText">🎉 भगवान करे आपका आने वाला साल खुशियों, तरक्की और अच्छी सेहत से भरा हो! 🎈✨</div>
+
+        <!-- इनपुट सेक्शन -->
+        <div id="createSection">
+            <p style="font-size: 0.9rem; color: #eee; margin-bottom: 5px;">अपनी तरफ से जादुई बधाई लिंक बनाएं 👇</p>
+            <input type="text" id="nameInput" placeholder="यहाँ अपना नाम लिखें...">
+            
+            <select id="relationSelect">
+                <option value="general">✨ सामान्य बधाई संदेश</option>
+                <option value="sister">👧 प्यारी बहन के लिए</option>
+                <option value="brother">👦 प्यारे भाई के लिए</option>
+                <option value="mother">❤️ पूजनीय माता जी के लिए</option>
+                <option value="father">👑 आदरणीय पिता जी के लिए</option>
+            </select>
+            <br>
+            <button onclick="generateLink()">👉 जादुई विश तैयार करें</button>
+        </div>
+
+        <!-- शेयर बटन -->
+        <a id="whatsappBtn" class="share-btn" href="#" target="_blank">WhatsApp पर शेयर करें 📲</a>
+    </div>
+</div>
+
+<audio id="bdayMusic" loop>
+    <source src="https://soundhelix.com" type="audio/mp3">
+</audio>
+
+<script>
+    // अलग-अलग रिश्तों के लिए शायरी और बैकग्राउंड कलर्स का डेटा
+    const relationData = {
+        general: {
+            quote: "🎉 भगवान करे आपका आने वाला साल खुशियों, तरक्की और अच्छी सेहत से भरा हो! 🎈✨",
+            bg: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+        },
+        sister: {
+            quote: "👧 मेरी प्यारी बहना को जन्मदिन की बधाई! तुम हमेशा मुस्कुराती रहो और कामयाबी तुम्हारे कदम चूमे। 🌸💖",
+            bg: "linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%)" // पिंक थीम
+        },
+        brother: {
+            quote: "👦 भाई के जन्मदिन पर दुआ है हमारी, सलामत रहे हमेशा ये यारी हमारी! हैप्पी बर्थडे भाई! 🎂🔥",
+            bg: "linear-gradient(135deg, #00c6ff 0%, #0072ff 100%)" // ब्लू थीम
+        },
+        mother: {
+            quote: "❤️ उंगली पकड़कर चलना सिखाया हमको, ममता की छांव में पाला हमको। मेरी प्यारी माँ को जन्मदिन की अनंत शुभकामनाएं! 🙏✨",
+            bg: "linear-gradient(135deg, #fe5f75 0%, #fc9842 100%)" // वॉर्म थीम
+        },
+        father: {
+            quote: "👑 पापा आप मेरा गुरुर हो, मेरी हिम्मत हो। आपके जन्मदिन पर भगवान से आपकी लंबी उम्र और अच्छी सेहत की कामना करता हूँ। 🌟💪",
+            bg: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)" // रॉयल ग्रीन थीम
+        }
+    };
+
+    // स्क्रीन पर गुब्बारे बनाना
+    function createBalloons() {
+        const colors = ['#ff4757', '#2ed573', '#1e90ff', '#ffa502', '#eccc68', '#ff6b81'];
+        for (let i = 0; i < 18; i++) {
+            let balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            balloon.style.left = Math.random() * 95 + 'vw';
+            balloon.style.animationDelay = Math.random() * 5 + 's';
+            balloon.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            document.body.appendChild(balloon);
+        }
+    }
+    window.onload = createBalloons;
+
+    // म्यूजिक चालू करने का लॉजिक
+    document.body.addEventListener('click', function() {
+        const audio = document.getElementById('bdayMusic');
+        audio.play().catch(function(e) { console.log("Blocked"); });
+    }, { once: true });
+
+    // URL से डेटा पढ़ना (जैसे: ?name=Nitin&rel=sister)
+    const urlParams = new URLSearchParams(window.location.search);
+    const senderName = urlParams.get('name');
+    const relation = urlParams.get('rel') || 'general';
+    
+    if (senderName) {
+        document.getElementById('wishName').innerText = decodeURIComponent(senderName) + " की तरफ से जन्मदिन की बधाई!";
+        // रिश्ते के हिसाब से शायरी और बैकग्राउंड बदलना
+        if(relationData[relation]) {
+            document.getElementById('quoteText').innerText = relationData[relation].quote;
+            document.body.style.background = relationData[relation].bg;
+        }
+    }
+
+    // लिंक जनरेट करने का फंक्शन
+    function generateLink() {
+        const name = document.getElementById('nameInput').value;
+        const rel = document.getElementById('relationSelect').value;
+        if(name.trim() === "") { alert("कृपया अपना नाम दर्ज करें!"); return; }
+        
+        const baseUrl = window.location.href.split('?')[0];
+        const newUrl = baseUrl + "?name=" + encodeURIComponent(name) + "&rel=" + rel;
+        
+        // WhatsApp का कस्टमाइज्ड मैसेज
+        let relText = "स्पेशल";
+        if(rel === "sister") relText = "प्यारी बहन के लिए स्पेशल";
+        if(rel === "brother") relText = "प्यारे भाई के लिए स्पेशल";
+        if(rel === "mother") relText = "प्यारी माँ के लिए स्पेशल";
+        if(rel === "father") relText = "आदरणीय पापा के लिए स्पेशल";
+
+        const whatsappBtn = document.getElementById('whatsappBtn');
+        whatsappBtn.href = "https://whatsapp.com*" + encodeURIComponent(name) + "* ने आपके लिए एक " + encodeURIComponent(relText) + " बर्थडे सरप्राइज भेजा है। म्यूजिक ऑन करके देखने के लिए तुरंत नीचे नीले लिंक पर क्लिक करें 👇\n\n" + encodeURIComponent(newUrl);
+        whatsappBtn.style.display = "inline-block";
+    }
+</script>
+
+</body>
+</html>
