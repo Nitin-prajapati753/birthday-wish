@@ -43,7 +43,7 @@
         button { padding: 12px 25px; background: linear-gradient(to right, #ff416c, #ff4b2b); color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 1.1rem; margin-top: 20px; font-weight: bold; width: 90%; box-shadow: 0 4px 15px rgba(255,65,108,0.4); }
         .share-btn { background: linear-gradient(to right, #11998e, #38ef7d); display: none; margin-top: 20px; text-decoration: none; padding: 15px; border-radius: 25px; color: white; font-weight: bold; font-size: 1.1rem; width: 85%; box-shadow: 0 4px 15px rgba(56,239,125,0.4); text-align: center; }
         
-        /* गुब्बारे और स्टार्स का एनीमेशन */
+        /* गुब्बारे का एनीमेशन */
         .balloon { position: absolute; width: 30px; height: 40px; border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; bottom: -50px; animation: floatUp 8s infinite linear; opacity: 0.7; z-index: 1; }
         @keyframes floatUp { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(-115vh) rotate(20deg); opacity: 0; } }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
@@ -77,7 +77,7 @@
             <button onclick="generateLink()">👉 जादुई विश तैयार करें</button>
         </div>
 
-        <!-- शेयर बटन -->
+        <!-- सुधरा हुआ WhatsApp शेयर बटन -->
         <a id="whatsappBtn" class="share-btn" href="#" target="_blank">WhatsApp पर शेयर करें 📲</a>
     </div>
 </div>
@@ -95,19 +95,19 @@
         },
         sister: {
             quote: "👧 मेरी प्यारी बहना को जन्मदिन की बधाई! तुम हमेशा मुस्कुराती रहो और कामयाबी तुम्हारे कदम चूमे। 🌸💖",
-            bg: "linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%)" // पिंक थीम
+            bg: "linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%)"
         },
         brother: {
             quote: "👦 भाई के जन्मदिन पर दुआ है हमारी, सलामत रहे हमेशा ये यारी हमारी! हैप्पी बर्थडे भाई! 🎂🔥",
-            bg: "linear-gradient(135deg, #00c6ff 0%, #0072ff 100%)" // ब्लू थीम
+            bg: "linear-gradient(135deg, #00c6ff 0%, #0072ff 100%)"
         },
         mother: {
             quote: "❤️ उंगली पकड़कर चलना सिखाया हमको, ममता की छांव में पाला हमको। मेरी प्यारी माँ को जन्मदिन की अनंत शुभकामनाएं! 🙏✨",
-            bg: "linear-gradient(135deg, #fe5f75 0%, #fc9842 100%)" // वॉर्म थीम
+            bg: "linear-gradient(135deg, #fe5f75 0%, #fc9842 100%)"
         },
         father: {
             quote: "👑 पापा आप मेरा गुरुर हो, मेरी हिम्मत हो। आपके जन्मदिन पर भगवान से आपकी लंबी उम्र और अच्छी सेहत की कामना करता हूँ। 🌟💪",
-            bg: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)" // रॉयल ग्रीन थीम
+            bg: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)"
         }
     };
 
@@ -126,44 +126,44 @@
     }
     window.onload = createBalloons;
 
-    // म्यूजिक चालू करने का लॉजिक
+    // म्यूजिक प्ले बैकअप लॉजिक
     document.body.addEventListener('click', function() {
         const audio = document.getElementById('bdayMusic');
-        audio.play().catch(function(e) { console.log("Blocked"); });
+        audio.play().catch(function(e) { console.log("Music blocked by browser privacy"); });
     }, { once: true });
 
-    // URL से डेटा पढ़ना (जैसे: ?name=Nitin&rel=sister)
+    // URL से डेटा लोड करना
     const urlParams = new URLSearchParams(window.location.search);
     const senderName = urlParams.get('name');
     const relation = urlParams.get('rel') || 'general';
     
     if (senderName) {
         document.getElementById('wishName').innerText = decodeURIComponent(senderName) + " की तरफ से जन्मदिन की बधाई!";
-        // रिश्ते के हिसाब से शायरी और बैकग्राउंड बदलना
         if(relationData[relation]) {
             document.getElementById('quoteText').innerText = relationData[relation].quote;
             document.body.style.background = relationData[relation].bg;
         }
     }
 
-    // लिंक जनरेट करने का फंक्शन
+    // नया और सुधरा हुआ लिंक जनरेशन (WhatsApp wa.me लिंक के साथ)
     function generateLink() {
         const name = document.getElementById('nameInput').value;
         const rel = document.getElementById('relationSelect').value;
         if(name.trim() === "") { alert("कृपया अपना नाम दर्ज करें!"); return; }
         
+        // बेस यूआरएल तैयार करना बिना पुराने पैरामीटर्स के
         const baseUrl = window.location.href.split('?')[0];
         const newUrl = baseUrl + "?name=" + encodeURIComponent(name) + "&rel=" + rel;
         
-        // WhatsApp का कस्टमाइज्ड मैसेज
         let relText = "स्पेशल";
         if(rel === "sister") relText = "प्यारी बहन के लिए स्पेशल";
         if(rel === "brother") relText = "प्यारे भाई के लिए स्पेशल";
         if(rel === "mother") relText = "प्यारी माँ के लिए स्पेशल";
         if(rel === "father") relText = "आदरणीय पापा के लिए स्पेशल";
 
+        // अपडेटेड wa.me लिंक जो सीधा व्हाट्सएप ऐप ओपन करेगा
         const whatsappBtn = document.getElementById('whatsappBtn');
-        whatsappBtn.href = "https://whatsapp.com*" + encodeURIComponent(name) + "* ने आपके लिए एक " + encodeURIComponent(relText) + " बर्थडे सरप्राइज भेजा है। म्यूजिक ऑन करके देखने के लिए तुरंत नीचे नीले लिंक पर क्लिक करें 👇\n\n" + encodeURIComponent(newUrl);
+        whatsappBtn.href = "https://wa.me*" + encodeURIComponent(name) + "* ने आपके लिए एक " + encodeURIComponent(relText) + " बर्थडे सरप्राइज भेजा है। म्यूजिक ऑन करके देखने के लिए तुरंत नीचे नीले लिंक पर क्लिक करें 👇\n\n" + encodeURIComponent(newUrl);
         whatsappBtn.style.display = "inline-block";
     }
 </script>
