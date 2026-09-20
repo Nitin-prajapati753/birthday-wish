@@ -3,80 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>मैजिकल बर्थडे विशिंग प्लेटफॉर्म</title>
+    <title>प्रोफेशनल मैजिकल विशिंग हब</title>
     <style>
+        :root {
+            --bg-grad: linear-gradient(135deg, #1f1c2c 0%, #928dab 100%);
+            --accent: #ff4757;
+        }
         body { 
-            background: linear-gradient(135deg, #1f1c2c 0%, #928dab 100%); 
+            background: var(--bg-grad); 
             text-align: center; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             color: white; 
             margin: 0; 
             overflow-x: hidden;
             min-height: 100vh;
-            transition: background 1s ease;
         }
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .box { 
-            background: rgba(255, 255, 255, 0.1); 
-            backdrop-filter: blur(12px);
-            padding: 35px 20px; 
-            border-radius: 20px; 
-            box-shadow: 0px 10px 40px rgba(0,0,0,0.5); 
-            width: 90%; 
-            max-width: 420px; 
-            z-index: 10;
-            border: 1px solid rgba(255,255,255,0.25);
-        }
-        h1 { font-size: 2.1rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.6); color: #fff; margin-bottom: 5px; line-height: 1.3; }
-        .cake { font-size: 4.5rem; margin: 15px 0; animation: bounce 2s infinite; }
-        .quote-box { font-size: 1.2rem; font-style: italic; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px; margin: 15px 0; border-left: 5px solid #ff4757; text-align: left; }
-        input, select { padding: 12px; width: 85%; border-radius: 25px; border: none; font-size: 1rem; margin-top: 15px; text-align: center; outline: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); background: white; color: #333; }
-        button { padding: 12px 25px; background: linear-gradient(to right, #ff416c, #ff4b2b); color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 1.1rem; margin-top: 20px; font-weight: bold; width: 90%; box-shadow: 0 4px 15px rgba(255,65,108,0.4); }
-        .share-btn { background: linear-gradient(to right, #11998e, #38ef7d); display: none; margin-top: 20px; text-decoration: none; padding: 15px; border-radius: 25px; color: white; font-weight: bold; font-size: 1.1rem; width: 85%; box-shadow: 0 4px 15px rgba(56,239,125,0.4); text-align: center; }
-        
-        .balloon { position: absolute; width: 30px; height: 40px; border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; bottom: -50px; animation: floatUp 8s infinite linear; opacity: 0.7; z-index: 1; }
+        .container { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; box-sizing: border-box; }
+        .box { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); padding: 35px 25px; border-radius: 20px; box-shadow: 0px 15px 45px rgba(0,0,0,0.6); width: 95%; max-width: 440px; z-index: 10; border: 1px solid rgba(255,255,255,0.25); box-sizing: border-box; display: none; transform: scale(0.95); transition: all 0.5s ease; }
+        .box.active { display: block; transform: scale(1); animation: fadeInUp 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
+        h1 { font-size: 2.2rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); margin-bottom: 10px; color: #fff; }
+        .big-emoji { font-size: 5rem; margin: 15px 0; animation: bounce 2s infinite; }
+        .quote-box { font-size: 1.2rem; font-style: italic; background: rgba(0,0,0,0.3); padding: 18px; border-radius: 12px; margin: 20px 0; border-left: 6px solid var(--accent); text-align: left; line-height: 1.5; }
+        .personal-msg { font-size: 1.1rem; color: #f1f2f6; background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; margin-top: 10px; border: 1px dashed rgba(255,255,255,0.3); }
+        input, select, textarea { padding: 12px 15px; width: 100%; border-radius: 25px; border: none; font-size: 1rem; margin-top: 12px; text-align: center; outline: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); background: white; color: #333; box-sizing: border-box; }
+        textarea { border-radius: 15px; resize: none; height: 80px; }
+        .row { display: flex; gap: 10px; width: 100%; }
+        .row select { width: 35%; }
+        .row input { width: 65%; }
+        button { padding: 14px 25px; background: linear-gradient(to right, #ff416c, #ff4b2b); color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 1.1rem; margin-top: 20px; font-weight: bold; width: 100%; box-shadow: 0 5px 20px rgba(255,65,108,0.4); transition: 0.3s; }
+        button:active { transform: scale(0.98); }
+        .share-btn { background: linear-gradient(to right, #11998e, #38ef7d); display: none; margin-top: 20px; text-decoration: none; padding: 15px; border-radius: 25px; color: white; font-weight: bold; font-size: 1.1rem; width: 100%; box-shadow: 0 5px 20px rgba(56,239,125,0.4); text-align: center; box-sizing: border-box; }
+        .nav-dots { display: flex; justify-content: center; gap: 8px; margin-top: 15px; }
+        .dot { width: 8px; height: 8px; background: rgba(255,255,255,0.3); border-radius: 50%; }
+        .dot.active { background: white; width: 20px; border-radius: 10px; }
+        .balloon { position: absolute; width: 30px; height: 40px; border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; bottom: -50px; animation: floatUp 7s infinite linear; opacity: 0.6; z-index: 1; }
         @keyframes floatUp { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(-115vh) rotate(20deg); opacity: 0; } }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="box">
-        <!-- मुख्य संदेश -->
-        <h1 id="wishName">आपको जन्मदिन की हार्दिक शुभकामनाएं!</h1>
-        <div class="cake">🎂</div>
+    <!-- फॉर्म 1: अवसर और नाम सेटअप -->
+    <div class="box active" id="formPanel">
+        <h1>✨ विशिंग हब मेकर</h1>
+        <p style="color: #eee; font-size: 0.95rem;">प्रोफेशनल और जादुई बधाई संदेश तैयार करें</p>
         
-        <!-- स्पेशल शायरी/बधाई संदेश -->
-        <div class="quote-box" id="quoteText">🎉 भगवान करे आपका आने वाला साल खुशियों, तरक्की और अच्छी सेहत से भरा हो! 🎈✨</div>
+        <select id="occSelect" onchange="updateOccThemes()">
+            <option value="bday">🎂 जन्मदिन (Birthday)</option>
+            <option value="anniv">💍 शादी की सालगिरह (Anniversary)</option>
+            <option value="diwali">🪔 दीपावली (Diwali)</option>
+            <option value="eid">🌙 ईद मुबारक (Eid)</option>
+            <option value="holi">🎨 होली (Holi)</option>
+            <option value="rakhi">🎀 रक्षाबंधन (Rakshabandhan)</option>
+        </select>
 
-        <!-- इनपुट सेक्शन (यह सिर्फ लिंक बनाने वाले को दिखेगा) -->
-        <div id="createSection">
-            <p style="font-size: 0.9rem; color: #eee; margin-bottom: 5px;">अपनी तरफ से जादुई बधाई लिंक बनाएं 👇</p>
-            <input type="text" id="nameInput" placeholder="यहाँ अपना नाम लिखें...">
-            
-            <select id="relationSelect">
-                <option value="general">✨ सामान्य बधाई संदेश</option>
-                <option value="friend">🤝 मेरे सबसे प्यारे दोस्त के लिए</option>
-                <option value="sister">👧 प्यारी बहन के लिए</option>
-                <option value="brother">👦 प्यारे भाई के लिए</option>
-                <option value="mother">❤️ पूजनीय माता जी के लिए</option>
-                <option value="father">👑 आदरणीय पिता जी के लिए</option>
+        <input type="text" id="senderInput" placeholder="अपना (भेजने वाले का) नाम लिखें...">
+        
+        <div class="row">
+            <select id="prefixSelect">
+                <option value="Dear">Dear</option>
+                <option value="Mr.">Mr.</option>
+                <option value="Mrs.">Mrs.</option>
+                <option value="Miss">Miss</option>
+                <option value="Bro">Bro</option>
             </select>
-            <br>
-            <button onclick="generateLink()">👉 जादुई विश तैयार करें</button>
+            <input type="text" id="receiverInput" placeholder="पाने वाले का नाम...">
         </div>
 
-        <!-- न्यू वर्किंग WhatsApp शेयर बटन -->
+        <textarea id="msgInput" placeholder="अपनी तरफ से कोई पर्सनल मैसेज या दुआ लिखें (वैकल्पिक)..."></textarea>
+        
+        <button onclick="generateLink()">👉 जादुई लिंक तैयार करें</button>
         <a id="whatsappBtn" class="share-btn" href="javascript:void(0);" onclick="shareOnWhatsApp()">WhatsApp पर शेयर करें 📲</a>
+    </div>
+
+    <!-- देखने वाले का स्क्रीन 1: सीक्रेट क्लिक-टू-रिवील -->
+    <div class="box" id="revealPanel">
+        <h1 id="revealHeader">आपके लिए एक संदेश है!</h1>
+        <div class="big-emoji">🎁</div>
+        <p style="font-size: 1.2rem;" id="revealSub">किसी खास ने आपके लिए एक गुप्त सरप्राइज भेजा है।</p>
+        <button onclick="goToPage(2)" style="background: linear-gradient(to right, #ff416c, #ff4b2b);">🎁 सरप्राइज खोलने के लिए यहाँ क्लिक करें</button>
+    </div>
+
+    <!-- देखने वाले का स्क्रीन 2: उत्सव एनीमेशन (पेज 2) -->
+    <div class="box" id="page2Panel">
+        <h1 id="page2Title">बधाई हो!</h1>
+        <div class="big-emoji" id="page2Emoji">🎉</div>
+        <p style="font-size: 1.3rem; font-weight: bold;" id="page2Greeting">उत्सव का समय आ गया है!</p>
+        <button onclick="goToPage(3)">आगे बढ़ें 👉</button>
+        <div class="nav-dots"><div class="dot active"></div><div class="dot"></div></div>
+    </div>
+
+    <!-- देखने वाले का स्क्रीन 3: मुख्य शायरी और कस्टमाइज्ड मैसेज (पेज 3) -->
+    <div class="box" id="page3Panel">
+        <h1 id="page3Title">विशेष शुभकामनाएं</h1>
+        <div class="quote-box" id="quoteText">बधाई संदेश लोड हो रहा है...</div>
+        <div class="personal-msg" id="personalText" style="display:none;"></div>
+        <p style="font-size: 0.9rem; margin-top:25px; opacity: 0.7;" id="footerCredit">✨ नितिन विशिंग प्लेटफॉर्म द्वारा बनाया गया</p>
+        <div class="nav-dots"><div class="dot"></div><div class="dot active"></div></div>
     </div>
 </div>
 
@@ -86,81 +111,38 @@
 
 <script>
     let globalWhatsAppUrl = "";
-
-    const relationData = {
-        general: { quote: "🎉 भगवान करे आपका आने वाला साल खुशियों, तरक्की और अच्छी सेहत से भरा हो! 🎈✨", bg: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)" },
-        friend: { quote: "🤝 बार-बार दिन ये आए, बार-बार दिल ये गाए, तू जिए हजारों साल, ये है मेरी आरज़ू! हैप्पी बर्थडे मेरे भाई/दोस्त! 🎂❤️", bg: "linear-gradient(135deg, #f857a6 0%, #ff5858 100%)" },
-        sister: { quote: "👧 मेरी प्यारी बहना को जन्मदिन की बधाई! तुम हमेशा मुस्कुराती रहो और कामयाबी तुम्हारे कदम चूमे। 🌸💖", bg: "linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%)" },
-        brother: { quote: "👦 भाई के जन्मदिन पर दुआ है हमारी, सलामत रहे हमेशा ये यारी हमारी! हैप्पी बर्थडे भाई! 🎂🔥", bg: "linear-gradient(135deg, #00c6ff 0%, #0072ff 100%)" },
-        mother: { quote: "❤️ उंगली पकड़कर चलना सिखाया हमको, ममता की छांव में पाला हमको। मेरी प्यारी माँ को जन्मदिन की अनंत शुभकामनाएं! 🙏✨", bg: "linear-gradient(135deg, #fe5f75 0%, #fc9842 100%)" },
-        father: { quote: "👑 पापा आप मेरा गुरुर हो, मेरी हिम्मत हो। आपके जन्मदिन पर भगवान से आपकी लंबी उम्र और अच्छी सेहत की कामना करता हूँ। 🌟💪", bg: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)" }
+    const occData = {
+        bday: { title: "जन्मदिन मुबारक!", emoji: "🎂", quote: "🎁 तोहफा मैं तुझे आज मेरा दिल ही देता हूँ, इस खास दिन पर अपनी सारी दुआएं देता हूँ, उम्र तुझे लगे आसमान के सितारों जैसी, ज़िंदगी में तेरी सिर्फ खुशियां ही खुशियां देता हूँ! 🎈", grad: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)", accent: "#ff4757" },
+        anniv: { title: "शादी की सालगिरह मुबारक!", emoji: "💍", quote: "💖 सात फेरों से बंधा यह प्यार का बंधन, जीवन भर यूं ही महकता रहे आपका चमन। आप दोनों की जोड़ी हमेशा सलामत रहे, यही है ईश्वर से हमारा सुमिरन! 🥂", grad: "linear-gradient(135deg, #fd746c 0%, #ff9068 100%)", accent: "#ff4757" },
+        diwali: { title: "शुभ दीपावली!", emoji: "🪔", quote: "✨ दीप जलते रहें जगमगाते रहें, हम आपको याद आते रहें। जब तक ज़िन्दगी है दुआ है हमारी, आप फूलों की तरह मुस्कुराते रहें! शुभ दिवाली! 🌟", grad: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)", accent: "#ffa502" },
+        eid: { title: "ईद मुबारक!", emoji: "🌙", quote: "⭐ सदा हंसते रहो जैसे हंसते हैं फूल, दुनिया के सारे ग़म तुम जाओ भूल। चारों तरफ फैले खुशियों के गीत, इसी उम्मीद के साथ तुम्हें मुबारक हो ईद! 🕋", grad: "linear-gradient(135deg, #0575e6 0%, #00f260 100%)", accent: "#2ed573" },
+        holi: { title: "हैप्पी होली!", emoji: "🎨", quote: "🌈 पिचकारी की धार, गुलाल की बौछार, अपनों का प्यार, यही है होली का त्यौहार। रंगों से भरी रहे आपकी दुनिया हमेशा! बुरा न मानो होली है! 🥳", grad: "linear-gradient(135deg, #ec008c 0%, #fc6767 100%)", accent: "#ff4757" },
+        rakhi: { title: "रक्षाबंधन की बधाई!", emoji: "🎀", quote: "👧 रेशम के धागों का है यह मजबूत बंधन, भाई की कलाई पर सजती है बहना का चंदन। दुआ है रब से खुश रहे मेरा भाई हरदम! हैप्पी रक्षाबंधन! ❤️", grad: "linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%)", accent: "#ff6b81" }
     };
 
+    function updateOccThemes() {
+        const occ = document.getElementById('occSelect').value;
+        document.body.style.background = occData[occ].grad;
+    }
+
     function createBalloons() {
-        const colors = ['#ff4757', '#2ed573', '#1e90ff', '#ffa502', '#eccc68', '#ff6b81'];
-        for (let i = 0; i < 18; i++) {
-            let balloon = document.createElement('div');
-            balloon.className = 'balloon';
-            balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            balloon.style.left = Math.random() * 95 + 'vw';
-            balloon.style.animationDelay = Math.random() * 5 + 's';
-            balloon.style.animationDuration = (Math.random() * 4 + 6) + 's';
-            document.body.appendChild(balloon);
+        const colors = ['#ff4757', '#2ed573', '#1e90ff', '#ffa502', '#ff6b81', '#ffffff'];
+        for (let i = 0; i < 15; i++) {
+            let b = document.createElement('div');
+            b.className = 'balloon';
+            b.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            b.style.left = Math.random() * 95 + 'vw';
+            b.style.animationDelay = Math.random() * 4 + 's';
+            b.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            document.body.appendChild(b);
         }
     }
-    window.onload = createBalloons;
 
-    document.body.addEventListener('click', function() {
-        document.getElementById('bdayMusic').play().catch(function(e) { console.log("Music blocked"); });
-    }, { once: true });
-
-    // URL चेकिंग - जब कोई दूसरा यूजर लिंक खोलेगा
     const urlParams = new URLSearchParams(window.location.search);
-    const senderName = urlParams.get('name');
-    const relation = urlParams.get('rel') || 'general';
-    
-    if (senderName) {
-        document.getElementById('wishName').innerText = decodeURIComponent(senderName) + " की तरफ से जन्मदिन की बधाई!";
-        if(relationData[relation]) {
-            document.getElementById('quoteText').innerText = relationData[relation].quote;
-            document.body.style.background = relationData[relation].bg;
-        }
-        // सबसे ज़रूरी: देखने वाले के लिए इनपुट बॉक्स और ड्रॉपडाउन पूरी तरह छुपा दें!
-        document.getElementById('createSection').style.display = 'none';
-    }
+    const sName = urlParams.get('s');
+    const rName = urlParams.get('r');
+    const pfx = urlParams.get('p') || '';
+    const occType = urlParams.get('o') || 'bday';
+    const cMsg = urlParams.get('m');
 
-    // नया लिंक जनरेटर लॉजिक
-    function generateLink() {
-        const name = document.getElementById('nameInput').value;
-        const rel = document.getElementById('relationSelect').value;
-        if(name.trim() === "") { alert("कृपया अपना नाम दर्ज करें!"); return; }
-        
-        // साफ़ यूआरएल स्ट्रक्चर बनाना
-        const currentCleanUrl = window.location.origin + window.location.pathname;
-        const newUrl = currentCleanUrl + "?name=" + encodeURIComponent(name) + "&rel=" + rel;
-        
-        let relText = "स्पेशल";
-        if(rel === "friend") relText = "खास दोस्त के लिए स्पेशल";
-        if(rel === "sister") relText = "प्यारी बहन के लिए स्पेशल";
-        if(rel === "brother") relText = "प्यारे भाई के लिए स्पेशल";
-        if(rel === "mother") relText = "प्यारी माँ के लिए स्पेशल";
-        if(rel === "father") relText = "आदरणीय पापा के लिए स्पेशल";
-
-        // नया डायरेक्ट जावास्क्रिप्ट आधारित व्हाट्सएप यूआरएल
-        const messageText = `*${name}* ने आपके लिए एक ${relText} बर्थडे सरप्राइज भेजा है। म्यूजिक ऑन करके देखने के लिए तुरंत नीचे नीले लिंक पर क्लिक करें 👇\n\n${newUrl}`;
-        globalWhatsAppUrl = "whatsapp://send?text=" + encodeURIComponent(messageText);
-        
-        // बटन दिखाना
-        document.getElementById('whatsappBtn').style.display = "inline-block";
-    }
-
-    // 100% मोबाइल वर्किंग व्हाट्सएप रीडायरेक्ट फंक्शन
-    function shareOnWhatsApp() {
-        if(globalWhatsAppUrl !== "") {
-            window.location.href = globalWhatsAppUrl;
-        }
-    }
-</script>
-
-</body>
-</html>
+    if (sName && rName) {
