@@ -2,20 +2,30 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#080b16">
-<meta name="description" content="Create a beautiful personal wish for someone special.">
-<title>Wish Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#090b16">
+<title>Wish Studio — आपकी खास Wish</title>
 
 <style>
-/* =========================================================
-   RESET
-========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#070914;
+  --card:rgba(18,22,39,.88);
+  --card2:rgba(25,30,51,.92);
+  --text:#fff;
+  --muted:#aeb4c8;
+  --purple:#8b5cf6;
+  --pink:#ec4899;
+  --cyan:#38bdf8;
+  --gold:#fbbf24;
+  --border:rgba(255,255,255,.09);
+  --shadow:0 25px 70px rgba(0,0,0,.38);
+}
 
 *{
-  margin:0;
-  padding:0;
   box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
 }
 
 html{
@@ -23,106 +33,36 @@ html{
 }
 
 body{
+  margin:0;
   min-height:100vh;
-  color:#fff;
-  font-family:
-    Inter,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Arial,
-    sans-serif;
-
   background:
-    radial-gradient(
-      circle at 10% 5%,
-      rgba(124,58,237,.20),
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 90% 15%,
-      rgba(236,72,153,.16),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 50% 100%,
-      rgba(59,130,246,.10),
-      transparent 30%
-    ),
-    #070a12;
-
-  overflow-x:hidden;
+    radial-gradient(circle at 10% 10%,rgba(124,58,237,.20),transparent 32%),
+    radial-gradient(circle at 90% 20%,rgba(236,72,153,.15),transparent 30%),
+    radial-gradient(circle at 50% 100%,rgba(14,165,233,.10),transparent 35%),
+    var(--bg);
+  color:var(--text);
+  font-family:"DM Sans",sans-serif;
 }
 
-button,
-input,
-textarea,
-select{
+button,input,textarea,select{
   font:inherit;
 }
 
 button{
-  border:0;
   cursor:pointer;
 }
 
-.hidden{
-  display:none !important;
-}
-
-/* =========================================================
-   BACKGROUND
-========================================================= */
-
-.bg-orb{
-  position:fixed;
-  width:220px;
-  height:220px;
-  border-radius:50%;
-  filter:blur(70px);
-  opacity:.13;
-  pointer-events:none;
-  z-index:-1;
-}
-
-.orb1{
-  background:#8b5cf6;
-  top:5%;
-  left:-100px;
-}
-
-.orb2{
-  background:#ec4899;
-  right:-100px;
-  top:45%;
-}
-
-.orb3{
-  background:#3b82f6;
-  left:30%;
-  bottom:-120px;
-}
-
-/* =========================================================
-   APP
-========================================================= */
-
 .app{
   width:100%;
-  max-width:570px;
-  min-height:100vh;
+  max-width:760px;
   margin:auto;
-  padding:14px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  min-height:100vh;
+  padding:18px 15px 28px;
 }
 
 .screen{
-  width:100%;
   display:none;
-  animation:screenIn .42s cubic-bezier(.2,.8,.2,1);
+  animation:screenIn .35s ease;
 }
 
 .screen.active{
@@ -130,1227 +70,1012 @@ button{
 }
 
 @keyframes screenIn{
-  from{
-    opacity:0;
-    transform:translateY(15px) scale(.985);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0) scale(1);
-  }
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
-/* =========================================================
-   CARD
-========================================================= */
-
-.card{
-  width:100%;
-  padding:21px;
-  border-radius:25px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(22,28,45,.94),
-      rgba(10,14,26,.95)
-    );
-
-  border:1px solid rgba(255,255,255,.09);
-
-  box-shadow:
-    0 25px 70px rgba(0,0,0,.38),
-    inset 0 1px 0 rgba(255,255,255,.04);
-
-  backdrop-filter:blur(20px);
+.topbar{
+  height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:12px;
 }
-
-.center{
-  text-align:center;
-}
-
-/* =========================================================
-   BRAND
-========================================================= */
 
 .brand{
   display:flex;
   align-items:center;
-  justify-content:center;
   gap:9px;
-  margin-bottom:19px;
-}
-
-.brand-mark{
-  width:35px;
-  height:35px;
-  border-radius:11px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  background:
-    linear-gradient(
-      135deg,
-      #8b5cf6,
-      #ec4899
-    );
-
-  box-shadow:
-    0 8px 22px rgba(139,92,246,.28);
-
-  font-size:18px;
-}
-
-.brand-name{
-  font-size:14px;
+  font-family:"Baloo 2",sans-serif;
+  font-size:21px;
   font-weight:800;
-  letter-spacing:2px;
+  letter-spacing:.3px;
 }
 
-/* =========================================================
-   HEADINGS
-========================================================= */
+.brandIcon{
+  width:37px;
+  height:37px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  background:linear-gradient(135deg,#8b5cf6,#ec4899);
+  box-shadow:0 8px 25px rgba(139,92,246,.28);
+}
+
+.step{
+  color:#8f96ac;
+  font-size:12px;
+}
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  padding:30px 20px 24px;
+  border:1px solid var(--border);
+  border-radius:27px;
+  background:linear-gradient(145deg,rgba(21,26,45,.94),rgba(11,14,28,.94));
+  box-shadow:var(--shadow);
+  text-align:center;
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+  width:190px;
+  height:190px;
+  border-radius:50%;
+  background:rgba(139,92,246,.15);
+  filter:blur(45px);
+  top:-70px;
+  left:-55px;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:170px;
+  height:170px;
+  border-radius:50%;
+  background:rgba(236,72,153,.12);
+  filter:blur(45px);
+  bottom:-80px;
+  right:-50px;
+}
+
+.hero>*{
+  position:relative;
+  z-index:1;
+}
+
+.bigIcon{
+  width:76px;
+  height:76px;
+  border-radius:23px;
+  margin:0 auto 17px;
+  display:grid;
+  place-items:center;
+  font-size:40px;
+  background:linear-gradient(145deg,rgba(139,92,246,.28),rgba(236,72,153,.20));
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
 
 h1{
-  font-size:29px;
-  line-height:1.22;
-  text-align:center;
-  letter-spacing:-.5px;
-}
-
-h2{
-  font-size:22px;
-  line-height:1.3;
-  text-align:center;
-}
-
-.sub{
-  margin:9px auto 19px;
-  color:#aeb8ca;
-  text-align:center;
-  line-height:1.55;
-  font-size:13px;
-  max-width:440px;
-}
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero-icon{
-  width:82px;
-  height:82px;
-  margin:4px auto 17px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border-radius:26px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(139,92,246,.24),
-      rgba(236,72,153,.20)
-    );
-
-  border:1px solid rgba(255,255,255,.10);
-
-  box-shadow:
-    0 15px 40px rgba(139,92,246,.14);
-
-  font-size:42px;
-
-  animation:floatIcon 3s ease-in-out infinite;
-}
-
-@keyframes floatIcon{
-  50%{
-    transform:translateY(-5px);
-  }
-}
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-
-.primary,
-.secondary,
-.share-button{
-  min-height:47px;
-  border-radius:14px;
+  font-family:"Baloo 2",sans-serif;
+  margin:0;
+  font-size:clamp(31px,7vw,49px);
+  line-height:1.04;
   font-weight:800;
-  transition:.2s ease;
+}
+
+.hero p{
+  color:var(--muted);
+  margin:13px auto 21px;
+  max-width:510px;
+  line-height:1.55;
+  font-size:14px;
 }
 
 .primary{
   width:100%;
+  border:0;
   color:white;
-
-  background:
-    linear-gradient(
-      135deg,
-      #7c3aed,
-      #db2777
-    );
-
-  box-shadow:
-    0 10px 28px rgba(124,58,237,.24);
+  min-height:54px;
+  padding:13px 18px;
+  border-radius:17px;
+  font-weight:800;
+  font-family:"Baloo 2",sans-serif;
+  font-size:18px;
+  background:linear-gradient(100deg,#7c3aed,#db2777);
+  box-shadow:0 13px 30px rgba(139,92,246,.27);
+  transition:.2s;
 }
 
-.primary:hover{
-  transform:translateY(-1px);
-}
-
-.primary:active,
-.secondary:active,
-.share-button:active{
+.primary:active{
   transform:scale(.98);
 }
 
 .secondary{
   width:100%;
-  color:#e6eaf2;
-
-  background:#182134;
-
-  border:1px solid rgba(255,255,255,.08);
+  min-height:50px;
+  border-radius:16px;
+  border:1px solid var(--border);
+  color:#fff;
+  background:rgba(255,255,255,.045);
+  font-weight:700;
 }
 
-.share-button{
-  width:100%;
-  color:white;
-
-  background:
-    linear-gradient(
-      135deg,
-      #16a34a,
-      #059669
-    );
+.ghost{
+  border:0;
+  background:transparent;
+  color:#b9a4ff;
+  padding:8px;
+  font-weight:700;
 }
 
-/* =========================================================
-   NAV
-========================================================= */
-
-.step-label{
-  text-align:center;
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:1.4px;
-  color:#a78bfa;
-  margin-bottom:10px;
+.sectionCard{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:18px;
+  box-shadow:var(--shadow);
 }
 
-.progress{
-  width:100%;
-  height:4px;
-  background:#20283a;
-  border-radius:20px;
-  overflow:hidden;
-  margin-bottom:18px;
-}
-
-.progress-bar{
-  height:100%;
-  width:25%;
-  border-radius:20px;
-
-  background:
-    linear-gradient(
-      90deg,
-      #8b5cf6,
-      #ec4899
-    );
-
-  transition:.35s ease;
-}
-
-.button-row{
+.sectionTitle{
   display:flex;
-  gap:9px;
-  margin-top:15px;
-}
-
-.button-row > *{
-  flex:1;
-}
-
-/* =========================================================
-   FORM
-========================================================= */
-
-.form-group{
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
   margin-bottom:13px;
 }
 
-label{
-  display:block;
-  color:#dce3ef;
+.sectionTitle h2{
+  margin:0;
+  font-family:"Baloo 2",sans-serif;
+  font-size:24px;
+}
+
+.sectionTitle span{
+  color:#8e95aa;
   font-size:12px;
-  font-weight:800;
-  margin-bottom:6px;
 }
 
-input,
-textarea,
-select{
+.search{
   width:100%;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.055);
   color:#fff;
-  background:#0c1321;
-  border:1px solid rgba(255,255,255,.10);
-  border-radius:13px;
-  padding:12px 13px;
   outline:none;
-  transition:.2s;
+  border-radius:14px;
+  padding:13px 15px;
+  margin-bottom:13px;
 }
 
-input:focus,
-textarea:focus,
-select:focus{
-  border-color:#8b5cf6;
-  box-shadow:0 0 0 3px rgba(139,92,246,.10);
+.search:focus,
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+  border-color:rgba(139,92,246,.7);
+  box-shadow:0 0 0 3px rgba(139,92,246,.09);
 }
 
-textarea{
-  min-height:88px;
-  resize:vertical;
-}
-
-select option{
-  background:#111827;
-}
-
-/* =========================================================
-   RELATION GRID
-========================================================= */
-
-.section-heading{
-  font-size:13px;
-  color:#dbe4f3;
-  font-weight:800;
-  margin:3px 0 8px;
-}
-
-.relation-grid{
+.occasionGrid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:7px;
-  margin-bottom:14px;
-}
-
-.relation{
-  padding:10px 5px;
-  min-height:67px;
-
-  border-radius:13px;
-
-  background:#0c1321;
-  border:1px solid rgba(255,255,255,.08);
-
-  color:#e9edf5;
-  text-align:center;
-
-  transition:.2s;
-}
-
-.relation .r-icon{
-  display:block;
-  font-size:21px;
-  margin-bottom:3px;
-}
-
-.relation .r-name{
-  display:block;
-  font-size:10px;
-  line-height:1.2;
-}
-
-.relation.selected{
-  background:
-    linear-gradient(
-      145deg,
-      rgba(124,58,237,.23),
-      rgba(219,39,119,.13)
-    );
-
-  border-color:#9f7aea;
-
-  box-shadow:
-    0 0 0 2px rgba(139,92,246,.08);
-}
-
-/* =========================================================
-   OCCASIONS
-========================================================= */
-
-.occasion-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:7px;
-  max-height:385px;
-  overflow-y:auto;
-  padding:2px;
+  gap:8px;
 }
 
 .occasion{
-  min-height:72px;
-  padding:9px 4px;
-
-  border-radius:13px;
-
+  min-height:83px;
+  border:1px solid var(--border);
+  border-radius:16px;
   color:white;
-  background:#0c1321;
-
-  border:1px solid rgba(255,255,255,.08);
-
+  background:rgba(255,255,255,.035);
+  padding:9px 5px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
   transition:.2s;
 }
 
-.occasion .emoji{
-  display:block;
-  font-size:23px;
-  margin-bottom:4px;
+.occasion .oi{
+  font-size:24px;
 }
 
-.occasion .name{
-  display:block;
-  font-size:10px;
-  line-height:1.2;
+.occasion .on{
+  font-size:12px;
+  line-height:1.1;
 }
 
 .occasion.selected{
-  background:
-    linear-gradient(
-      145deg,
-      rgba(124,58,237,.22),
-      rgba(219,39,119,.12)
-    );
-
-  border-color:#9f7aea;
+  border-color:#9b72ff;
+  background:linear-gradient(145deg,rgba(139,92,246,.23),rgba(236,72,153,.13));
+  box-shadow:0 8px 22px rgba(139,92,246,.15);
 }
 
-/* =========================================================
-   SHAYARI
-========================================================= */
-
-.shayari-list{
-  display:grid;
-  gap:7px;
-  max-height:230px;
-  overflow-y:auto;
-  padding:1px;
-}
-
-.shayari-option{
-  width:100%;
-  text-align:left;
-
-  padding:11px 12px;
-
-  border-radius:12px;
-
-  color:#e9edf6;
-  background:#0c1321;
-
-  border:1px solid rgba(255,255,255,.08);
-
-  font-family:Georgia,serif;
-  font-size:12.5px;
-  line-height:1.5;
-
-  transition:.2s;
-}
-
-.shayari-option.selected{
-  background:rgba(139,92,246,.13);
-  border-color:#9f7aea;
-}
-
-/* =========================================================
-   TAG
-========================================================= */
-
-.mini-tag{
-  display:inline-flex;
-  align-items:center;
-  gap:5px;
-  padding:5px 9px;
-  border-radius:30px;
-  color:#c4b5fd;
-  background:rgba(139,92,246,.10);
-  border:1px solid rgba(139,92,246,.15);
-  font-size:10px;
-  font-weight:800;
-}
-
-/* =========================================================
-   PREVIEW
-========================================================= */
-
-.preview{
-  padding:21px 16px;
-  border-radius:19px;
-
-  background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(139,92,246,.22),
-      transparent 50%
-    ),
-    #090f1d;
-
-  border:1px solid rgba(255,255,255,.09);
-
+.empty{
   text-align:center;
+  color:#858ca1;
+  padding:20px 5px;
+  font-size:14px;
 }
 
-.preview-icon{
-  font-size:44px;
-  margin-bottom:9px;
-}
-
-.preview-relation{
-  color:#a78bfa;
-  font-size:11px;
-  font-weight:800;
-  margin-bottom:5px;
-}
-
-.preview-name{
-  font-size:20px;
-  font-weight:800;
+.field{
   margin-bottom:13px;
 }
 
-.preview-title{
-  font-size:12px;
-  color:#fbbf24;
-  font-weight:800;
-  margin-bottom:12px;
-}
-
-.preview-shayari{
-  font-family:Georgia,serif;
-  font-size:16px;
-  line-height:1.7;
-  white-space:pre-line;
-  margin-bottom:14px;
-}
-
-.preview-message{
-  padding:12px;
-  border-radius:12px;
-  background:rgba(255,255,255,.04);
-  color:#cbd5e1;
+.field label{
+  display:block;
+  color:#c9cde0;
   font-size:13px;
-  line-height:1.55;
-  white-space:pre-line;
+  font-weight:700;
+  margin:0 0 6px 3px;
 }
 
-.preview-from{
-  margin-top:13px;
-  color:#fbbf24;
-  font-size:13px;
-  font-weight:800;
+.field input,
+.field textarea,
+.field select{
+  width:100%;
+  color:#fff;
+  background:rgba(255,255,255,.045);
+  border:1px solid var(--border);
+  outline:none;
+  border-radius:14px;
+  padding:12px 13px;
 }
 
-/* =========================================================
-   CREATED
-========================================================= */
-
-.success-icon{
-  width:75px;
-  height:75px;
-  border-radius:24px;
-
-  margin:0 auto 14px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(34,197,94,.18),
-      rgba(139,92,246,.18)
-    );
-
-  font-size:38px;
+.field textarea{
+  min-height:100px;
+  resize:vertical;
+  line-height:1.5;
 }
 
-.link-box{
-  display:flex;
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.relationGrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
   gap:7px;
+}
+
+.relation{
+  border:1px solid var(--border);
+  color:#e9ebf4;
+  background:rgba(255,255,255,.035);
+  border-radius:12px;
+  padding:10px 4px;
+  font-size:12px;
+  min-height:43px;
+}
+
+.relation.selected{
+  background:rgba(139,92,246,.20);
+  border-color:#8b5cf6;
+  color:white;
+}
+
+.actionRow{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+  margin-top:14px;
+}
+
+.full{
   margin-top:10px;
 }
 
-.link-box input{
-  min-width:0;
-  font-size:10px;
+.counter{
+  text-align:right;
+  font-size:11px;
+  color:#777f96;
+  margin-top:4px;
 }
 
-.link-box button{
-  width:72px;
-  flex:none;
-}
-
-.note{
-  color:#778398;
-  text-align:center;
-  font-size:10px;
-  line-height:1.45;
-  margin-top:8px;
-}
-
-/* =========================================================
-   RECEIVER
-========================================================= */
-
-.receiver-card{
-  text-align:center;
-  padding:27px 21px;
-}
-
-.receiver-stage{
-  min-height:355px;
+.shayariList{
   display:flex;
   flex-direction:column;
-  justify-content:center;
-  align-items:center;
+  gap:8px;
+  max-height:390px;
+  overflow:auto;
+  padding-right:2px;
 }
 
-.receiver-icon{
-  width:94px;
-  height:94px;
-  border-radius:29px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(124,58,237,.23),
-      rgba(236,72,153,.20)
-    );
-
-  border:1px solid rgba(255,255,255,.11);
-
-  font-size:47px;
-
-  margin-bottom:19px;
-
-  box-shadow:
-    0 18px 45px rgba(0,0,0,.25);
-
-  animation:floatIcon 3s ease-in-out infinite;
-}
-
-.receiver-text{
-  max-width:390px;
-  color:#b7c1d2;
-  font-size:14px;
-  line-height:1.65;
-  margin:9px auto 22px;
-}
-
-.open-button{
-  width:100%;
-  max-width:360px;
-  min-height:51px;
-
+.shayariOption{
+  text-align:left;
+  border:1px solid var(--border);
   border-radius:15px;
-
-  color:white;
-  font-weight:900;
-
-  background:
-    linear-gradient(
-      135deg,
-      #7c3aed,
-      #db2777
-    );
-
-  box-shadow:
-    0 12px 30px rgba(124,58,237,.25);
+  color:#eee;
+  background:rgba(255,255,255,.035);
+  padding:13px;
+  line-height:1.55;
+  font-size:14px;
 }
 
-.tap-note{
-  color:#6f7b90;
-  font-size:10px;
+.shayariOption.selected{
+  border-color:#a27cff;
+  background:linear-gradient(145deg,rgba(139,92,246,.17),rgba(236,72,153,.09));
+}
+
+.customBox{
   margin-top:10px;
 }
 
-/* =========================================================
-   COUNTDOWN
-========================================================= */
+.preview{
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(139,92,246,.20),transparent 38%),
+    linear-gradient(145deg,#13182a,#0c1020);
+}
 
-.count-circle{
-  width:135px;
-  height:135px;
+.preview .wishIcon{
+  font-size:42px;
+  margin-bottom:4px;
+}
 
-  margin:20px auto;
+.preview h2{
+  margin:0;
+  font-family:"Baloo 2",sans-serif;
+  font-size:33px;
+}
 
+.forText{
+  color:#a995ff;
+  font-weight:700;
+  margin:3px 0 17px;
+}
+
+.shayariPreview{
+  font-family:"Baloo 2",sans-serif;
+  font-size:20px;
+  line-height:1.65;
+  color:#f8f8ff;
+  white-space:pre-line;
+  padding:17px 7px;
+}
+
+.messagePreview{
+  padding:13px;
+  border-radius:15px;
+  background:rgba(255,255,255,.045);
+  color:#bfc4d5;
+  line-height:1.5;
+  font-size:14px;
+  margin-top:5px;
+}
+
+.signature{
+  margin-top:15px;
+  color:#f8c744;
+  font-family:"Baloo 2",sans-serif;
+  font-size:17px;
+  font-weight:800;
+}
+
+.ready{
+  text-align:center;
+  padding:24px 17px;
+}
+
+.readyIcon{
+  width:72px;
+  height:72px;
+  margin:0 auto 14px;
+  display:grid;
+  place-items:center;
+  border-radius:22px;
+  font-size:37px;
+  background:linear-gradient(145deg,#7c3aed,#db2777);
+}
+
+.ready h2{
+  font-family:"Baloo 2",sans-serif;
+  font-size:30px;
+  margin:0 0 7px;
+}
+
+.ready p{
+  color:#9fa6bb;
+  font-size:14px;
+  line-height:1.5;
+  margin:0 auto 18px;
+}
+
+.shareBox{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+}
+
+.receiver{
+  min-height:calc(100vh - 55px);
   display:flex;
   align-items:center;
   justify-content:center;
-
-  border-radius:50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(139,92,246,.24),
-      rgba(139,92,246,.03)
-    );
-
-  border:2px solid rgba(167,139,250,.42);
-
-  font-size:55px;
-  font-weight:900;
-
-  animation:countPulse 1s infinite;
 }
 
-@keyframes countPulse{
-  50%{
-    transform:scale(1.07);
-    box-shadow:0 0 35px rgba(139,92,246,.15);
-  }
-}
-
-/* =========================================================
-   FINAL
-========================================================= */
-
-.final-card{
-  overflow:hidden;
-  position:relative;
-}
-
-.final-top{
+.receiverCard{
+  width:100%;
+  max-width:610px;
   text-align:center;
+  padding:28px 19px;
+  border-radius:28px;
+  border:1px solid rgba(255,255,255,.09);
+  background:
+    radial-gradient(circle at 50% 0%,rgba(139,92,246,.16),transparent 42%),
+    rgba(13,17,31,.94);
+  box-shadow:0 30px 90px rgba(0,0,0,.46);
 }
 
-.final-icon{
-  font-size:59px;
-  margin-bottom:8px;
-  animation:floatIcon 3s ease-in-out infinite;
+.receiverIcon{
+  width:82px;
+  height:82px;
+  border-radius:24px;
+  margin:0 auto 15px;
+  display:grid;
+  place-items:center;
+  font-size:43px;
+  background:linear-gradient(145deg,rgba(139,92,246,.27),rgba(236,72,153,.17));
+  border:1px solid rgba(255,255,255,.09);
 }
 
-.final-title{
-  font-size:24px;
-  line-height:1.35;
+.receiverCard h2{
+  font-family:"Baloo 2",sans-serif;
+  font-size:34px;
+  line-height:1.05;
+  margin:0;
 }
 
-.final-to{
-  color:#a78bfa;
+.receiverCard p{
+  color:#a9afc1;
+  line-height:1.55;
+  margin:10px 0 20px;
+}
+
+.receiverName{
+  color:#c3a6ff;
+  font-weight:800;
+}
+
+.countdown{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin:19px 0;
+}
+
+.countBox{
+  width:64px;
+  padding:10px 5px;
+  border-radius:16px;
+  background:rgba(255,255,255,.055);
+  border:1px solid var(--border);
+}
+
+.countNum{
+  display:block;
+  font-family:"Baloo 2",sans-serif;
+  font-size:30px;
+  font-weight:800;
+}
+
+.countLabel{
+  display:block;
+  color:#858da4;
+  font-size:10px;
+}
+
+.final{
+  padding:18px 14px 22px;
+}
+
+.finalCard{
+  position:relative;
+  overflow:hidden;
+  border-radius:30px;
+  padding:27px 18px 19px;
+  text-align:center;
+  border:1px solid rgba(255,255,255,.10);
+  background:
+    radial-gradient(circle at 50% -10%,rgba(236,72,153,.18),transparent 38%),
+    radial-gradient(circle at 0% 100%,rgba(124,58,237,.14),transparent 35%),
+    linear-gradient(145deg,#12172a,#090d1b);
+  box-shadow:0 30px 100px rgba(0,0,0,.5);
+}
+
+.finalTop{
+  color:#9f8aff;
   font-size:12px;
   font-weight:800;
-  margin-top:6px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  margin-bottom:13px;
 }
 
-.final-shayari{
-  margin:18px 0;
-
-  text-align:center;
-
-  font-family:Georgia,serif;
-
-  font-size:18px;
-  line-height:1.75;
-
-  white-space:pre-line;
-
-  color:#fff;
+.finalIcon{
+  width:76px;
+  height:76px;
+  margin:0 auto 12px;
+  border-radius:23px;
+  display:grid;
+  place-items:center;
+  font-size:39px;
+  background:linear-gradient(145deg,rgba(139,92,246,.28),rgba(236,72,153,.20));
 }
 
-.final-message{
-  padding:15px;
+.finalCard h1{
+  font-size:36px;
+}
 
-  border-radius:15px;
+.finalFor{
+  margin:6px 0 18px;
+  color:#b9a5ff;
+  font-weight:800;
+}
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.045),
-      rgba(255,255,255,.02)
-    );
-
-  border:1px solid rgba(255,255,255,.06);
-
-  color:#cbd5e1;
-
-  font-size:13px;
+.finalShayari{
+  font-family:"Baloo 2",sans-serif;
+  font-size:21px;
   line-height:1.65;
-
   white-space:pre-line;
-
-  text-align:center;
+  padding:17px 8px;
 }
 
-.final-from{
-  text-align:center;
-  margin-top:14px;
+.finalMessage{
+  margin-top:5px;
+  padding:15px;
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:18px;
+  background:rgba(255,255,255,.045);
+  color:#c5cada;
+  font-size:14px;
+  line-height:1.55;
+}
 
-  color:#fbbf24;
-  font-weight:900;
+.finalSignature{
+  color:#f8c744;
+  font-family:"Baloo 2",sans-serif;
+  font-size:18px;
+  font-weight:800;
+  margin:17px 0;
+}
+
+.finalActions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+}
+
+.finalActions .primary{
+  grid-column:1/-1;
+}
+
+.progress{
+  display:flex;
+  gap:5px;
+  margin:0 0 13px;
+}
+
+.progress span{
+  height:3px;
+  flex:1;
+  border-radius:5px;
+  background:#252a3e;
+}
+
+.progress span.on{
+  background:linear-gradient(90deg,#8b5cf6,#ec4899);
+}
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:22px;
+  transform:translate(-50%,20px);
+  background:#20253a;
+  border:1px solid rgba(255,255,255,.1);
+  color:white;
+  padding:11px 16px;
+  border-radius:13px;
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+  z-index:100;
   font-size:13px;
 }
 
-/* =========================================================
-   CONFETTI
-========================================================= */
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
 
-#confetti{
+.confetti{
   position:fixed;
   inset:0;
   pointer-events:none;
-  z-index:999;
   overflow:hidden;
+  z-index:50;
 }
 
-.confetti-piece{
+.confetti i{
   position:absolute;
   top:-20px;
-
   width:7px;
   height:12px;
-
-  animation:
-    confettiFall
-    3.4s
-    linear
-    forwards;
+  animation:fall 2.7s linear forwards;
 }
 
-@keyframes confettiFall{
+@keyframes fall{
   to{
-    transform:
-      translateY(110vh)
-      rotate(720deg);
-
-    opacity:0;
+    transform:translateY(110vh) rotate(600deg);
   }
 }
-
-/* =========================================================
-   ERROR
-========================================================= */
-
-.error{
-  min-height:17px;
-  color:#fca5a5;
-  font-size:11px;
-  text-align:center;
-  margin-top:7px;
-}
-
-/* =========================================================
-   MOBILE
-========================================================= */
 
 @media(max-width:430px){
-
   .app{
-    padding:10px;
+    padding:12px 11px 22px;
   }
 
-  .card{
-    padding:17px;
-    border-radius:21px;
+  .hero{
+    padding:26px 15px 20px;
+    border-radius:23px;
   }
 
-  h1{
-    font-size:25px;
+  .sectionCard{
+    padding:14px;
+    border-radius:19px;
   }
 
-  h2{
-    font-size:20px;
-  }
-
-  .occasion-grid{
-    grid-template-columns:repeat(3,1fr);
-    max-height:350px;
-  }
-
-  .relation-grid{
+  .occasionGrid{
     grid-template-columns:repeat(3,1fr);
   }
 
-  .relation{
-    min-height:63px;
+  .relationGrid{
+    grid-template-columns:repeat(3,1fr);
   }
 
-  .receiver-stage{
-    min-height:330px;
+  .receiverCard{
+    padding:24px 15px;
+    border-radius:24px;
+  }
+
+  .finalCard{
+    border-radius:24px;
   }
 }
 
-@media(max-width:350px){
-
-  .occasion-grid{
-    grid-template-columns:repeat(2,1fr);
+@media(min-width:650px){
+  .occasionGrid{
+    grid-template-columns:repeat(5,1fr);
   }
 
-  .relation-grid{
-    grid-template-columns:repeat(2,1fr);
+  .relationGrid{
+    grid-template-columns:repeat(5,1fr);
   }
-
 }
 </style>
 </head>
 
 <body>
 
-<div class="bg-orb orb1"></div>
-<div class="bg-orb orb2"></div>
-<div class="bg-orb orb3"></div>
+<div class="app">
 
-<main class="app">
+<!-- ================= HOME ================= -->
 
-<!-- ======================================================
-     HOME
-====================================================== -->
-
-<section id="home" class="screen active">
-
-  <div class="card">
-
+<section id="home" class="screen">
+  <div class="topbar">
     <div class="brand">
-      <div class="brand-mark">💌</div>
-      <div class="brand-name">WISH STUDIO</div>
+      <div class="brandIcon">💌</div>
+      WISH STUDIO
     </div>
+  </div>
 
-    <div class="hero-icon">✨</div>
+  <div class="hero">
+    <div class="bigIcon">✨</div>
 
-    <h1>
-      किसी अपने के लिए<br>
-      कुछ खास लिखिए
-    </h1>
+    <h1>किसी अपने के लिए<br>कुछ खास लिखिए</h1>
 
-    <p class="sub">
-      Occasion चुनिए, रिश्ता चुनिए और अपने दिल की बात
+    <p>
+      एक occasion चुनिए, रिश्ता चुनिए और अपने दिल की बात
       एक खूबसूरत Wish में बदल दीजिए।
     </p>
 
     <button class="primary" id="startBtn">
       ✨ Wish बनाना शुरू करें
     </button>
+  </div>
+</section>
+
+
+<!-- ================= OCCASION ================= -->
+
+<section id="occasionScreen" class="screen">
+
+  <div class="topbar">
+    <button class="ghost" id="backHome">← वापस</button>
+    <div class="step">01 / 05</div>
+  </div>
+
+  <div class="sectionCard">
+
+    <div class="sectionTitle">
+      <h2>🎉 Occasion चुनें</h2>
+      <span id="occasionCount"></span>
+    </div>
+
+    <input
+      id="occasionSearch"
+      class="search"
+      type="search"
+      placeholder="🔎 Birthday, Diwali, Eid..."
+      autocomplete="off"
+    >
+
+    <div id="occasionGrid" class="occasionGrid"></div>
 
   </div>
+
+  <button class="primary full" id="occasionNext">
+    आगे बढ़ें →
+  </button>
 
 </section>
 
 
-<!-- ======================================================
-     OCCASION
-====================================================== -->
+<!-- ================= DETAILS ================= -->
 
-<section id="occasion" class="screen">
+<section id="detailsScreen" class="screen">
 
-  <div class="card">
+  <div class="topbar">
+    <button class="ghost" id="backOccasion">← वापस</button>
+    <div class="step">02 / 05</div>
+  </div>
 
-    <div class="step-label">
-      STEP 1 OF 4
+  <div class="sectionCard">
+
+    <div class="sectionTitle">
+      <h2>👤 किसके लिए?</h2>
+      <span id="selectedOccasionText"></span>
     </div>
 
-    <div class="progress">
-      <div class="progress-bar" style="width:25%"></div>
+    <div class="field">
+      <label>रिश्ता चुनें</label>
+      <div id="relationGrid" class="relationGrid"></div>
     </div>
 
-    <h2>किस मौके के लिए Wish है?</h2>
+    <div class="row">
 
-    <p class="sub">
-      अपना खास occasion चुनिए
-    </p>
+      <div class="field">
+        <label>जिसे Wish भेजनी है</label>
+        <input id="receiverName" placeholder="जैसे Rahul">
+      </div>
 
-    <div id="occasionGrid" class="occasion-grid"></div>
+      <div class="field">
+        <label>आपका नाम</label>
+        <input id="senderName" placeholder="जैसे Nitin">
+      </div>
 
-    <div class="button-row">
-      <button class="secondary" id="occasionBack">
-        ← वापस
-      </button>
-
-      <button class="primary" id="occasionNext">
-        आगे →
-      </button>
     </div>
 
   </div>
 
+  <button class="primary full" id="detailsNext">
+    Shayari चुनें →
+  </button>
+
 </section>
 
 
-<!-- ======================================================
-     DETAILS
-====================================================== -->
+<!-- ================= SHAYARI ================= -->
 
-<section id="details" class="screen">
+<section id="shayariScreen" class="screen">
 
-  <div class="card">
+  <div class="topbar">
+    <button class="ghost" id="backDetails">← वापस</button>
+    <div class="step">03 / 05</div>
+  </div>
 
-    <div class="step-label">
-      STEP 2 OF 4
+  <div class="sectionCard">
+
+    <div class="sectionTitle">
+      <h2>💌 Shayari चुनें</h2>
+      <span id="shayariCount"></span>
     </div>
 
-    <div class="progress">
-      <div class="progress-bar" style="width:50%"></div>
-    </div>
+    <div id="shayariList" class="shayariList"></div>
 
-    <h2>Wish को अपना बनाइए</h2>
+    <div class="customBox">
 
-    <p class="sub">
-      रिश्ता, नाम और अपनी पसंद के शब्द चुनिए।
-    </p>
+      <div class="field">
+        <label>✍️ अपनी Shayari लिखें — optional</label>
 
+        <textarea
+          id="customShayari"
+          maxlength="500"
+          placeholder="अगर अपनी Shayari लिखना चाहते हैं तो यहाँ लिखें..."
+        ></textarea>
 
-    <div class="section-heading">
-      यह Wish किसके लिए है?
-    </div>
-
-    <div id="relationGrid" class="relation-grid"></div>
-
-
-    <div class="form-group">
-      <label id="receiverLabel">
-        नाम
-      </label>
-
-      <input
-        id="receiverName"
-        type="text"
-        placeholder="नाम लिखें"
-      >
-    </div>
-
-
-    <div class="form-group">
-
-      <label>
-        Shayari चुनें
-      </label>
-
-      <div
-        id="shayariList"
-        class="shayari-list"
-      ></div>
+        <div class="counter">
+          <span id="customCounter">0</span>/500
+        </div>
+      </div>
 
     </div>
 
+  </div>
 
-    <div class="form-group">
+  <button class="primary full" id="shayariNext">
+    Personal Message →
+  </button>
 
-      <label>
-        या अपनी Shayari लिखें
-      </label>
+</section>
 
-      <textarea
-        id="customShayari"
-        placeholder="अपनी Shayari या दिल की बात लिखें..."
-      ></textarea>
 
+<!-- ================= MESSAGE ================= -->
+
+<section id="messageScreen" class="screen">
+
+  <div class="topbar">
+    <button class="ghost" id="backShayari">← वापस</button>
+    <div class="step">04 / 05</div>
+  </div>
+
+  <div class="sectionCard">
+
+    <div class="sectionTitle">
+      <h2>💭 दिल की बात</h2>
+      <span>Optional</span>
     </div>
 
-
-    <div class="form-group">
-
-      <label>
-        Personal Message
-      </label>
+    <div class="field">
+      <label>Personal Message</label>
 
       <textarea
         id="personalMessage"
-        placeholder="इस खास इंसान के लिए अपना personal message लिखें..."
+        maxlength="350"
+        placeholder="जैसे — बस हमेशा ऐसे ही मुस्कुराते रहना..."
       ></textarea>
 
-    </div>
-
-
-    <div class="form-group">
-
-      <label>
-        आपका नाम
-      </label>
-
-      <input
-        id="senderName"
-        type="text"
-        placeholder="अपना नाम लिखें"
-      >
-
-    </div>
-
-
-    <div id="detailsError" class="error"></div>
-
-
-    <div class="button-row">
-
-      <button class="secondary" id="detailsBack">
-        ← वापस
-      </button>
-
-      <button class="primary" id="previewBtn">
-        Preview →
-      </button>
-
+      <div class="counter">
+        <span id="messageCounter">0</span>/350
+      </div>
     </div>
 
   </div>
 
+  <button class="primary full" id="previewNext">
+    ✨ Preview देखें
+  </button>
+
 </section>
 
 
-<!-- ======================================================
-     PREVIEW
-====================================================== -->
+<!-- ================= PREVIEW ================= -->
 
-<section id="preview" class="screen">
+<section id="previewScreen" class="screen">
 
-  <div class="card">
+  <div class="topbar">
+    <button class="ghost" id="backMessage">← वापस</button>
+    <div class="step">05 / 05</div>
+  </div>
 
-    <div class="step-label">
-      STEP 3 OF 4
+  <div class="sectionCard preview">
+
+    <div class="wishIcon" id="previewIcon">🎂</div>
+
+    <h2 id="previewTitle">जन्मदिन मुबारक</h2>
+
+    <div class="forText">
+      <span id="previewRelation">मेरे दोस्त</span> •
+      <span id="previewReceiver">Rahul</span>
     </div>
 
-    <div class="progress">
-      <div class="progress-bar" style="width:75%"></div>
+    <div class="shayariPreview" id="previewShayari"></div>
+
+    <div class="messagePreview" id="previewMessage">
+      —
     </div>
 
-    <h2>एक बार देख लीजिए</h2>
+    <div class="signature" id="previewSignature">
+      प्यार से — Nitin
+    </div>
 
-    <p class="sub">
-      आपकी Wish receiver को इसी खूबसूरत अंदाज़ में दिखाई देगी।
+  </div>
+
+  <button class="primary full" id="createWishBtn">
+    💖 Wish तैयार करें
+  </button>
+
+</section>
+
+
+<!-- ================= READY ================= -->
+
+<section id="readyScreen" class="screen">
+
+  <div class="sectionCard ready">
+
+    <div class="readyIcon">🎁</div>
+
+    <h2>आपकी Wish तैयार है!</h2>
+
+    <p>
+      अब इसे अपने खास इंसान के साथ Share करें।
+      उन्हें एक छोटा सा surprise मिलेगा।
     </p>
 
+    <div class="shareBox">
 
-    <div class="preview">
-
-      <div
-        id="previewIcon"
-        class="preview-icon"
-      >
-        💌
-      </div>
-
-      <div
-        id="previewRelation"
-        class="preview-relation"
-      >
-        आपके खास इंसान के लिए
-      </div>
-
-      <div
-        id="previewName"
-        class="preview-name"
-      >
-        नाम
-      </div>
-
-      <div
-        id="previewTitle"
-        class="preview-title"
-      >
-        खास शुभकामनाएँ
-      </div>
-
-      <div
-        id="previewShayari"
-        class="preview-shayari"
-      ></div>
-
-      <div
-        id="previewMessage"
-        class="preview-message"
-      ></div>
-
-      <div class="preview-from">
-        — <span id="previewSender"></span>
-      </div>
-
-    </div>
-
-
-    <div class="button-row">
-
-      <button class="secondary" id="previewBack">
-        ← Edit
+      <button class="secondary" id="copyBtn">
+        🔗 Link Copy
       </button>
 
-      <button class="primary" id="createBtn">
-        💌 Wish तैयार करें
+      <button class="secondary" id="shareBtn">
+        📤 Share
       </button>
 
     </div>
+
+    <button class="ghost full" id="makeAnother">
+      + नई Wish बनाएं
+    </button>
 
   </div>
 
 </section>
 
 
-<!-- ======================================================
-     CREATED
-====================================================== -->
+<!-- ================= RECEIVER 1 ================= -->
 
-<section id="created" class="screen">
+<section id="receiver1" class="screen receiver">
 
-  <div class="card center">
+  <div class="receiverCard">
 
-    <div class="success-icon">
-      🎉
-    </div>
+    <div class="receiverIcon">💌</div>
 
-    <h2>
-      आपकी Wish तैयार है!
-    </h2>
+    <h2>आपके लिए<br>कुछ खास है</h2>
 
-    <p class="sub">
-      अब इसे अपने खास इंसान के साथ share कर दीजिए।
+    <p>
+      किसी ने आपके लिए दिल से<br>
+      एक छोटी सी Wish बनाई है।
     </p>
 
-
-    <button
-      class="share-button"
-      id="shareBtn"
-    >
-      📤 Share करें
+    <button class="primary" id="receiverStart">
+      💫 खोलें
     </button>
 
+  </div>
 
-    <div class="link-box">
+</section>
 
-      <input
-        id="wishLink"
-        readonly
-      >
 
-      <button
-        class="secondary"
-        id="copyBtn"
-      >
-        Copy
-      </button>
+<!-- ================= RECEIVER 2 ================= -->
 
-    </div>
+<section id="receiver2" class="screen receiver">
 
-    <p class="note">
-      Receiver को केवल आपकी Wish दिखाई देगी।
+  <div class="receiverCard">
+
+    <div class="receiverIcon">💭</div>
+
+    <h2>किसी ने आपको<br>याद किया है</h2>
+
+    <p>
+      और उन्होंने आपके लिए<br>
+      कुछ खूबसूरत शब्द चुने हैं।
     </p>
 
+    <div class="receiverName" id="r2Name"></div>
 
-    <button
-      class="secondary"
-      id="newWishBtn"
-      style="margin-top:16px"
-    >
-      ✨ नई Wish बनाएं
+    <button class="primary full" id="receiver2Next">
+      आगे देखें →
     </button>
 
   </div>
@@ -1358,790 +1083,682 @@ select option{
 </section>
 
 
-<!-- ======================================================
-     RECEIVER PAGE 1
-====================================================== -->
+<!-- ================= RECEIVER 3 ================= -->
 
-<section id="receiver1" class="screen">
+<section id="receiver3" class="screen receiver">
 
-  <div class="card receiver-card">
+  <div class="receiverCard">
 
-    <div class="receiver-stage">
+    <div class="receiverIcon" id="r3Icon">🎁</div>
 
-      <div
-        id="receiverIcon1"
-        class="receiver-icon"
-      >
-        💌
-      </div>
+    <h2>एक छोटा सा<br>Surprise है</h2>
 
-      <h1>
-        आपके लिए कुछ खास है
-      </h1>
+    <p>
+      इसे खोलने से पहले बस एक पल<br>
+      मुस्कुरा दीजिए।
+    </p>
 
-      <p class="receiver-text">
-        किसी ने आपके लिए दिल से कुछ लिखा है।<br>
-        क्या आप इसे खोलना चाहेंगे?
-      </p>
-
-      <button
-        class="open-button"
-        id="r1Btn"
-      >
-        💌 हाँ, खोलिए
-      </button>
-
-      <div class="tap-note">
-        एक छोटा सा surprise आपका इंतज़ार कर रहा है ✨
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ======================================================
-     RECEIVER PAGE 2
-====================================================== -->
-
-<section id="receiver2" class="screen">
-
-  <div class="card receiver-card">
-
-    <div class="receiver-stage">
-
-      <div class="receiver-icon">
-        💫
-      </div>
-
-      <h2>
-        किसी ने आपको याद किया है
-      </h2>
-
-      <p class="receiver-text">
-        कभी-कभी दिल की कुछ बातें<br>
-        सीधे कहने के बजाय शब्दों में लिखी जाती हैं।
-        <br><br>
-        और आज ऐसी ही एक बात आपके लिए है।
-      </p>
-
-      <button
-        class="open-button"
-        id="r2Btn"
-      >
-        🌸 आगे बढ़ें
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ======================================================
-     RECEIVER PAGE 3
-====================================================== -->
-
-<section id="receiver3" class="screen">
-
-  <div class="card receiver-card">
-
-    <div class="receiver-stage">
-
-      <div class="receiver-icon">
-        🎁
-      </div>
-
-      <h2>
-        एक छोटा सा Surprise
-      </h2>
-
-      <p class="receiver-text">
-        इसे बनाने वाले ने आपके लिए<br>
-        अपने दिल से कुछ चुना है।
-        <br><br>
-        अब आखिरी बार tap कीजिए...
-      </p>
-
-      <button
-        class="open-button"
-        id="r3Btn"
-      >
-        🎁 Surprise खोलें
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ======================================================
-     RECEIVER PAGE 4
-====================================================== -->
-
-<section id="receiver4" class="screen">
-
-  <div class="card receiver-card">
-
-    <div class="receiver-stage">
-
-      <div class="receiver-icon">
-        ⏳
-      </div>
-
-      <h2>
-        बस एक पल...
-      </h2>
-
-      <p class="receiver-text">
-        आपके लिए संदेश तैयार हो रहा है।
-      </p>
-
-      <div
-        id="countNumber"
-        class="count-circle"
-      >
-        3
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ======================================================
-     RECEIVER PAGE 5
-====================================================== -->
-
-<section id="receiver5" class="screen">
-
-  <div class="card receiver-card">
-
-    <div class="receiver-stage">
-
-      <div class="receiver-icon">
-        ❤️
-      </div>
-
-      <h2>
-        दिल से लिखा गया है...
-      </h2>
-
-      <p class="receiver-text">
-        यह message सिर्फ आपके लिए है।
-        <br><br>
-        तैयार हैं?
-      </p>
-
-      <button
-        class="open-button"
-        id="r5Btn"
-      >
-        ❤️ मेरा Message देखें
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ======================================================
-     RECEIVER PAGE 6 - FINAL
-====================================================== -->
-
-<section id="finalWish" class="screen">
-
-  <div class="card final-card">
-
-    <div class="final-top">
-
-      <div
-        id="finalIcon"
-        class="final-icon"
-      >
-        🎉
-      </div>
-
-      <h1
-        id="finalTitle"
-        class="final-title"
-      >
-        आपके लिए ढेर सारी शुभकामनाएँ
-      </h1>
-
-      <div
-        id="finalTo"
-        class="final-to"
-      ></div>
-
-    </div>
-
-
-    <div
-      id="finalShayari"
-      class="final-shayari"
-    ></div>
-
-
-    <div
-      id="finalMessage"
-      class="final-message"
-    ></div>
-
-
-    <div class="final-from">
-      प्यार से — <span id="finalSender"></span>
-    </div>
-
-
-    <button
-      class="secondary"
-      id="againBtn"
-      style="margin-top:20px"
-    >
-      💫 फिर से देखें
-    </button>
-
-
-    <button
-      class="primary"
-      id="ownWishBtn"
-      style="margin-top:9px"
-    >
-      ✨ अपनी Wish बनाएं
+    <button class="primary" id="receiver3Next">
+      🎁 Surprise खोलें
     </button>
 
   </div>
 
 </section>
 
-</main>
 
-<div id="confetti"></div>
+<!-- ================= RECEIVER 4 ================= -->
+
+<section id="receiver4" class="screen receiver">
+
+  <div class="receiverCard">
+
+    <div class="receiverIcon">⏳</div>
+
+    <h2>बस थोड़ा सा<br>इंतज़ार...</h2>
+
+    <p>
+      आपकी Wish खुलने वाली है।
+    </p>
+
+    <div class="countdown">
+
+      <div class="countBox">
+        <span class="countNum" id="count3">3</span>
+        <span class="countLabel">SEC</span>
+      </div>
+
+      <div class="countBox">
+        <span class="countNum">✨</span>
+        <span class="countLabel">LOVE</span>
+      </div>
+
+      <div class="countBox">
+        <span class="countNum">💖</span>
+        <span class="countLabel">WISH</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= RECEIVER 5 ================= -->
+
+<section id="receiver5" class="screen receiver">
+
+  <div class="receiverCard">
+
+    <div class="receiverIcon">💌</div>
+
+    <h2>आपके लिए<br>कुछ लिखा गया है</h2>
+
+    <p>
+      हर शब्द में आपके लिए<br>
+      एक छोटी सी भावना छुपी है।
+    </p>
+
+    <button class="primary" id="receiver5Next">
+      ❤️ Wish खोलें
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= FINAL WISH ================= -->
+
+<section id="finalWish" class="screen final">
+
+  <div class="finalCard">
+
+    <div class="finalTop">A LITTLE SOMETHING FOR YOU</div>
+
+    <div class="finalIcon" id="finalIcon">🎂</div>
+
+    <h1 id="finalTitle">जन्मदिन मुबारक</h1>
+
+    <div class="finalFor">
+      <span id="finalRelation">मेरे दोस्त</span>
+      <br>
+      <span id="finalReceiver">Rahul</span>
+    </div>
+
+    <div class="finalShayari" id="finalShayari"></div>
+
+    <div class="finalMessage" id="finalMessage">
+      —
+    </div>
+
+    <div class="finalSignature" id="finalSignature">
+      प्यार से — Nitin
+    </div>
+
+    <div class="finalActions">
+
+      <button class="secondary" id="againBtn">
+        ↩️ फिर से देखें
+      </button>
+
+      <button class="secondary" id="finalShareBtn">
+        📤 Share
+      </button>
+
+      <button class="primary" id="newWishBtn">
+        ✨ अपनी Wish बनाएं
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+</div>
+
+<div id="toast" class="toast"></div>
+<div id="confetti" class="confetti"></div>
 
 
 <script>
-/* =========================================================
-   RELATIONS
-========================================================= */
-
-const relations = {
-
-  friend:{
-    name:"दोस्त",
-    icon:"🫂",
-    label:"मेरे प्यारे दोस्त के लिए"
-  },
-
-  bestfriend:{
-    name:"Best Friend",
-    icon:"🤝",
-    label:"मेरे सबसे खास दोस्त के लिए"
-  },
-
-  mr:{
-    name:"Mr.",
-    icon:"👨",
-    label:"मेरे खास Mr. के लिए"
-  },
-
-  mrs:{
-    name:"Mrs.",
-    icon:"👩",
-    label:"मेरी खास Mrs. के लिए"
-  },
-
-  husband:{
-    name:"Husband",
-    icon:"💙",
-    label:"मेरे हमसफ़र के लिए"
-  },
-
-  wife:{
-    name:"Wife",
-    icon:"❤️",
-    label:"मेरी प्यारी Wife के लिए"
-  },
-
-  boyfriend:{
-    name:"Boyfriend",
-    icon:"💙",
-    label:"मेरे खास इंसान के लिए"
-  },
-
-  girlfriend:{
-    name:"Girlfriend",
-    icon:"💗",
-    label:"मेरी खास इंसान के लिए"
-  },
-
-  brother:{
-    name:"भाई",
-    icon:"👬",
-    label:"मेरे प्यारे भाई के लिए"
-  },
-
-  sister:{
-    name:"बहन",
-    icon:"👭",
-    label:"मेरी प्यारी बहन के लिए"
-  },
-
-  mother:{
-    name:"माँ",
-    icon:"👩‍🍼",
-    label:"मेरी प्यारी माँ के लिए"
-  },
-
-  father:{
-    name:"पापा",
-    icon:"👨‍👧",
-    label:"मेरे प्यारे पापा के लिए"
-  },
-
-  daughter:{
-    name:"बेटी",
-    icon:"👧",
-    label:"मेरी प्यारी बेटी के लिए"
-  },
-
-  son:{
-    name:"बेटा",
-    icon:"👦",
-    label:"मेरे प्यारे बेटे के लिए"
-  },
-
-  teacher:{
-    name:"Teacher",
-    icon:"🎓",
-    label:"मेरे सम्माननीय शिक्षक के लिए"
-  },
-
-  colleague:{
-    name:"Colleague",
-    icon:"💼",
-    label:"मेरे खास colleague के लिए"
-  },
-
-  special:{
-    name:"खास इंसान",
-    icon:"✨",
-    label:"मेरे खास इंसान के लिए"
-  }
-
-};
-
 
 /* =========================================================
    OCCASIONS
 ========================================================= */
 
-const occasions = {
+const occasions = [
 
-birthday:{
-name:"Birthday",
-icon:"🎂",
-title:"जन्मदिन की ढेर सारी शुभकामनाएँ",
-shayari:[
-"तेरी हर सुबह खुशियों से भरी हो,\nहर शाम चेहरे पर मुस्कान लिए हो।\nजन्मदिन पर बस इतनी सी दुआ है,\nतेरी जिंदगी हमेशा खूबसूरत बनी रहे।",
-"एक और साल जिंदगी का आया है,\nखुशियों ने फिर से दरवाजा खटखटाया है।\nजन्मदिन पर मेरी यही दुआ है,\nहर सपना तेरा हकीकत बन जाए।",
-"चेहरे पर मुस्कान यूँ ही बनी रहे,\nहर ख्वाहिश तेरी पूरी होती रहे।\nजन्मदिन की बहुत-बहुत शुभकामनाएँ।",
-"तुम्हारी जिंदगी का हर पन्ना खुशियों से भर जाए,\nहर आने वाला साल पहले से भी खूबसूरत बन जाए।"
-]
+{
+ id:"birthday",
+ name:"Birthday",
+ hi:"जन्मदिन",
+ icon:"🎂",
+ keywords:"birthday जन्मदिन bday",
+ title:"जन्मदिन मुबारक"
 },
 
-anniversary:{
-name:"Anniversary",
-icon:"💍",
-title:"सालगिरह की हार्दिक शुभकामनाएँ",
-shayari:[
-"साथ आपका यूँ ही बना रहे,\nहर पल प्यार और खुशियों से सजा रहे।\nसालगिरह की ढेरों शुभकामनाएँ।",
-"रिश्ता वो नहीं जो दुनिया को दिखाया जाए,\nरिश्ता वो है जिसे दिल से निभाया जाए।",
-"हर साल आपका प्यार और गहरा होता रहे,\nहर दिन साथ पहले से भी खूबसूरत होता रहे।",
-"दो दिलों की ये खूबसूरत कहानी,\nयूँ ही चलती रहे उम्र भर पुरानी।"
-]
+{
+ id:"anniversary",
+ name:"Anniversary",
+ hi:"सालगिरह",
+ icon:"💍",
+ keywords:"anniversary सालगिरह marriage",
+ title:"सालगिरह मुबारक"
 },
 
-wedding:{
-name:"Wedding",
-icon:"💒",
-title:"शादी की हार्दिक शुभकामनाएँ",
-shayari:[
-"दो दिलों का आज मिलन हुआ है,\nएक खूबसूरत नए सफर का आगमन हुआ है।",
-"हर दिन प्यार बढ़ता रहे,\nहर पल खुशियों से सजता रहे।",
-"साथ आपका उम्र भर बना रहे,\nहर मौसम प्यार से सजा रहे।",
-"दो दिल, एक जान और एक खूबसूरत सफर,\nआप दोनों को मुबारक हो जिंदगी का ये नया सफर।"
-]
+{
+ id:"wedding",
+ name:"Wedding",
+ hi:"शादी",
+ icon:"💒",
+ keywords:"wedding शादी विवाह",
+ title:"शादी की बहुत-बहुत बधाई"
 },
 
-engagement:{
-name:"Engagement",
-icon:"💎",
-title:"सगाई की बहुत-बहुत बधाई",
-shayari:[
-"आज दो दिलों ने एक होने का वादा किया है,\nखुशियों ने जिंदगी में नया इरादा किया है।",
-"ये रिश्ता यूँ ही प्यार से महकता रहे,\nहर कदम पर खुशियाँ मिलती रहें।",
-"एक खूबसूरत रिश्ते की आज शुरुआत हुई,\nदिलों में एक नई सी बात हुई।"
-]
+{
+ id:"engagement",
+ name:"Engagement",
+ hi:"सगाई",
+ icon:"💎",
+ keywords:"engagement सगाई ring",
+ title:"सगाई की ढेरों बधाई"
 },
 
-friendship:{
-name:"Friendship",
-icon:"🤝",
-title:"दोस्ती हमेशा बनी रहे",
-shayari:[
-"कुछ रिश्ते खून से नहीं,\nदिल से बने होते हैं।\nतुम उन्हीं खास रिश्तों में से एक हो।",
-"दोस्ती वो नहीं जो हर दिन बात करे,\nदोस्ती वो है जो खामोशी भी समझे।",
-"जिंदगी में दोस्त बहुत मिलेंगे,\nमगर तुम जैसा दोस्त बार-बार नहीं मिलेगा।",
-"वक्त बदले, लोग बदलें,\nबस हमारी दोस्ती कभी न बदले।",
-"कुछ दोस्त जिंदगी में आते नहीं,\nजिंदगी बन जाते हैं।"
-]
+{
+ id:"friendship",
+ name:"Friendship",
+ hi:"दोस्ती",
+ icon:"🫶",
+ keywords:"friendship दोस्ती friend dost",
+ title:"दोस्ती हमेशा बनी रहे"
 },
 
-thankyou:{
-name:"Thank You",
-icon:"🙏",
-title:"दिल से धन्यवाद",
-shayari:[
-"शब्द शायद कम पड़ जाएँ,\nपर दिल से शुक्रिया हमेशा रहेगा।",
-"आपने जो किया उसे भूल पाना आसान नहीं,\nदिल से आपका शुक्रिया।",
-"आपके एक छोटे से एहसान ने,\nदिल में बहुत बड़ी जगह बना ली।"
-]
+{
+ id:"thankyou",
+ name:"Thank You",
+ hi:"धन्यवाद",
+ icon:"🙏",
+ keywords:"thank you धन्यवाद शुक्रिया",
+ title:"दिल से धन्यवाद"
 },
 
-sorry:{
-name:"Sorry",
-icon:"🥺",
-title:"दिल से Sorry",
-shayari:[
-"गलती मेरी थी, मानता हूँ,\nबस तुम नाराज़ मत रहना।",
-"कुछ रिश्ते बहस से नहीं,\nएक छोटी सी माफी से बच जाते हैं।",
-"दिल से माफी माँग रहा हूँ,\nबस अपना रिश्ता मत बदलना।",
-"गलती हो गई,\nमगर तुम्हें खोने का इरादा कभी नहीं था।"
-]
+{
+ id:"sorry",
+ name:"Sorry",
+ hi:"माफ़ी",
+ icon:"🥺",
+ keywords:"sorry माफी माफ़ी",
+ title:"दिल से Sorry"
 },
 
-goodmorning:{
-name:"Good Morning",
-icon:"🌅",
-title:"सुप्रभात",
-shayari:[
-"नई सुबह नई उम्मीदें लेकर आए,\nआपकी हर सुबह खुशियों से मुस्कुराए।",
-"सूरज की किरणें खुशियाँ लाएँ,\nहर पल आपके चेहरे पर मुस्कान लाएँ।",
-"आज का दिन आपके लिए,\nकल से भी ज्यादा खूबसूरत हो।"
-]
+{
+ id:"goodmorning",
+ name:"Good Morning",
+ hi:"सुप्रभात",
+ icon:"🌅",
+ keywords:"good morning morning सुप्रभात सुबह",
+ title:"सुप्रभात"
 },
 
-goodnight:{
-name:"Good Night",
-icon:"🌙",
-title:"शुभ रात्रि",
-shayari:[
-"चाँद की रोशनी में सपने सजाना,\nआज की सारी थकान भूल जाना।\nशुभ रात्रि।",
-"ख्वाब खूबसूरत हों,\nनींद सुकून वाली हो,\nसुबह एक नई खुशी लेकर आए।",
-"रात सुकून वाली हो,\nख्वाब हसीन हों,\nऔर सुबह चेहरे पर मुस्कान हो।"
-]
+{
+ id:"goodnight",
+ name:"Good Night",
+ hi:"शुभ रात्रि",
+ icon:"🌙",
+ keywords:"good night रात शुभरात्रि",
+ title:"शुभ रात्रि"
 },
 
-diwali:{
-name:"Diwali",
-icon:"🪔",
-title:"दीपावली की हार्दिक शुभकामनाएँ",
-shayari:[
-"दीयों की रोशनी आपके जीवन को रोशन करे,\nहर अंधेरा खुशियों में बदल जाए।",
-"हर आँगन में दीप जले,\nहर दिल में खुशियाँ पलें।",
-"माँ लक्ष्मी की कृपा बनी रहे,\nआपके घर में सुख-समृद्धि बनी रहे।"
-]
+{
+ id:"diwali",
+ name:"Diwali",
+ hi:"दीवाली",
+ icon:"🪔",
+ keywords:"diwali दीपावली दीवाली",
+ title:"दीपावली की शुभकामनाएँ"
 },
 
-holi:{
-name:"Holi",
-icon:"🌈",
-title:"होली की शुभकामनाएँ",
-shayari:[
-"रंगों की तरह आपकी जिंदगी भी रंगीन रहे,\nहर दिन खुशियों से हसीन रहे।",
-"प्यार के रंग से रंग जाए जीवन,\nखुशियों से भर जाए हर आँगन।",
-"गुलाल की तरह चेहरे पर खुशी रहे,\nहर रंग में आपकी जिंदगी सजी रहे।"
-]
+{
+ id:"holi",
+ name:"Holi",
+ hi:"होली",
+ icon:"🌈",
+ keywords:"holi होली रंग",
+ title:"होली की हार्दिक शुभकामनाएँ"
 },
 
-raksha:{
-name:"Raksha Bandhan",
-icon:"🪢",
-title:"रक्षाबंधन की शुभकामनाएँ",
-shayari:[
-"रिश्ता भाई-बहन का सबसे प्यारा होता है,\nदुनिया में इससे खूबसूरत रिश्ता कहाँ होता है।",
-"बचपन की शरारतें और वो प्यारी लड़ाई,\nभाई-बहन के रिश्ते की यही तो है गहराई।",
-"राखी का धागा सिर्फ धागा नहीं,\nभाई-बहन के प्यार की पहचान है।"
-]
+{
+ id:"rakhi",
+ name:"Raksha Bandhan",
+ hi:"रक्षाबंधन",
+ icon:"🪢",
+ keywords:"raksha bandhan rakhi राखी रक्षाबंधन",
+ title:"रक्षाबंधन की शुभकामनाएँ"
 },
 
-janmashtami:{
-name:"Janmashtami",
-icon:"🦚",
-title:"श्री कृष्ण जन्माष्टमी की शुभकामनाएँ",
-shayari:[
-"मुरली की धुन और कान्हा का प्यार,\nआपके जीवन में लाए खुशियाँ अपार।",
-"राधा के प्रेम और कृष्ण की कृपा से,\nआपका जीवन खुशियों से भर जाए।",
-"कान्हा की कृपा से हर सपना पूरा हो,\nजीवन में प्रेम और शांति का उजाला हो।"
-]
+{
+ id:"janmashtami",
+ name:"Janmashtami",
+ hi:"जन्माष्टमी",
+ icon:"🦚",
+ keywords:"janmashtami जन्माष्टमी krishna कृष्ण",
+ title:"श्री कृष्ण जन्माष्टमी की शुभकामनाएँ"
 },
 
-navratri:{
-name:"Navratri",
-icon:"🔱",
-title:"नवरात्रि की शुभकामनाएँ",
-shayari:[
-"माँ दुर्गा की कृपा आप पर बनी रहे,\nहर मुश्किल आपसे दूर रहे।",
-"माँ के आशीर्वाद से जीवन में,\nसुख, शांति और समृद्धि बनी रहे।",
-"माँ के चरणों में आपकी हर मनोकामना पूरी हो।"
-]
+{
+ id:"navratri",
+ name:"Navratri",
+ hi:"नवरात्रि",
+ icon:"🌺",
+ keywords:"navratri नवरात्रि durga दुर्गा",
+ title:"नवरात्रि की शुभकामनाएँ"
 },
 
-dussehra:{
-name:"Dussehra",
-icon:"🏹",
-title:"दशहरा की शुभकामनाएँ",
-shayari:[
-"बुराई पर अच्छाई की जीत हो,\nआपके जीवन में खुशियों की रीत हो।",
-"हर बुराई दूर हो जाए,\nहर अच्छाई आपके जीवन में आए।",
-"सत्य और धर्म की राह पर,\nआपका जीवन हमेशा आगे बढ़ता रहे।"
-]
+{
+ id:"dussehra",
+ name:"Dussehra",
+ hi:"दशहरा",
+ icon:"🏹",
+ keywords:"dussehra दशहरा विजयदशमी",
+ title:"विजयदशमी की शुभकामनाएँ"
 },
 
-ganesh:{
-name:"Ganesh Chaturthi",
-icon:"🐘",
-title:"गणेश चतुर्थी की शुभकामनाएँ",
-shayari:[
-"गणपति बप्पा की कृपा बनी रहे,\nहर मनोकामना आपकी पूरी रहे।",
-"बप्पा आपके जीवन से सारे विघ्न हर लें,\nऔर खुशियों से जीवन भर दें।",
-"गणपति बप्पा आपके घर में सुख-समृद्धि लाएँ।"
-]
+{
+ id:"ganesh",
+ name:"Ganesh Chaturthi",
+ hi:"गणेश चतुर्थी",
+ icon:"🐘",
+ keywords:"ganesh गणेश गणेशचतुर्थी",
+ title:"गणेश चतुर्थी की शुभकामनाएँ"
 },
 
-shivratri:{
-name:"Maha Shivratri",
-icon:"🔱",
-title:"महाशिवरात्रि की शुभकामनाएँ",
-shayari:[
-"भोलेनाथ की कृपा आप पर बनी रहे,\nहर मुश्किल आपसे दूर रहे।",
-"हर हर महादेव की गूँज रहे,\nजीवन में सुख और शांति बनी रहे।",
-"महादेव आपके जीवन के सारे कष्ट हर लें।"
-]
+{
+ id:"shivratri",
+ name:"Maha Shivratri",
+ hi:"महाशिवरात्रि",
+ icon:"🔱",
+ keywords:"shivratri महाशिवरात्रि शिव",
+ title:"महाशिवरात्रि की शुभकामनाएँ"
 },
 
-eid:{
-name:"Eid",
-icon:"🌙",
-title:"ईद मुबारक",
-shayari:[
-"चाँद की रोशनी आपके जीवन में खुशियाँ लाए,\nहर दुआ आपकी कबूल हो।",
-"ईद का चाँद खुशियों का पैगाम लाए,\nहर घर में मोहब्बत और सुकून लाए।",
-"इस ईद पर हर चेहरे पर मुस्कान हो,\nहर दिल में मोहब्बत और सुकून हो।"
-]
+{
+ id:"eid",
+ name:"Eid",
+ hi:"ईद",
+ icon:"🌙",
+ keywords:"eid ईद eid mubarak",
+ title:"ईद मुबारक"
 },
 
-ramadan:{
-name:"Ramadan",
-icon:"🌙",
-title:"रमज़ान मुबारक",
-shayari:[
-"रहमतों और बरकतों से भरा हो हर दिन,\nकबूल हों आपकी हर दुआ।",
-"इस पाक महीने में हर दिल को सुकून मिले,\nहर दुआ को मंज़िल मिले।",
-"अल्लाह की रहमत और बरकत हमेशा आपके साथ रहे।"
-]
+{
+ id:"ramadan",
+ name:"Ramadan",
+ hi:"रमज़ान",
+ icon:"🌙",
+ keywords:"ramadan रमजान रमज़ान",
+ title:"रमज़ान मुबारक"
 },
 
-gurunanak:{
-name:"Guru Nanak Jayanti",
-icon:"☬",
-title:"गुरु नानक देव जी के प्रकाश पर्व की शुभकामनाएँ",
-shayari:[
-"गुरु नानक देव जी की कृपा से,\nजीवन में प्रेम, शांति और खुशियाँ बनी रहें।",
-"वाहेगुरु की मेहर सदा आपके साथ रहे,\nहर कदम पर खुशियाँ आपके पास रहें।",
-"सच्चाई, सेवा और प्रेम का प्रकाश जीवन में बना रहे।"
-]
+{
+ id:"gurunanak",
+ name:"Guru Nanak Jayanti",
+ hi:"गुरु नानक जयंती",
+ icon:"🙏",
+ keywords:"guru nanak गुरुनानक",
+ title:"गुरु नानक जयंती की शुभकामनाएँ"
 },
 
-christmas:{
-name:"Christmas",
-icon:"🎄",
-title:"Merry Christmas",
-shayari:[
-"क्रिसमस की खुशियाँ आपके घर आएँ,\nहर पल प्यार और मुस्कान लाएँ।",
-"सितारों जैसी चमक हो जीवन में,\nहर दिन खुशियों से भरा हो।",
-"इस Christmas पर हर सपना आपका पूरा हो।"
-]
+{
+ id:"christmas",
+ name:"Christmas",
+ hi:"क्रिसमस",
+ icon:"🎄",
+ keywords:"christmas क्रिसमस",
+ title:"Merry Christmas"
 },
 
-mahavir:{
-name:"Mahavir Jayanti",
-icon:"🕊️",
-title:"महावीर जयंती की शुभकामनाएँ",
-shayari:[
-"अहिंसा और सत्य का प्रकाश,\nआपके जीवन को हमेशा प्रकाशित करता रहे।",
-"भगवान महावीर के विचारों से,\nजीवन में शांति और सद्भाव बना रहे।"
-]
+{
+ id:"newyear",
+ name:"New Year",
+ hi:"नववर्ष",
+ icon:"🎆",
+ keywords:"new year नया साल नववर्ष",
+ title:"नववर्ष की शुभकामनाएँ"
 },
 
-buddha:{
-name:"Buddha Purnima",
-icon:"☸️",
-title:"बुद्ध पूर्णिमा की शुभकामनाएँ",
-shayari:[
-"ज्ञान का प्रकाश जीवन में छाया रहे,\nमन में शांति और करुणा बनी रहे।",
-"बुद्ध के मार्ग पर चलकर,\nजीवन में सच्चा सुख प्राप्त हो।"
-]
+{
+ id:"republic",
+ name:"Republic Day",
+ hi:"गणतंत्र दिवस",
+ icon:"🇮🇳",
+ keywords:"republic day गणतंत्र दिवस 26 january",
+ title:"गणतंत्र दिवस की शुभकामनाएँ"
 },
 
-newyear:{
-name:"New Year",
-icon:"🎆",
-title:"नव वर्ष की शुभकामनाएँ",
-shayari:[
-"नया साल नई खुशियाँ लाए,\nहर सपना आपका सच हो जाए।",
-"पुरानी यादों को दिल में रखकर,\nनई उम्मीदों के साथ नया साल शुरू करें।",
-"आने वाला हर दिन आपकी जिंदगी में एक नई खुशी लेकर आए।"
-]
+{
+ id:"independence",
+ name:"Independence Day",
+ hi:"स्वतंत्रता दिवस",
+ icon:"🇮🇳",
+ keywords:"independence day स्वतंत्रता दिवस 15 august",
+ title:"स्वतंत्रता दिवस की शुभकामनाएँ"
 },
 
-republic:{
-name:"Republic Day",
-icon:"🇮🇳",
-title:"गणतंत्र दिवस की शुभकामनाएँ",
-shayari:[
-"देश की शान और तिरंगे का मान,\nहमेशा ऊँचा रहे हिंदुस्तान।",
-"गर्व से कहो हम भारतीय हैं,\nगणतंत्र दिवस की शुभकामनाएँ।"
-]
+{
+ id:"teachers",
+ name:"Teachers Day",
+ hi:"शिक्षक दिवस",
+ icon:"📚",
+ keywords:"teachers day शिक्षक दिवस teacher",
+ title:"शिक्षक दिवस की शुभकामनाएँ"
 },
 
-independence:{
-name:"Independence Day",
-icon:"🇮🇳",
-title:"स्वतंत्रता दिवस की शुभकामनाएँ",
-shayari:[
-"आजादी की कीमत हमेशा याद रहे,\nदेश के प्रति सम्मान दिल में आबाद रहे।",
-"तिरंगा हमेशा शान से लहराता रहे,\nमेरा भारत यूँ ही मुस्कुराता रहे।"
-]
+{
+ id:"mothers",
+ name:"Mother's Day",
+ hi:"मदर्स डे",
+ icon:"🌷",
+ keywords:"mother mothers day मां माँ mother",
+ title:"मदर्स डे की शुभकामनाएँ"
 },
 
-teachers:{
-name:"Teachers Day",
-icon:"📚",
-title:"शिक्षक दिवस की शुभकामनाएँ",
-shayari:[
-"जो अज्ञान से ज्ञान की ओर ले जाए,\nवही सच्चा शिक्षक कहलाए।",
-"आपने सिर्फ किताबें नहीं पढ़ाईं,\nजीवन जीने की राह भी दिखाई।",
-"आपके ज्ञान और मार्गदर्शन के लिए दिल से धन्यवाद।"
-]
+{
+ id:"fathers",
+ name:"Father's Day",
+ hi:"फादर्स डे",
+ icon:"💙",
+ keywords:"father fathers day पापा papa",
+ title:"फादर्स डे की शुभकामनाएँ"
 },
 
-mothers:{
-name:"Mother's Day",
-icon:"🌷",
-title:"Happy Mother's Day",
-shayari:[
-"माँ जैसा कोई रिश्ता नहीं,\nमाँ जैसा कोई अपना नहीं।\nमाँ, आप मेरी दुनिया हैं।",
-"आपकी दुआओं ने मुझे हर बार संभाला है,\nमाँ आपने ही मेरा हर सपना पाला है।",
-"दुनिया में सबसे खूबसूरत शब्द है — माँ।"
-]
+{
+ id:"womens",
+ name:"Women's Day",
+ hi:"महिला दिवस",
+ icon:"🌸",
+ keywords:"women womens day महिला दिवस",
+ title:"महिला दिवस की शुभकामनाएँ"
 },
 
-fathers:{
-name:"Father's Day",
-icon:"👨‍👧",
-title:"Happy Father's Day",
-shayari:[
-"पिता वो छाँव हैं,\nजिसके नीचे जिंदगी सुरक्षित लगती है।",
-"आपकी मेहनत मेरी ताकत है,\nआपका साथ मेरी सबसे बड़ी दौलत है।",
-"पापा, आपके होने से जिंदगी में हिम्मत बनी रहती है।"
-]
+{
+ id:"childrens",
+ name:"Children's Day",
+ hi:"बाल दिवस",
+ icon:"🧸",
+ keywords:"children childrens day बाल दिवस",
+ title:"बाल दिवस की शुभकामनाएँ"
 },
 
-womens:{
-name:"Women's Day",
-icon:"🌷",
-title:"Happy Women's Day",
-shayari:[
-"नारी सिर्फ एक शब्द नहीं,\nपूरी दुनिया की ताकत है।",
-"हर रूप में खूबसूरत,\nहर कदम पर मजबूत।",
-"हर नारी अपने आप में एक पूरी कहानी है।"
-]
+{
+ id:"valentine",
+ name:"Valentine's Day",
+ hi:"वैलेंटाइन डे",
+ icon:"❤️",
+ keywords:"valentine valentines day प्यार love",
+ title:"प्यार भरी शुभकामनाएँ"
 },
 
-childrens:{
-name:"Children's Day",
-icon:"🧸",
-title:"बाल दिवस की शुभकामनाएँ",
-shayari:[
-"बचपन की मुस्कान सबसे प्यारी होती है,\nइसमें दुनिया की सारी खुशियाँ होती हैं।",
-"हर बच्चे की आँखों में,\nएक खूबसूरत सपना होना चाहिए।"
-]
+{
+ id:"congrats",
+ name:"Congratulations",
+ hi:"बधाई",
+ icon:"🎉",
+ keywords:"congratulations बधाई सफलता success",
+ title:"बहुत-बहुत बधाई"
 },
 
-valentine:{
-name:"Valentine's Day",
-icon:"❤️",
-title:"Happy Valentine's Day",
-shayari:[
-"तुम साथ हो तो हर पल खास लगता है,\nतुम्हारे बिना सब कुछ अधूरा सा लगता है।",
-"मोहब्बत शब्दों से नहीं,\nदिल से महसूस होती है।",
-"तुम मेरी जिंदगी का वो हिस्सा हो,\nजिसे मैं कभी खोना नहीं चाहता।",
-"तुम्हारे साथ बिताया हर पल,\nमेरी सबसे खूबसूरत याद है।"
-]
+{
+ id:"newbaby",
+ name:"New Baby",
+ hi:"नन्हा मेहमान",
+ icon:"👶",
+ keywords:"new baby बच्चा baby newborn",
+ title:"नन्हे मेहमान के आने की बधाई"
 },
 
-congrats:{
-name:"Congratulations",
-icon:"🏆",
-title:"बहुत-बहुत बधाई",
-shayari:[
-"मेहनत रंग लाई है,\nसफलता आपके दरवाजे पर आई है।",
-"आपकी मेहनत की ये खूबसूरत जीत है,\nआगे भी सफलता आपकी प्रीत है।",
-"आज की सफलता आने वाली बड़ी कामयाबियों की शुरुआत बने।"
-]
+{
+ id:"success",
+ name:"Success",
+ hi:"सफलता",
+ icon:"🏆",
+ keywords:"success सफलता जीत achievement",
+ title:"सफलता की ढेरों शुभकामनाएँ"
 },
 
-baby:{
-name:"New Baby",
-icon:"👶",
-title:"नन्हे मेहमान के आगमन पर बधाई",
-shayari:[
-"नन्हे कदमों ने घर में खुशियाँ लाई हैं,\nनई मुस्कान ने दुनिया सजाई है।",
-"घर में आई है खुशियों की बहार,\nनन्हे मेहमान को ढेर सारा प्यार।",
-"नन्ही सी जान के आने से,\nपूरा घर खुशियों से भर गया।"
-]
-},
-
-success:{
-name:"Success",
-icon:"🏆",
-title:"कामयाबी की बहुत-बहुत बधाई",
-shayari:[
-"मेहनत कभी बेकार नहीं जाती,\nआज आपकी मेहनत ने ये बात साबित कर दी।",
-"आज की जीत पर गर्व है,\nआने वाली हर जीत के लिए शुभकामनाएँ।"
-]
-},
-
-farewell:{
-name:"Farewell",
-icon:"🌹",
-title:"ढेरों शुभकामनाएँ",
-shayari:[
-"रास्ते अलग हो सकते हैं,\nयादें कभी अलग नहीं होतीं।",
-"जहाँ भी रहो खुश रहो,\nहर कदम पर कामयाबी मिले।"
-]
+{
+ id:"farewell",
+ name:"Farewell",
+ hi:"विदाई",
+ icon:"🌻",
+ keywords:"farewell विदाई goodbye अलविदा",
+ title:"नई राहों के लिए शुभकामनाएँ"
 }
+
+];
+
+
+/* =========================================================
+   RELATIONS
+========================================================= */
+
+const relations = [
+
+"Mr.",
+"Mrs.",
+"Dost",
+"Best Friend",
+"Wife",
+"Husband",
+"Girlfriend",
+"Boyfriend",
+"Bhai",
+"Bahen",
+"Maa",
+"Papa",
+"Son",
+"Daughter",
+"Teacher",
+"Colleague",
+"Special Person",
+"Partner",
+"Family",
+"Cousin",
+"Uncle",
+"Aunty",
+"Brother",
+"Sister"
+
+];
+
+
+/* =========================================================
+   10 SHAYARI FOR EVERY OCCASION
+   Generated from a rich 10-line bank and personalized
+========================================================= */
+
+const shayariPatterns = [
+
+`कुछ रिश्ते शब्दों से नहीं,
+दिल से महसूस होते हैं।
+आप उन्हीं खूबसूरत रिश्तों में से एक हैं,
+जो ज़िंदगी को खास बना देते हैं।`,
+
+`दुआ है आपकी हर सुबह मुस्कान लेकर आए,
+हर शाम सुकून देकर जाए।
+ज़िंदगी का हर खूबसूरत पल
+आपके नाम हो जाए।`,
+
+`खुशियाँ आपके दर पर यूँ आती रहें,
+जैसे मौसम में बहार आती रहे।
+आपकी आँखों की चमक कभी कम न हो,
+और चेहरे की मुस्कान हमेशा बनी रहे।`,
+
+`ज़िंदगी की राहों में चाहे कितने मोड़ आएँ,
+हर मोड़ पर खुशियों के फूल खिल जाएँ।
+आपके हिस्से में बस प्यार और सुकून आए,
+और सारे ग़म आपसे दूर हो जाएँ।`,
+
+`कुछ लोग ज़िंदगी में यूँ ही नहीं मिलते,
+उनके आने से मायने बदल जाते हैं।
+आप भी उन्हीं खास लोगों में हैं,
+जिन्हें दिल कभी भूल नहीं पाता।`,
+
+`रिश्तों की खूबसूरती दूरी से कम नहीं होती,
+सच्ची भावना कभी खत्म नहीं होती।
+आप जहाँ भी रहें खुश रहें,
+यही दिल की सबसे प्यारी दुआ होती है।`,
+
+`हर ख्वाब आपका हकीकत बन जाए,
+हर चाहत आपकी पूरी हो जाए।
+जो खुशी आप दूसरों को देते हैं,
+वही खुशी सौ गुना होकर लौट आए।`,
+
+`चेहरे पर मुस्कान रहे,
+दिल में अरमान रहे।
+आपकी ज़िंदगी का हर आने वाला दिन
+आज से भी खूबसूरत रहे।`,
+
+`दुआओं में आपका नाम यूँ ही रहे,
+खुशियों से आपका दामन भरा रहे।
+समय कितना भी बदल जाए,
+आपकी मुस्कान का मौसम बना रहे।`,
+
+`आज बस इतना कहना है,
+आप बहुत खास हैं।
+आपकी मौजूदगी ही
+कई खूबसूरत पलों की वजह है।`
+
+];
+
+
+/* Special shayari additions by occasion */
+
+const specialShayari = {
+
+birthday:[
+`एक और साल ज़िंदगी का खूबसूरत हो गया,
+आपके नाम खुशियों का एक नया पन्ना जुड़ गया।
+दुआ है आने वाला हर साल
+आपके लिए और भी हसीन हो जाए।`,
+`आज का दिन सिर्फ आपका है,
+हर खुशी पर हक आपका है।
+मुस्कुराते रहिए यूँ ही,
+क्योंकि आपकी मुस्कान सबसे प्यारी है।`,
+`केक से मीठी हो आपकी हर बात,
+फूलों से खूबसूरत हो हर मुलाकात।
+जन्मदिन पर बस यही दुआ है,
+खुशियों से भरी रहे आपकी पूरी कायनात।`,
+`उम्र बढ़े तो सिर्फ सालों में,
+कम न हो मुस्कान कभी ख्यालों में।
+हर नया साल आपके जीवन में
+नई खुशियाँ लेकर आए।`,
+`आज सितारे भी कुछ खास चमक रहे हैं,
+क्योंकि आपके जन्मदिन की खुशियाँ मन रही हैं।
+दुआ है हर सपना आपका पूरा हो,
+और हर दिन प्यार से भरा हो।`,
+`आपकी हँसी यूँ ही खिलती रहे,
+हर मुश्किल आपसे मिलकर मिटती रहे।
+जन्मदिन पर यही दुआ है,
+ज़िंदगी आपकी हर दिन संवरती रहे।`,
+`फूलों की तरह महकता रहे जीवन,
+खुशियों से भरा रहे हर क्षण।
+जन्मदिन की इस खूबसूरत घड़ी में,
+आपको मिले दुनिया की हर खुशी।`,
+`न कोई ग़म पास आए,
+न कोई आँसू आँखों में आए।
+आपके जन्मदिन से शुरू हो
+खुशियों का नया सिलसिला।`,
+`आज का दिन यादगार हो,
+हर आने वाला दिन शानदार हो।
+आपका हर सपना साकार हो,
+जन्मदिन आपका बेमिसाल हो।`,
+`दिल से निकली है बस एक दुआ,
+आपका हर कल आज से बेहतर हो।
+हर साल मिले इतनी खुशियाँ,
+कि पुरानी खुशियाँ छोटी लगें।`
+],
+
+friendship:[
+`दोस्ती वो नहीं जो हर रोज़ बात करे,
+दोस्ती वो है जो बिना कहे दिल की बात समझे।`,
+`कुछ दोस्त रिश्तों से नहीं,
+किस्मत से मिलते हैं।
+और आपकी दोस्ती
+मेरी उन्हीं खूबसूरत किस्मतों में से एक है।`,
+`वक्त बदले, मौसम बदले,
+पर हमारी दोस्ती का रंग न बदले।
+दुआ है ये रिश्ता
+हर साल और गहरा होता जाए।`,
+`दोस्ती में हिसाब नहीं होता,
+बस एक-दूसरे का साथ होता है।
+दूरी चाहे कितनी भी हो,
+दिल हमेशा पास होता है।`,
+`हँसी के पीछे कई राज़ होते हैं,
+दोस्तों के बिना वो पल अधूरे होते हैं।
+आप साथ हों तो
+साधारण दिन भी खास हो जाते हैं।`,
+`ज़िंदगी में बहुत लोग मिलते हैं,
+पर हर कोई अपना नहीं होता।
+आप जैसे दोस्त मिल जाएँ,
+तो सफर खूबसूरत हो जाता है।`,
+`ना मतलब की दोस्ती,
+ना किसी शर्त का साथ।
+बस यूँ ही बना रहे
+हम दोनों के बीच ये रिश्ता खास।`,
+`जब दुनिया समझ न पाए,
+एक दोस्त समझ लेता है।
+शायद इसलिए सच्ची दोस्ती
+सबसे खूबसूरत रिश्ता होती है।`,
+`कुछ यादें तस्वीरों में नहीं,
+दिल में हमेशा रहती हैं।
+और कुछ दोस्त
+ज़िंदगी भर खास रहते हैं।`,
+`दोस्ती का कोई मौसम नहीं होता,
+इसका कोई कारण नहीं होता।
+जहाँ दिल मिल जाएँ,
+वहीं से एक खूबसूरत कहानी शुरू होती है।`
+],
+
+love:[
+`तेरे होने से मेरी दुनिया में
+एक अलग सी रोशनी रहती है।
+तू पास हो या दूर,
+दिल में तेरी ही कमी रहती है।`,
+`प्यार सिर्फ साथ चलने का नाम नहीं,
+किसी की खुशी में अपनी खुशी ढूँढने का नाम है।`,
+`तुम्हारा नाम आते ही
+चेहरे पर मुस्कान आ जाती है।
+शायद इसे ही कहते हैं
+किसी का दिल में बस जाना।`,
+`तुमसे बात हो जाए तो
+दिन थोड़ा और खूबसूरत लगता है।
+तुम्हारी एक मुस्कान
+सब कुछ अच्छा कर देती है।`,
+`ना कोई वादा बड़ा चाहिए,
+ना कोई तोहफा खास।
+बस यूँ ही बना रहे
+दिलों के बीच ये एहसास।`,
+`तुम्हारी मौजूदगी
+मेरी सबसे प्यारी आदत बन गई है।
+और तुम्हारी खुशी
+मेरी सबसे खूबसूरत दुआ।`,
+`कुछ लोग मिलकर भी दूर रहते हैं,
+कुछ दूर रहकर भी दिल के पास होते हैं।
+तुम उन्हीं खास लोगों में से हो।`,
+`हर कहानी में एक खूबसूरत मोड़ होता है,
+मेरी कहानी का सबसे खूबसूरत मोड़ तुम हो।`,
+`तुम्हारे साथ बिताया हर पल
+याद बनकर दिल में रहता है।
+और हर याद
+चेहरे पर मुस्कान छोड़ जाती है।`,
+`अगर खुशियों का कोई पता होता,
+तो शायद वो तुम्हारे पास मिलता।
+क्योंकि तुम्हारे साथ
+हर पल थोड़ा ज्यादा खूबसूरत लगता है।`
+]
 
 };
 
@@ -2150,136 +1767,149 @@ shayari:[
    STATE
 ========================================================= */
 
-let selectedOccasion = "birthday";
-let selectedRelation = "friend";
-let selectedShayari = "";
-let wishData = null;
+let state = {
+
+  occasion:null,
+
+  relation:"Dost",
+
+  receiver:"",
+
+  sender:"",
+
+  shayari:"",
+
+  customShayari:"",
+
+  message:""
+
+};
 
 
 /* =========================================================
-   HELPERS
+   ELEMENTS
 ========================================================= */
 
-function $(id){
-  return document.getElementById(id);
-}
+const $ = id => document.getElementById(id);
+
+
+/* =========================================================
+   SCREEN CONTROL
+========================================================= */
+
+const creatorScreens = [
+  "home",
+  "occasionScreen",
+  "detailsScreen",
+  "shayariScreen",
+  "messageScreen",
+  "previewScreen",
+  "readyScreen"
+];
+
+const receiverScreens = [
+  "receiver1",
+  "receiver2",
+  "receiver3",
+  "receiver4",
+  "receiver5",
+  "finalWish"
+];
 
 function showScreen(id){
 
-  document
-    .querySelectorAll(".screen")
-    .forEach(s=>s.classList.remove("active"));
+  document.querySelectorAll(".screen").forEach(s=>{
+    s.classList.remove("active");
+  });
 
-  const target = $(id);
+  const el=$(id);
 
-  if(target){
-    target.classList.add("active");
-    window.scrollTo(0,0);
+  if(el){
+    el.classList.add("active");
+    window.scrollTo({top:0,behavior:"smooth"});
   }
 
 }
 
 
 /* =========================================================
-   RELATION UI
+   TOAST
 ========================================================= */
 
-function buildRelations(){
+function toast(message){
 
-  const grid = $("relationGrid");
+  const t=$("toast");
 
-  grid.innerHTML = "";
+  t.textContent=message;
+  t.classList.add("show");
 
-  Object.entries(relations).forEach(([key,data])=>{
-
-    const btn = document.createElement("button");
-
-    btn.type = "button";
-    btn.className = "relation";
-
-    if(key === selectedRelation){
-      btn.classList.add("selected");
-    }
-
-    btn.innerHTML = `
-      <span class="r-icon">${data.icon}</span>
-      <span class="r-name">${data.name}</span>
-    `;
-
-    btn.addEventListener("click",()=>{
-
-      selectedRelation = key;
-
-      document
-        .querySelectorAll(".relation")
-        .forEach(x=>x.classList.remove("selected"));
-
-      btn.classList.add("selected");
-
-      updateReceiverLabel();
-
-    });
-
-    grid.appendChild(btn);
-
-  });
-
-  updateReceiverLabel();
-
-}
-
-
-function updateReceiverLabel(){
-
-  const relation = relations[selectedRelation];
-
-  $("receiverLabel").textContent =
-    relation.name + " का नाम";
+  setTimeout(()=>{
+    t.classList.remove("show");
+  },2200);
 
 }
 
 
 /* =========================================================
-   OCCASION UI
+   OCCASION RENDER
 ========================================================= */
 
-function buildOccasions(){
+function renderOccasions(filter=""){
 
-  const grid = $("occasionGrid");
+  const grid=$("occasionGrid");
 
-  grid.innerHTML = "";
+  const q=filter.trim().toLowerCase();
 
-  Object.entries(occasions).forEach(([key,data])=>{
+  const filtered=occasions.filter(o=>{
 
-    const btn = document.createElement("button");
+    const text=(
+      o.name+" "+
+      o.hi+" "+
+      o.keywords
+    ).toLowerCase();
 
-    btn.type = "button";
-    btn.className = "occasion";
+    return text.includes(q);
 
-    if(key === selectedOccasion){
-      btn.classList.add("selected");
-    }
+  });
 
-    btn.innerHTML = `
-      <span class="emoji">${data.icon}</span>
-      <span class="name">${data.name}</span>
-    `;
+  $("occasionCount").textContent =
+    filtered.length+" occasions";
+
+  if(!filtered.length){
+
+    grid.innerHTML=
+      `<div class="empty" style="grid-column:1/-1">
+        😔 कोई occasion नहीं मिला
+      </div>`;
+
+    return;
+  }
+
+  grid.innerHTML=filtered.map(o=>`
+
+    <button
+      class="occasion ${state.occasion===o.id?"selected":""}"
+      data-id="${o.id}"
+    >
+
+      <span class="oi">${o.icon}</span>
+      <span class="on">${o.hi}</span>
+
+    </button>
+
+  `).join("");
+
+  grid.querySelectorAll(".occasion").forEach(btn=>{
 
     btn.addEventListener("click",()=>{
 
-      selectedOccasion = key;
+      state.occasion=btn.dataset.id;
 
-      document
-        .querySelectorAll(".occasion")
-        .forEach(x=>x.classList.remove("selected"));
-
-      btn.classList.add("selected");
-
-      buildShayari();
+      renderOccasions(
+        $("occasionSearch").value
+      );
 
     });
-
-    grid.appendChild(btn);
 
   });
 
@@ -2287,49 +1917,225 @@ function buildOccasions(){
 
 
 /* =========================================================
-   SHAYARI UI
+   RELATIONS
 ========================================================= */
 
-function buildShayari(){
+function renderRelations(){
 
-  const list = $("shayariList");
+  $("relationGrid").innerHTML=
 
-  list.innerHTML = "";
+  relations.map(r=>`
 
-  const data = occasions[selectedOccasion];
+    <button
+      class="relation ${state.relation===r?"selected":""}"
+      data-relation="${r}"
+    >
+      ${r}
+    </button>
 
-  selectedShayari = data.shayari[0];
+  `).join("");
 
-  data.shayari.forEach((text,index)=>{
+  $("relationGrid")
+    .querySelectorAll(".relation")
+    .forEach(btn=>{
 
-    const btn = document.createElement("button");
+      btn.addEventListener("click",()=>{
 
-    btn.type = "button";
-    btn.className = "shayari-option";
+        state.relation=btn.dataset.relation;
 
-    if(index === 0){
-      btn.classList.add("selected");
-    }
+        renderRelations();
 
-    btn.textContent = text;
-
-    btn.addEventListener("click",()=>{
-
-      selectedShayari = text;
-
-      $("customShayari").value = "";
-
-      document
-        .querySelectorAll(".shayari-option")
-        .forEach(x=>x.classList.remove("selected"));
-
-      btn.classList.add("selected");
+      });
 
     });
 
-    list.appendChild(btn);
+}
 
+
+/* =========================================================
+   SHAYARI
+========================================================= */
+
+function getShayaris(){
+
+  const o=occasions.find(x=>x.id===state.occasion);
+
+  if(!o) return [];
+
+  let list=[];
+
+  if(
+    ["valentine"].includes(o.id)
+  ){
+
+    list=loveShayari();
+
+  }else if(
+    ["friendship"].includes(o.id)
+  ){
+
+    list=specialShayari.friendship;
+
+  }else if(
+    specialShayari[o.id]
+  ){
+
+    list=specialShayari[o.id];
+
+  }else{
+
+    list=shayariPatterns.map((s,i)=>{
+
+      return s.replace(
+        "कुछ रिश्ते",
+        `${o.hi} के इस खूबसूरत मौके पर कुछ रिश्ते`
+      );
+
+    });
+
+  }
+
+  /*
+    Ensure minimum 10.
+    If a special bank has 10 already, use it.
+    Otherwise add personalized universal shayari.
+  */
+
+  while(list.length<10){
+
+    const n=list.length+1;
+
+    list.push(
+`इस ${o.hi} के खास मौके पर
+बस इतनी सी दुआ है —
+आपकी ज़िंदगी में हर दिन
+नई खुशी लेकर आए।`
+    );
+
+  }
+
+  return list.slice(0,10);
+
+}
+
+
+function loveShayari(){
+
+  return specialShayari.love;
+
+}
+
+
+function renderShayaris(){
+
+  const list=getShayaris();
+
+  $("shayariCount").textContent=
+    list.length+" Shayari";
+
+  $("shayariList").innerHTML=list.map((s,i)=>`
+
+    <button
+      class="shayariOption ${state.shayari===s&&!state.customShayari?"selected":""}"
+      data-index="${i}"
+    >
+      ${s.replace(/\n/g,"<br>")}
+    </button>
+
+  `).join("");
+
+  $("shayariList")
+    .querySelectorAll(".shayariOption")
+    .forEach(btn=>{
+
+      btn.addEventListener("click",()=>{
+
+        const index=Number(btn.dataset.index);
+
+        state.shayari=list[index];
+
+        state.customShayari="";
+
+        $("customShayari").value="";
+
+        renderShayaris();
+
+      });
+
+    });
+
+}
+
+
+/* =========================================================
+   DATA ENCODING
+========================================================= */
+
+function encodeData(data){
+
+  const json=JSON.stringify(data);
+
+  const bytes=
+    new TextEncoder().encode(json);
+
+  let binary="";
+
+  bytes.forEach(b=>{
+    binary+=String.fromCharCode(b);
   });
+
+  return btoa(binary)
+    .replace(/\+/g,"-")
+    .replace(/\//g,"_")
+    .replace(/=+$/,"");
+
+}
+
+
+function decodeData(str){
+
+  try{
+
+    str=str
+      .replace(/-/g,"+")
+      .replace(/_/g,"/");
+
+    while(str.length%4){
+      str+="=";
+    }
+
+    const binary=atob(str);
+
+    const bytes=
+      Uint8Array.from(
+        binary,
+        c=>c.charCodeAt(0)
+      );
+
+    return JSON.parse(
+      new TextDecoder().decode(bytes)
+    );
+
+  }catch(e){
+
+    return null;
+
+  }
+
+}
+
+
+/* =========================================================
+   URL
+========================================================= */
+
+function makeWishURL(){
+
+  const encoded=encodeData(state);
+
+  return location.origin+
+    location.pathname+
+    "#wish="+encoded;
 
 }
 
@@ -2340,419 +2146,74 @@ function buildShayari(){
 
 function preparePreview(){
 
-  const receiver =
-    $("receiverName").value.trim();
+  const o=occasions.find(
+    x=>x.id===state.occasion
+  );
 
-  const sender =
-    $("senderName").value.trim();
+  const relationText=
+    state.relation==="Dost"
+      ? "मेरे दोस्त"
+      : state.relation;
 
-  const custom =
-    $("customShayari").value.trim();
+  $("previewIcon").textContent=o.icon;
+  $("previewTitle").textContent=o.title;
+  $("previewRelation").textContent=relationText;
+  $("previewReceiver").textContent=state.receiver;
 
-  const message =
-    $("personalMessage").value.trim();
+  const finalShayari=
+    state.customShayari.trim()
+      ? state.customShayari.trim()
+      : state.shayari;
 
-  $("detailsError").textContent = "";
+  $("previewShayari").textContent=
+    finalShayari;
 
-  if(!receiver){
+  $("previewMessage").textContent=
+    state.message.trim()
+      ? state.message.trim()
+      : "आप हमेशा खुश रहें और यूँ ही मुस्कुराते रहें। ❤️";
 
-    $("detailsError").textContent =
-      "पहले नाम लिखिए।";
-
-    $("receiverName").focus();
-
-    return;
-  }
-
-  if(!sender){
-
-    $("detailsError").textContent =
-      "अपना नाम लिखिए।";
-
-    $("senderName").focus();
-
-    return;
-  }
-
-  if(custom){
-    selectedShayari = custom;
-  }
-
-  if(!selectedShayari){
-
-    $("detailsError").textContent =
-      "Shayari चुनिए या अपनी Shayari लिखिए।";
-
-    return;
-  }
-
-  const occasion =
-    occasions[selectedOccasion];
-
-  const relation =
-    relations[selectedRelation];
-
-
-  $("previewIcon").textContent =
-    occasion.icon;
-
-  $("previewRelation").textContent =
-    relation.label;
-
-  $("previewName").textContent =
-    receiver;
-
-  $("previewTitle").textContent =
-    occasion.title;
-
-  $("previewShayari").textContent =
-    selectedShayari;
-
-  $("previewMessage").textContent =
-    message ||
-    "आपके लिए दिल से ढेर सारी शुभकामनाएँ।";
-
-  $("previewSender").textContent =
-    sender;
-
-
-  showScreen("preview");
+  $("previewSignature").textContent=
+    "प्यार से — "+state.sender;
 
 }
 
 
 /* =========================================================
-   UTF-8 SAFE ENCODING
+   FINAL RECEIVER
 ========================================================= */
 
-function encodeWish(obj){
+function prepareFinal(){
 
-  const json =
-    JSON.stringify(obj);
+  const o=occasions.find(
+    x=>x.id===state.occasion
+  );
 
-  const bytes =
-    new TextEncoder().encode(json);
+  if(!o) return;
 
-  let binary = "";
+  $("finalIcon").textContent=o.icon;
+  $("finalTitle").textContent=o.title;
 
-  bytes.forEach(byte=>{
-    binary +=
-      String.fromCharCode(byte);
-  });
+  $("finalRelation").textContent=
+    state.relation==="Dost"
+      ? "मेरे दोस्त"
+      : state.relation;
 
-  return btoa(binary)
-    .replace(/\+/g,"-")
-    .replace(/\//g,"_")
-    .replace(/=/g,"");
+  $("finalReceiver").textContent=
+    state.receiver;
 
-}
+  $("finalShayari").textContent=
+    state.customShayari.trim()
+      ? state.customShayari.trim()
+      : state.shayari;
 
+  $("finalMessage").textContent=
+    state.message.trim()
+      ? state.message.trim()
+      : "आप हमेशा खुश रहें, मुस्कुराते रहें और आपकी ज़िंदगी में खुशियों की कभी कमी न हो। ❤️";
 
-function decodeWish(str){
-
-  try{
-
-    str =
-      str
-        .replace(/-/g,"+")
-        .replace(/_/g,"/");
-
-    while(str.length % 4){
-      str += "=";
-    }
-
-    const binary =
-      atob(str);
-
-    const bytes =
-      Uint8Array.from(
-        binary,
-        c=>c.charCodeAt(0)
-      );
-
-    return JSON.parse(
-      new TextDecoder().decode(bytes)
-    );
-
-  }catch(error){
-
-    return null;
-
-  }
-
-}
-
-
-/* =========================================================
-   CREATE
-========================================================= */
-
-function createWish(){
-
-  const occasion =
-    occasions[selectedOccasion];
-
-  const relation =
-    relations[selectedRelation];
-
-
-  wishData = {
-
-    o:selectedOccasion,
-    r:selectedRelation,
-
-    n:$("receiverName")
-      .value
-      .trim(),
-
-    s:$("senderName")
-      .value
-      .trim(),
-
-    w:selectedShayari,
-
-    m:$("personalMessage")
-      .value
-      .trim(),
-
-    i:occasion.icon,
-
-    t:occasion.title,
-
-    rl:relation.label
-
-  };
-
-
-  const encoded =
-    encodeWish(wishData);
-
-
-  const url =
-    window.location.origin +
-    window.location.pathname +
-    "#wish=" +
-    encoded;
-
-
-  $("wishLink").value =
-    url;
-
-
-  showScreen("created");
-
-}
-
-
-/* =========================================================
-   SHARE
-========================================================= */
-
-async function shareWish(){
-
-  const url =
-    $("wishLink").value;
-
-  try{
-
-    if(navigator.share){
-
-      await navigator.share({
-
-        title:
-          "आपके लिए एक खास Wish 💌",
-
-        text:
-          "आपके लिए किसी ने दिल से एक खास संदेश भेजा है।",
-
-        url:url
-
-      });
-
-    }else{
-
-      await copyWishLink();
-
-      alert(
-        "Link copy हो गया। अब इसे अपने खास इंसान को भेज सकते हैं।"
-      );
-
-    }
-
-  }catch(error){
-
-    /* cancelled share */
-
-  }
-
-}
-
-
-/* =========================================================
-   COPY
-========================================================= */
-
-async function copyWishLink(){
-
-  const input =
-    $("wishLink");
-
-  try{
-
-    await navigator.clipboard
-      .writeText(input.value);
-
-  }catch(error){
-
-    input.select();
-
-    document.execCommand("copy");
-
-  }
-
-  const old =
-    $("copyBtn").textContent;
-
-  $("copyBtn").textContent =
-    "Copied ✓";
-
-  setTimeout(()=>{
-
-    $("copyBtn").textContent =
-      old;
-
-  },1500);
-
-}
-
-
-/* =========================================================
-   RECEIVER
-========================================================= */
-
-function loadReceiver(){
-
-  const hash =
-    window.location.hash;
-
-  if(!hash.startsWith("#wish=")){
-    return false;
-  }
-
-  const encoded =
-    hash.substring(6);
-
-  const data =
-    decodeWish(encoded);
-
-  if(!data){
-    return false;
-  }
-
-  wishData = data;
-
-
-  const icon =
-    data.i || "💌";
-
-  $("receiverIcon1")
-    .textContent = icon;
-
-
-  showScreen("receiver1");
-
-  return true;
-
-}
-
-
-/* =========================================================
-   COUNTDOWN
-========================================================= */
-
-function startCountdown(){
-
-  showScreen("receiver4");
-
-  let count = 3;
-
-  $("countNumber")
-    .textContent = count;
-
-
-  const timer =
-    setInterval(()=>{
-
-      count--;
-
-      if(count > 0){
-
-        $("countNumber")
-          .textContent = count;
-
-      }else{
-
-        clearInterval(timer);
-
-        $("countNumber")
-          .textContent = "💖";
-
-        setTimeout(()=>{
-
-          showScreen("receiver5");
-
-        },700);
-
-      }
-
-    },900);
-
-}
-
-
-/* =========================================================
-   FINAL
-========================================================= */
-
-function showFinalWish(){
-
-  if(!wishData){
-    return;
-  }
-
-  $("finalIcon")
-    .textContent =
-      wishData.i || "🎉";
-
-  $("finalTitle")
-    .textContent =
-      wishData.t ||
-      "आपके लिए ढेर सारी शुभकामनाएँ";
-
-  $("finalTo")
-    .textContent =
-      (wishData.rl || "आपके लिए") +
-      " • " +
-      (wishData.n || "");
-
-  $("finalShayari")
-    .textContent =
-      wishData.w || "";
-
-  $("finalMessage")
-    .textContent =
-      wishData.m ||
-      "आपके लिए दिल से ढेर सारी शुभकामनाएँ।";
-
-  $("finalSender")
-    .textContent =
-      wishData.s ||
-      "आपका अपना";
-
-
-  showScreen("finalWish");
-
-  createConfetti();
+  $("finalSignature").textContent=
+    "प्यार से — "+state.sender;
 
 }
 
@@ -2761,86 +2222,178 @@ function showFinalWish(){
    CONFETTI
 ========================================================= */
 
-function createConfetti(){
+function confetti(){
 
-  const box =
-    $("confetti");
+  const box=$("confetti");
 
-  box.innerHTML = "";
+  box.innerHTML="";
 
-  const chars =
-    ["✦","◆","•","♥","✧"];
+  for(let i=0;i<45;i++){
 
-  for(let i=0;i<55;i++){
+    const el=document.createElement("i");
 
-    const p =
-      document.createElement("span");
+    el.style.left=
+      Math.random()*100+"%";
 
-    p.className =
-      "confetti-piece";
+    el.style.animationDelay=
+      Math.random()*1.3+"s";
 
-    p.textContent =
-      chars[
-        Math.floor(
-          Math.random()*chars.length
-        )
+    el.style.transform=
+      `rotate(${Math.random()*360}deg)`;
+
+    el.style.background=
+      ["#8b5cf6","#ec4899","#fbbf24","#38bdf8","#fff"][
+        Math.floor(Math.random()*5)
       ];
 
-    p.style.left =
-      Math.random()*100 + "%";
-
-    p.style.fontSize =
-      (8 + Math.random()*9) + "px";
-
-    p.style.animationDelay =
-      Math.random()*1.2 + "s";
-
-    p.style.animationDuration =
-      (2.6 + Math.random()*1.5) + "s";
-
-    box.appendChild(p);
+    box.appendChild(el);
 
   }
 
   setTimeout(()=>{
-
-    box.innerHTML = "";
-
-  },5000);
+    box.innerHTML="";
+  },4000);
 
 }
 
 
 /* =========================================================
-   NEW WISH
+   RECEIVER FLOW
 ========================================================= */
 
-function createYourOwn(){
+let countdownTimer=null;
 
-  window.location.hash = "";
+function startReceiver(){
 
-  wishData = null;
+  $("r2Name").textContent=
+    state.receiver+" के लिए";
 
-  selectedOccasion =
-    "birthday";
+  const o=occasions.find(
+    x=>x.id===state.occasion
+  );
 
-  selectedRelation =
-    "friend";
+  if(o){
 
-  selectedShayari =
-    "";
+    $("r3Icon").textContent=o.icon;
 
+  }
 
-  $("receiverName").value = "";
-  $("senderName").value = "";
-  $("customShayari").value = "";
-  $("personalMessage").value = "";
+  showScreen("receiver1");
+
+}
 
 
-  buildRelations();
-  buildOccasions();
-  buildShayari();
+function startCountdown(){
 
+  showScreen("receiver4");
+
+  let n=3;
+
+  $("count3").textContent=n;
+
+  clearInterval(countdownTimer);
+
+  countdownTimer=setInterval(()=>{
+
+    n--;
+
+    $("count3").textContent=n;
+
+    if(n<=0){
+
+      clearInterval(countdownTimer);
+
+      setTimeout(()=>{
+        showScreen("receiver5");
+      },350);
+
+    }
+
+  },900);
+
+}
+
+
+/* =========================================================
+   LOAD RECEIVER FROM URL
+========================================================= */
+
+function loadReceiver(){
+
+  const hash=location.hash;
+
+  if(!hash.startsWith("#wish=")){
+
+    showScreen("home");
+
+    return;
+
+  }
+
+  const encoded=
+    hash.substring(6);
+
+  const data=
+    decodeData(encoded);
+
+  if(!data || !data.occasion){
+
+    history.replaceState(
+      null,
+      "",
+      location.pathname
+    );
+
+    showScreen("home");
+
+    return;
+
+  }
+
+  state=data;
+
+  prepareFinal();
+
+  showScreen("receiver1");
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+function resetCreator(){
+
+  clearInterval(countdownTimer);
+
+  state={
+    occasion:null,
+    relation:"Dost",
+    receiver:"",
+    sender:"",
+    shayari:"",
+    customShayari:"",
+    message:""
+  };
+
+  $("occasionSearch").value="";
+  $("receiverName").value="";
+  $("senderName").value="";
+  $("customShayari").value="";
+  $("personalMessage").value="";
+
+  $("customCounter").textContent="0";
+  $("messageCounter").textContent="0";
+
+  history.replaceState(
+    null,
+    "",
+    location.pathname
+  );
+
+  renderOccasions();
+  renderRelations();
 
   showScreen("home");
 
@@ -2848,198 +2401,461 @@ function createYourOwn(){
 
 
 /* =========================================================
-   DOM READY
+   EVENT LISTENERS
 ========================================================= */
 
-document.addEventListener(
-  "DOMContentLoaded",
-  ()=>{
+document.addEventListener("DOMContentLoaded",()=>{
 
-    /* Build UI */
+  renderOccasions();
+  renderRelations();
 
-    buildRelations();
-    buildOccasions();
-    buildShayari();
+  /*
+   HOME
+  */
+
+  $("startBtn").addEventListener("click",()=>{
+
+    renderOccasions();
+
+    showScreen("occasionScreen");
+
+  });
 
 
-    /* Creator */
+  $("backHome").addEventListener("click",()=>{
 
-    $("startBtn")
-      .addEventListener(
-        "click",
-        ()=>{
-          showScreen("occasion");
+    showScreen("home");
+
+  });
+
+
+  /*
+   OCCASION
+  */
+
+  $("occasionSearch").addEventListener(
+    "input",
+    e=>{
+      renderOccasions(e.target.value);
+    }
+  );
+
+
+  $("occasionNext").addEventListener("click",()=>{
+
+    if(!state.occasion){
+
+      toast("पहले कोई Occasion चुनें ❤️");
+
+      return;
+
+    }
+
+    const o=occasions.find(
+      x=>x.id===state.occasion
+    );
+
+    $("selectedOccasionText").textContent=
+      o.hi;
+
+    renderRelations();
+
+    showScreen("detailsScreen");
+
+  });
+
+
+  $("backOccasion").addEventListener(
+    "click",
+    ()=>{
+      showScreen("occasionScreen");
+    }
+  );
+
+
+  /*
+   DETAILS
+  */
+
+  $("detailsNext").addEventListener("click",()=>{
+
+    const receiver=
+      $("receiverName").value.trim();
+
+    const sender=
+      $("senderName").value.trim();
+
+    if(!receiver){
+
+      toast("जिसे Wish भेजनी है उसका नाम लिखें");
+
+      $("receiverName").focus();
+
+      return;
+
+    }
+
+    if(!sender){
+
+      toast("अपना नाम लिखें");
+
+      $("senderName").focus();
+
+      return;
+
+    }
+
+    state.receiver=receiver;
+    state.sender=sender;
+
+    renderShayaris();
+
+    showScreen("shayariScreen");
+
+  });
+
+
+  $("backDetails").addEventListener(
+    "click",
+    ()=>{
+      showScreen("detailsScreen");
+    }
+  );
+
+
+  /*
+   SHAYARI
+  */
+
+  $("customShayari").addEventListener(
+    "input",
+    e=>{
+
+      state.customShayari=
+        e.target.value;
+
+      $("customCounter").textContent=
+        e.target.value.length;
+
+    }
+  );
+
+
+  $("shayariNext").addEventListener(
+    "click",
+    ()=>{
+
+      if(
+        !state.customShayari.trim() &&
+        !state.shayari
+      ){
+
+        toast("एक Shayari चुनें ❤️");
+
+        return;
+
+      }
+
+      showScreen("messageScreen");
+
+    }
+  );
+
+
+  $("backShayari").addEventListener(
+    "click",
+    ()=>{
+      showScreen("shayariScreen");
+    }
+  );
+
+
+  /*
+   MESSAGE
+  */
+
+  $("personalMessage").addEventListener(
+    "input",
+    e=>{
+
+      state.message=
+        e.target.value;
+
+      $("messageCounter").textContent=
+        e.target.value.length;
+
+    }
+  );
+
+
+  $("previewNext").addEventListener(
+    "click",
+    ()=>{
+
+      state.message=
+        $("personalMessage").value;
+
+      preparePreview();
+
+      showScreen("previewScreen");
+
+    }
+  );
+
+
+  $("backMessage").addEventListener(
+    "click",
+    ()=>{
+      showScreen("messageScreen");
+    }
+  );
+
+
+  /*
+   PREVIEW
+  */
+
+  $("createWishBtn").addEventListener(
+    "click",
+    ()=>{
+
+      state.customShayari=
+        $("customShayari").value.trim();
+
+      state.message=
+        $("personalMessage").value.trim();
+
+      const url=makeWishURL();
+
+      history.replaceState(
+        null,
+        "",
+        "#wish="+url.split("#wish=")[1]
+      );
+
+      showScreen("readyScreen");
+
+      toast("Wish तैयार है ❤️");
+
+    }
+  );
+
+
+  /*
+   COPY
+  */
+
+  $("copyBtn").addEventListener(
+    "click",
+    async()=>{
+
+      const url=makeWishURL();
+
+      try{
+
+        await navigator.clipboard.writeText(url);
+
+        toast("Wish Link Copy हो गया 🔗");
+
+      }catch(e){
+
+        const ta=document.createElement("textarea");
+
+        ta.value=url;
+
+        document.body.appendChild(ta);
+
+        ta.select();
+
+        document.execCommand("copy");
+
+        ta.remove();
+
+        toast("Wish Link Copy हो गया 🔗");
+
+      }
+
+    }
+  );
+
+
+  /*
+   SHARE
+  */
+
+  $("shareBtn").addEventListener(
+    "click",
+    async()=>{
+
+      const url=makeWishURL();
+
+      if(navigator.share){
+
+        try{
+
+          await navigator.share({
+
+            title:"आपके लिए एक खास Wish 💌",
+
+            text:"आपके लिए किसी ने एक खास Wish बनाई है ❤️",
+
+            url:url
+
+          });
+
+        }catch(e){}
+
+      }else{
+
+        try{
+
+          await navigator.clipboard.writeText(url);
+
+          toast("Link Copy हो गया — अब Share करें 🔗");
+
+        }catch(e){
+
+          toast("Link Copy करें");
+
         }
-      );
+
+      }
+
+    }
+  );
 
 
-    $("occasionBack")
-      .addEventListener(
-        "click",
-        ()=>{
-          showScreen("home");
+  /*
+   NEW CREATOR
+  */
+
+  $("makeAnother").addEventListener(
+    "click",
+    resetCreator
+  );
+
+
+  /*
+   RECEIVER
+  */
+
+  $("receiverStart").addEventListener(
+    "click",
+    ()=>{
+
+      showScreen("receiver2");
+
+    }
+  );
+
+
+  $("receiver2Next").addEventListener(
+    "click",
+    ()=>{
+
+      showScreen("receiver3");
+
+    }
+  );
+
+
+  $("receiver3Next").addEventListener(
+    "click",
+    ()=>{
+
+      startCountdown();
+
+    }
+  );
+
+
+  $("receiver5Next").addEventListener(
+    "click",
+    ()=>{
+
+      prepareFinal();
+
+      showScreen("finalWish");
+
+      setTimeout(confetti,120);
+
+    }
+  );
+
+
+  /*
+   FINAL
+  */
+
+  $("againBtn").addEventListener(
+    "click",
+    ()=>{
+
+      showScreen("receiver1");
+
+    }
+  );
+
+
+  $("newWishBtn").addEventListener(
+    "click",
+    ()=>{
+
+      resetCreator();
+
+    }
+  );
+
+
+  $("finalShareBtn").addEventListener(
+    "click",
+    async()=>{
+
+      const url=makeWishURL();
+
+      if(navigator.share){
+
+        try{
+
+          await navigator.share({
+
+            title:"एक खास Wish 💌",
+
+            text:"आपके लिए एक खास Wish ❤️",
+
+            url:url
+
+          });
+
+        }catch(e){}
+
+      }else{
+
+        try{
+
+          await navigator.clipboard.writeText(url);
+
+          toast("Link Copy हो गया 🔗");
+
+        }catch(e){
+
+          toast("Link Copy करें");
+
         }
-      );
+
+      }
+
+    }
+  );
 
 
-    $("occasionNext")
-      .addEventListener(
-        "click",
-        ()=>{
-          buildShayari();
-          showScreen("details");
-        }
-      );
+  /*
+   INITIAL URL CHECK
+  */
 
+  loadReceiver();
 
-    $("detailsBack")
-      .addEventListener(
-        "click",
-        ()=>{
-          showScreen("occasion");
-        }
-      );
-
-
-    $("previewBtn")
-      .addEventListener(
-        "click",
-        preparePreview
-      );
-
-
-    $("previewBack")
-      .addEventListener(
-        "click",
-        ()=>{
-          showScreen("details");
-        }
-      );
-
-
-    $("createBtn")
-      .addEventListener(
-        "click",
-        createWish
-      );
-
-
-    $("shareBtn")
-      .addEventListener(
-        "click",
-        shareWish
-      );
-
-
-    $("copyBtn")
-      .addEventListener(
-        "click",
-        copyWishLink
-      );
-
-
-    $("newWishBtn")
-      .addEventListener(
-        "click",
-        createYourOwn
-      );
-
-
-    /* Custom Shayari */
-
-    $("customShayari")
-      .addEventListener(
-        "input",
-        function(){
-
-          const text =
-            this.value.trim();
-
-          if(text){
-
-            selectedShayari =
-              text;
-
-            document
-              .querySelectorAll(
-                ".shayari-option"
-              )
-              .forEach(
-                x=>
-                  x.classList
-                   .remove("selected")
-              );
-
-          }else{
-
-            buildShayari();
-
-          }
-
-        }
-      );
-
-
-    /* Receiver */
-
-    $("r1Btn")
-      .addEventListener(
-        "click",
-        ()=>{
-          showScreen("receiver2");
-        }
-      );
-
-
-    $("r2Btn")
-      .addEventListener(
-        "click",
-        ()=>{
-          showScreen("receiver3");
-        }
-      );
-
-
-    $("r3Btn")
-      .addEventListener(
-        "click",
-        startCountdown
-      );
-
-
-    $("r5Btn")
-      .addEventListener(
-        "click",
-        showFinalWish
-      );
-
-
-    $("againBtn")
-      .addEventListener(
-        "click",
-        ()=>{
-          showScreen("receiver1");
-        }
-      );
-
-
-    $("ownWishBtn")
-      .addEventListener(
-        "click",
-        createYourOwn
-      );
-
-
-    /* Direct receiver URL */
-
-    setTimeout(()=>{
-
-      loadReceiver();
-
-    },50);
-
-  }
-);
+});
 
 
 /* =========================================================
@@ -3048,18 +2864,7 @@ document.addEventListener(
 
 window.addEventListener(
   "hashchange",
-  ()=>{
-
-    if(
-      window.location.hash
-        .startsWith("#wish=")
-    ){
-
-      loadReceiver();
-
-    }
-
-  }
+  loadReceiver
 );
 
 </script>
