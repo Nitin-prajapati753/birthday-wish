@@ -32,7 +32,7 @@
         .row input { width: 65%; }
         button { padding: 14px 25px; background: linear-gradient(to right, #ff416c, #ff4b2b); color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 1.1rem; margin-top: 20px; font-weight: bold; width: 100%; box-shadow: 0 5px 20px rgba(255,65,108,0.4); transition: 0.3s; }
         button:active { transform: scale(0.98); }
-        .share-btn { display: none; margin-top: 20px; padding: 15px; border-radius: 25px; color: white; font-weight: bold; font-size: 1.1rem; width: 100%; text-align: center; box-sizing: border-box; border: none; cursor: pointer; transition: 0.3s; background: linear-gradient(to right, #11998e, #38ef7d); box-shadow: 0 5px 20px rgba(56,239,125,0.4); }
+        .share-link-btn { display: none; margin-top: 20px; text-decoration: none; padding: 15px; border-radius: 25px; color: white; font-weight: bold; font-size: 1.1rem; width: 100%; text-align: center; box-sizing: border-box; background: linear-gradient(to right, #11998e, #38ef7d); box-shadow: 0 5px 20px rgba(56,239,125,0.4); transition: 0.3s; }
         .nav-dots { display: flex; justify-content: center; gap: 8px; margin-top: 15px; }
         .dot { width: 8px; height: 8px; background: rgba(255,255,255,0.3); border-radius: 50%; }
         .dot.active { background: white; width: 20px; border-radius: 10px; }
@@ -45,7 +45,7 @@
 <body>
 
 <div class="container">
-    <!-- फ़ॉर्म 1: मुख्य डैशबोर्ड -->
+    <!-- फ़ॉर्म 1: मुख्य क्रिएटर डैशबोर्ड -->
     <div class="box active" id="formPanel">
         <h1>✨ विशिंग हब मेकर</h1>
         <p style="color: #eee; font-size: 0.95rem;">प्रोफेशनल और जादुई बधाई संदेश तैयार करें</p>
@@ -75,15 +75,15 @@
         <textarea id="msgInput" placeholder="अपनी तरफ से कोई पर्सनल मैसेज या दुआ लिखें (वैकल्पिक)..."></textarea>
         
         <button id="genBtn" onclick="generateLink()">👉 जादुई लिंक तैयार करें</button>
-        <!-- पूरी तरह सुधरा हुआ बटन एलिमेंट -->
-        <button id="whatsappBtn" class="share-btn" onclick="shareOnWhatsApp()">WhatsApp पर शेयर करें 📲</button>
+        <!-- 100% यूनिवर्सल एंकर टैग आधारित व्हाट्सएप लिंक -->
+        <a id="whatsappBtn" class="share-link-btn" href="#" target="_blank">WhatsApp पर शेयर करें 📲</a>
     </div>
 
     <!-- देखने वाले की स्क्रीन 1: सीक्रेट क्लिक-टू-रिवील -->
     <div class="box" id="revealPanel">
         <h1 id="revealHeader">आपके लिए एक संदेश है!</h1>
         <div class="big-emoji">🎁</div>
-        <p style="font-size: 1.2rem;" id="revealSub">किसी खास ने आपके लिए एक गुप्त सरप्राइज भेजा है.</p>
+        <p style="font-size: 1.2rem;" id="revealSub">किसी खास ने आपके लिए एक गुप्त सरप्राइज भेजा है।</p>
         <button onclick="goToPage(2)" style="background: linear-gradient(to right, #ff416c, #ff4b2b);">🎁 सरप्राइज खोलने के लिए यहाँ क्लिक करें</button>
     </div>
 
@@ -96,7 +96,7 @@
         <div class="nav-dots"><div class="dot active"></div><div class="dot"></div></div>
     </div>
 
-    <!-- देखने वाले की स्क्रीन 3: मुख्य शायरी और ककस्टमाइज्ड मैसेज (पेज 3) -->
+    <!-- देखने वाले की स्क्रीन 3: मुख्य शायरी और पर्सनल मैसेज (पेज 3) -->
     <div class="box" id="page3Panel">
         <h1 id="page3Title">विशेष शुभकामनाएं</h1>
         <div class="quote-box" id="quoteText">बधाई संदेश लोड हो रहा है...</div>
@@ -111,11 +111,9 @@
 </audio>
 
 <script>
-    let globalWhatsAppMessage = "";
-
     const occData = {
         bday: { title: "जन्मदिन मुबारक!", emoji: "🎂", quote: "🎁 तोहफा मैं तुझे आज मेरा दिल ही देता हूँ, इस खास दिन पर अपनी सारी दुआएं देता हूँ, उम्र तुझे लगे आसमान के सितारों जैसी, ज़िंदगी में तेरी सिर्फ खुशियां ही खुशियां देता हूँ! 🎈", grad: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)" },
-        anniv: { title: "शा शादी की सालगिरह मुबारक!", emoji: "💍", quote: "💖 सात फेरों से बंधा यह प्यार का बंधन, जीवन भर यूं ही महकता रहे आपका चमन। आप दोनों की जोड़ी हमेशा सलामत रहे, यही है ईश्वर से हमारा सुमिरन! 🥂", grad: "linear-gradient(135deg, #fd746c 0%, #ff9068 100%)" },
+        anniv: { title: "शादी की सालगिरह मुबारक!", emoji: "💍", quote: "💖 सात फेरों से बंधा यह प्यार का बंधन, जीवन भर यूं ही महकता रहे आपका चमन। आप दोनों की जोड़ी हमेशा सलामत रहे, यही है ईश्वर से हमारा सुमिरन! 🥂", grad: "linear-gradient(135deg, #fd746c 0%, #ff9068 100%)" },
         diwali: { title: "शुभ दीपावली!", emoji: "🪔", quote: "✨ दीप जलते रहें जगमगाते रहें, हम आपको याद आते रहें। जब तक ज़िन्दगी है दुआ है हमारी, आप फूलों की तरह मुस्कुराते रहें! शुभ दिवाली! 🌟", grad: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)" },
         eid: { title: "ईद मुबारक!", emoji: "🌙", quote: "⭐ सदा हंसते रहो जैसे हंसते हैं फूल, दुनिया के सारे ग़म तुम जाओ भूल। चारों तरफ फैले खुशियों के गीत, इसी उम्मीद के साथ तुम्हें मुबारक हो ईद! 🕋", grad: "linear-gradient(135deg, #0575e6 0%, #00f260 100%)" },
         holi: { title: "हैप्पी होली!", emoji: "🎨", quote: "🌈 पिचकारी की धार, गुलाल की बौछार, अपनों का प्यार, यही है होली का त्यौहार। रंगों से भरी रहे आपकी दुनिया हमेशा! बुरा न मानो होली है! 🥳", grad: "linear-gradient(135deg, #ec008c 0%, #fc6767 100%)" },
