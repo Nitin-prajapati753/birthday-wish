@@ -34,7 +34,6 @@
             max-width: 420px; 
             z-index: 10;
             border: 1px solid rgba(255,255,255,0.25);
-            animation: fadeIn 1.5s ease;
         }
         h1 { font-size: 2.1rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.6); color: #fff; margin-bottom: 5px; line-height: 1.3; }
         .cake { font-size: 4.5rem; margin: 15px 0; animation: bounce 2s infinite; }
@@ -43,11 +42,9 @@
         button { padding: 12px 25px; background: linear-gradient(to right, #ff416c, #ff4b2b); color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 1.1rem; margin-top: 20px; font-weight: bold; width: 90%; box-shadow: 0 4px 15px rgba(255,65,108,0.4); }
         .share-btn { background: linear-gradient(to right, #11998e, #38ef7d); display: none; margin-top: 20px; text-decoration: none; padding: 15px; border-radius: 25px; color: white; font-weight: bold; font-size: 1.1rem; width: 85%; box-shadow: 0 4px 15px rgba(56,239,125,0.4); text-align: center; }
         
-        /* गुब्बारे का एनीमेशन */
         .balloon { position: absolute; width: 30px; height: 40px; border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; bottom: -50px; animation: floatUp 8s infinite linear; opacity: 0.7; z-index: 1; }
         @keyframes floatUp { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(-115vh) rotate(20deg); opacity: 0; } }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
     </style>
 </head>
 <body>
@@ -61,13 +58,14 @@
         <!-- स्पेशल शायरी/बधाई संदेश -->
         <div class="quote-box" id="quoteText">🎉 भगवान करे आपका आने वाला साल खुशियों, तरक्की और अच्छी सेहत से भरा हो! 🎈✨</div>
 
-        <!-- इनपुट सेक्शन -->
+        <!-- इनपुट सेक्शन (यह सिर्फ लिंक बनाने वाले को दिखेगा) -->
         <div id="createSection">
             <p style="font-size: 0.9rem; color: #eee; margin-bottom: 5px;">अपनी तरफ से जादुई बधाई लिंक बनाएं 👇</p>
             <input type="text" id="nameInput" placeholder="यहाँ अपना नाम लिखें...">
             
             <select id="relationSelect">
                 <option value="general">✨ सामान्य बधाई संदेश</option>
+                <option value="friend">🤝 मेरे सबसे प्यारे दोस्त के लिए</option>
                 <option value="sister">👧 प्यारी बहन के लिए</option>
                 <option value="brother">👦 प्यारे भाई के लिए</option>
                 <option value="mother">❤️ पूजनीय माता जी के लिए</option>
@@ -77,8 +75,8 @@
             <button onclick="generateLink()">👉 जादुई विश तैयार करें</button>
         </div>
 
-        <!-- सुधरा हुआ WhatsApp शेयर बटन -->
-        <a id="whatsappBtn" class="share-btn" href="#" target="_blank">WhatsApp पर शेयर करें 📲</a>
+        <!-- न्यू वर्किंग WhatsApp शेयर बटन -->
+        <a id="whatsappBtn" class="share-btn" href="javascript:void(0);" onclick="shareOnWhatsApp()">WhatsApp पर शेयर करें 📲</a>
     </div>
 </div>
 
@@ -87,31 +85,17 @@
 </audio>
 
 <script>
-    // अलग-अलग रिश्तों के लिए शायरी और बैकग्राउंड कलर्स का डेटा
+    let globalWhatsAppUrl = "";
+
     const relationData = {
-        general: {
-            quote: "🎉 भगवान करे आपका आने वाला साल खुशियों, तरक्की और अच्छी सेहत से भरा हो! 🎈✨",
-            bg: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
-        },
-        sister: {
-            quote: "👧 मेरी प्यारी बहना को जन्मदिन की बधाई! तुम हमेशा मुस्कुराती रहो और कामयाबी तुम्हारे कदम चूमे। 🌸💖",
-            bg: "linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%)"
-        },
-        brother: {
-            quote: "👦 भाई के जन्मदिन पर दुआ है हमारी, सलामत रहे हमेशा ये यारी हमारी! हैप्पी बर्थडे भाई! 🎂🔥",
-            bg: "linear-gradient(135deg, #00c6ff 0%, #0072ff 100%)"
-        },
-        mother: {
-            quote: "❤️ उंगली पकड़कर चलना सिखाया हमको, ममता की छांव में पाला हमको। मेरी प्यारी माँ को जन्मदिन की अनंत शुभकामनाएं! 🙏✨",
-            bg: "linear-gradient(135deg, #fe5f75 0%, #fc9842 100%)"
-        },
-        father: {
-            quote: "👑 पापा आप मेरा गुरुर हो, मेरी हिम्मत हो। आपके जन्मदिन पर भगवान से आपकी लंबी उम्र और अच्छी सेहत की कामना करता हूँ। 🌟💪",
-            bg: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)"
-        }
+        general: { quote: "🎉 भगवान करे आपका आने वाला साल खुशियों, तरक्की और अच्छी सेहत से भरा हो! 🎈✨", bg: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)" },
+        friend: { quote: "🤝 बार-बार दिन ये आए, बार-बार दिल ये गाए, तू जिए हजारों साल, ये है मेरी आरज़ू! हैप्पी बर्थडे मेरे भाई/दोस्त! 🎂❤️", bg: "linear-gradient(135deg, #f857a6 0%, #ff5858 100%)" },
+        sister: { quote: "👧 मेरी प्यारी बहना को जन्मदिन की बधाई! तुम हमेशा मुस्कुराती रहो और कामयाबी तुम्हारे कदम चूमे। 🌸💖", bg: "linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%)" },
+        brother: { quote: "👦 भाई के जन्मदिन पर दुआ है हमारी, सलामत रहे हमेशा ये यारी हमारी! हैप्पी बर्थडे भाई! 🎂🔥", bg: "linear-gradient(135deg, #00c6ff 0%, #0072ff 100%)" },
+        mother: { quote: "❤️ उंगली पकड़कर चलना सिखाया हमको, ममता की छांव में पाला हमको। मेरी प्यारी माँ को जन्मदिन की अनंत शुभकामनाएं! 🙏✨", bg: "linear-gradient(135deg, #fe5f75 0%, #fc9842 100%)" },
+        father: { quote: "👑 पापा आप मेरा गुरुर हो, मेरी हिम्मत हो। आपके जन्मदिन पर भगवान से आपकी लंबी उम्र और अच्छी सेहत की कामना करता हूँ। 🌟💪", bg: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)" }
     };
 
-    // स्क्रीन पर गुब्बारे बनाना
     function createBalloons() {
         const colors = ['#ff4757', '#2ed573', '#1e90ff', '#ffa502', '#eccc68', '#ff6b81'];
         for (let i = 0; i < 18; i++) {
@@ -126,13 +110,11 @@
     }
     window.onload = createBalloons;
 
-    // म्यूजिक प्ले बैकअप लॉजिक
     document.body.addEventListener('click', function() {
-        const audio = document.getElementById('bdayMusic');
-        audio.play().catch(function(e) { console.log("Music blocked by browser privacy"); });
+        document.getElementById('bdayMusic').play().catch(function(e) { console.log("Music blocked"); });
     }, { once: true });
 
-    // URL से डेटा लोड करना
+    // URL चेकिंग - जब कोई दूसरा यूजर लिंक खोलेगा
     const urlParams = new URLSearchParams(window.location.search);
     const senderName = urlParams.get('name');
     const relation = urlParams.get('rel') || 'general';
@@ -143,28 +125,40 @@
             document.getElementById('quoteText').innerText = relationData[relation].quote;
             document.body.style.background = relationData[relation].bg;
         }
+        // सबसे ज़रूरी: देखने वाले के लिए इनपुट बॉक्स और ड्रॉपडाउन पूरी तरह छुपा दें!
+        document.getElementById('createSection').style.display = 'none';
     }
 
-    // नया और सुधरा हुआ लिंक जनरेशन (WhatsApp wa.me लिंक के साथ)
+    // नया लिंक जनरेटर लॉजिक
     function generateLink() {
         const name = document.getElementById('nameInput').value;
         const rel = document.getElementById('relationSelect').value;
         if(name.trim() === "") { alert("कृपया अपना नाम दर्ज करें!"); return; }
         
-        // बेस यूआरएल तैयार करना बिना पुराने पैरामीटर्स के
-        const baseUrl = window.location.href.split('?')[0];
-        const newUrl = baseUrl + "?name=" + encodeURIComponent(name) + "&rel=" + rel;
+        // साफ़ यूआरएल स्ट्रक्चर बनाना
+        const currentCleanUrl = window.location.origin + window.location.pathname;
+        const newUrl = currentCleanUrl + "?name=" + encodeURIComponent(name) + "&rel=" + rel;
         
         let relText = "स्पेशल";
+        if(rel === "friend") relText = "खास दोस्त के लिए स्पेशल";
         if(rel === "sister") relText = "प्यारी बहन के लिए स्पेशल";
         if(rel === "brother") relText = "प्यारे भाई के लिए स्पेशल";
         if(rel === "mother") relText = "प्यारी माँ के लिए स्पेशल";
         if(rel === "father") relText = "आदरणीय पापा के लिए स्पेशल";
 
-        // अपडेटेड wa.me लिंक जो सीधा व्हाट्सएप ऐप ओपन करेगा
-        const whatsappBtn = document.getElementById('whatsappBtn');
-        whatsappBtn.href = "https://wa.me*" + encodeURIComponent(name) + "* ने आपके लिए एक " + encodeURIComponent(relText) + " बर्थडे सरप्राइज भेजा है। म्यूजिक ऑन करके देखने के लिए तुरंत नीचे नीले लिंक पर क्लिक करें 👇\n\n" + encodeURIComponent(newUrl);
-        whatsappBtn.style.display = "inline-block";
+        // नया डायरेक्ट जावास्क्रिप्ट आधारित व्हाट्सएप यूआरएल
+        const messageText = `*${name}* ने आपके लिए एक ${relText} बर्थडे सरप्राइज भेजा है। म्यूजिक ऑन करके देखने के लिए तुरंत नीचे नीले लिंक पर क्लिक करें 👇\n\n${newUrl}`;
+        globalWhatsAppUrl = "whatsapp://send?text=" + encodeURIComponent(messageText);
+        
+        // बटन दिखाना
+        document.getElementById('whatsappBtn').style.display = "inline-block";
+    }
+
+    // 100% मोबाइल वर्किंग व्हाट्सएप रीडायरेक्ट फंक्शन
+    function shareOnWhatsApp() {
+        if(globalWhatsAppUrl !== "") {
+            window.location.href = globalWhatsAppUrl;
+        }
     }
 </script>
 
