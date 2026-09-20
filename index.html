@@ -2,2829 +2,1032 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#090a12">
-<title>Wish Studio</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#15112b">
+<meta name="description" content="Magic Wish - त्योहार, जन्मदिन और खास मौकों के लिए खूबसूरत शुभकामनाएं और शायरी बनाएं।">
+<title>Magic Wish ✨ | Wishes & Shayari</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap');
-
+*{box-sizing:border-box}
 :root{
-  --bg:#080910;
-  --panel:#11131d;
-  --panel2:#171a27;
-  --text:#f7f5fa;
-  --muted:#9b9eac;
-  --line:rgba(255,255,255,.08);
-  --accent:#a78bfa;
-  --accent2:#ec4899;
-  --gold:#f6c453;
-  --green:#6ee7b7;
+ --bg1:#0b0718;
+ --bg2:#241044;
+ --card:rgba(255,255,255,.09);
+ --border:rgba(255,255,255,.16);
+ --text:#fff;
+ --muted:#c9c4d8;
+ --pink:#ff4f91;
+ --purple:#8b5cf6;
+ --gold:#ffd166;
+ --green:#25d366;
 }
-
-*{
-  box-sizing:border-box;
-  -webkit-tap-highlight-color:transparent;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
+html{scroll-behavior:smooth}
 body{
-  margin:0;
-  min-height:100vh;
-  background:
-    radial-gradient(circle at 12% 0%,rgba(124,58,237,.18),transparent 30%),
-    radial-gradient(circle at 100% 20%,rgba(236,72,153,.10),transparent 28%),
-    #080910;
-  color:var(--text);
-  font-family:"DM Sans","Noto Sans Devanagari",sans-serif;
+ margin:0;
+ min-height:100vh;
+ color:var(--text);
+ font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+ background:
+ radial-gradient(circle at 15% 10%,rgba(139,92,246,.35),transparent 30%),
+ radial-gradient(circle at 85% 80%,rgba(255,79,145,.25),transparent 30%),
+ linear-gradient(135deg,var(--bg1),var(--bg2));
+ overflow-x:hidden;
 }
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.app{width:min(1100px,94%);margin:auto;padding:22px 0 50px}
 
-button,input,textarea{
-  font:inherit;
+/* Header */
+.topbar{
+ display:flex;justify-content:space-between;align-items:center;
+ padding:10px 0 25px;gap:15px
 }
-
-button{
-  -webkit-appearance:none;
-  appearance:none;
-  cursor:pointer;
-}
-
-.app{
-  width:min(100%,720px);
-  margin:auto;
-  padding:14px 14px 28px;
-}
-
-.screen{
-  display:none;
-}
-
-.screen.active{
-  display:block;
-  animation:appear .28s ease;
-}
-
-@keyframes appear{
-  from{
-    opacity:0;
-    transform:translateY(8px);
-  }
-  to{
-    opacity:1;
-    transform:none;
-  }
-}
-
-/* ================= HEADER ================= */
-
-.header{
-  height:48px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:12px;
-}
-
 .logo{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  font-weight:700;
-  letter-spacing:.4px;
+ font-size:1.35rem;font-weight:900;letter-spacing:.3px
+}
+.logo span{color:var(--gold)}
+.lang-btn{
+ background:rgba(255,255,255,.1);border:1px solid var(--border);
+ color:#fff;border-radius:50px;padding:9px 15px
 }
 
-.logoMark{
-  width:34px;
-  height:34px;
-  border-radius:11px;
-  display:grid;
-  place-items:center;
-  background:linear-gradient(135deg,#8b5cf6,#ec4899);
-  box-shadow:0 7px 22px rgba(139,92,246,.25);
+/* Hero */
+.hero{text-align:center;padding:28px 8px 30px}
+.badge{
+ display:inline-block;padding:7px 13px;border:1px solid rgba(255,209,102,.35);
+ border-radius:30px;color:#ffe8a3;background:rgba(255,209,102,.08);
+ font-size:.84rem
+}
+.hero h1{
+ font-size:clamp(2.1rem,7vw,4.5rem);line-height:1.05;margin:18px 0 12px;
+ background:linear-gradient(90deg,#fff,#ffd166,#ff7eb3,#fff);
+ -webkit-background-clip:text;color:transparent
+}
+.hero p{color:var(--muted);max-width:650px;margin:auto;line-height:1.7}
+
+/* Card */
+.card{
+ background:var(--card);border:1px solid var(--border);
+ backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+ border-radius:26px;padding:24px;
+ box-shadow:0 25px 70px rgba(0,0,0,.35);
+}
+.section-title{font-size:1.25rem;font-weight:800;margin:0 0 15px}
+.field{margin-bottom:16px}
+label{display:block;color:#ddd5eb;font-size:.9rem;margin-bottom:7px}
+input,textarea,select{
+ width:100%;padding:13px 15px;border:1px solid rgba(255,255,255,.12);
+ border-radius:14px;background:rgba(255,255,255,.95);color:#21192d;
+ outline:none
+}
+textarea{min-height:100px;resize:vertical}
+input:focus,textarea:focus,select:focus{
+ border-color:#c084fc;box-shadow:0 0 0 3px rgba(192,132,252,.15)
 }
 
-.logo small{
-  display:block;
-  color:#747888;
-  font-size:9px;
-  font-weight:500;
-  letter-spacing:1px;
-  margin-top:-2px;
-}
-
-.back{
-  border:0;
-  color:#b9bbc7;
-  background:none;
-  padding:7px 0;
-  font-size:13px;
-}
-
-.step{
-  color:#777b8b;
-  font-size:11px;
-}
-
-/* ================= HOME ================= */
-
-.home{
-  padding-top:18px;
-}
-
-.homeHero{
-  position:relative;
-  overflow:hidden;
-  padding:34px 20px 23px;
-  border-radius:28px;
-  border:1px solid var(--line);
-  background:
-    linear-gradient(150deg,rgba(23,25,39,.96),rgba(12,13,22,.98));
-}
-
-.homeHero:before{
-  content:"";
-  position:absolute;
-  width:230px;
-  height:230px;
-  border-radius:50%;
-  background:rgba(139,92,246,.12);
-  filter:blur(65px);
-  left:-90px;
-  top:-110px;
-}
-
-.homeHero:after{
-  content:"";
-  position:absolute;
-  width:190px;
-  height:190px;
-  border-radius:50%;
-  background:rgba(236,72,153,.08);
-  filter:blur(60px);
-  right:-80px;
-  bottom:-100px;
-}
-
-.homeInner{
-  position:relative;
-  z-index:1;
-}
-
-.miniBrand{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:8px;
-  color:#c8c4d4;
-  font-size:12px;
-  letter-spacing:1.5px;
-  text-transform:uppercase;
-  margin-bottom:24px;
-}
-
-.homeSymbol{
-  width:74px;
-  height:74px;
-  margin:auto;
-  display:grid;
-  place-items:center;
-  border-radius:24px;
-  font-size:36px;
-  background:linear-gradient(145deg,#211b3d,#28172d);
-  border:1px solid rgba(255,255,255,.08);
-}
-
-.homeHero h1{
-  margin:21px 0 10px;
-  text-align:center;
-  font-family:"Noto Sans Devanagari",sans-serif;
-  font-size:32px;
-  line-height:1.28;
-  font-weight:700;
-}
-
-.homeHero p{
-  max-width:460px;
-  margin:0 auto 22px;
-  color:#989cab;
-  text-align:center;
-  line-height:1.65;
-  font-size:13px;
-}
-
-.primary{
-  width:100%;
-  min-height:52px;
-  border:0;
-  border-radius:15px;
-  color:white;
-  font-weight:700;
-  background:linear-gradient(100deg,#7c3aed,#db2777);
-  box-shadow:0 12px 28px rgba(139,92,246,.20);
-  transition:transform .15s;
-}
-
-.primary:active{
-  transform:scale(.985);
-}
-
-.secondary{
-  width:100%;
-  min-height:49px;
-  border-radius:14px;
-  border:1px solid var(--line);
-  background:#171a27;
-  color:#f1f1f4;
-  font-weight:600;
-}
-
-.full{
-  margin-top:10px;
-}
-
-/* ================= SECTION ================= */
-
-.section{
-  border:1px solid var(--line);
-  border-radius:22px;
-  background:rgba(16,18,28,.91);
-  padding:15px;
-}
-
-.sectionHead{
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-  margin-bottom:12px;
-}
-
-.sectionHead h2{
-  margin:0;
-  font-size:21px;
-  font-weight:700;
-}
-
-.sectionHead p{
-  margin:0;
-  color:#777b8a;
-  font-size:11px;
-}
-
-/* ================= SEARCH ================= */
-
-.searchWrap{
-  position:relative;
-  margin-bottom:11px;
-}
-
-.searchWrap span{
-  position:absolute;
-  left:13px;
-  top:50%;
-  transform:translateY(-50%);
-  color:#777b8b;
-  pointer-events:none;
-}
-
+/* Search */
 .search{
-  width:100%;
-  height:45px;
-  border:1px solid var(--line);
-  outline:0;
-  border-radius:13px;
-  padding:0 13px 0 38px;
-  color:white;
-  background:#0d0f18;
+ position:relative;margin-bottom:16px
 }
+.search input{padding-left:42px}
+.search-icon{position:absolute;left:15px;top:12px;color:#777}
 
-.search:focus{
-  border-color:rgba(167,139,250,.55);
+/* Occasion */
+.occasion-grid{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+ max-height:380px;overflow:auto;padding:2px
 }
-
-/* ================= OCCASIONS ================= */
-
-.occasionGrid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:7px;
-  max-height:430px;
-  overflow:auto;
-  padding:1px;
-}
-
 .occasion{
-  min-height:76px;
-  padding:7px 3px;
-  border:1px solid var(--line);
-  border-radius:14px;
-  color:#dfe0e7;
-  background:#11131d;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  gap:4px;
-  transition:.15s;
+ border:1px solid var(--border);background:rgba(255,255,255,.06);
+ color:white;border-radius:17px;padding:14px 8px;text-align:center;
+ transition:.2s
 }
-
-.occasion .icon{
-  font-size:23px;
-  line-height:1;
-}
-
-.occasion .name{
-  font-family:"Noto Sans Devanagari",sans-serif;
-  font-size:10.5px;
-  text-align:center;
-  line-height:1.15;
-}
-
+.occasion:hover{transform:translateY(-2px);background:rgba(255,255,255,.12)}
 .occasion.selected{
-  border-color:#9b7cff;
-  background:linear-gradient(145deg,rgba(124,58,237,.23),rgba(236,72,153,.10));
-  box-shadow:inset 0 0 0 1px rgba(167,139,250,.08);
+ border-color:#ffd166;background:rgba(255,209,102,.12);
+ box-shadow:0 0 0 2px rgba(255,209,102,.12)
 }
+.occasion .emoji{display:block;font-size:1.8rem;margin-bottom:5px}
+.occasion small{color:#d5cde1}
 
-.noResult{
-  grid-column:1/-1;
-  text-align:center;
-  color:#737788;
-  padding:28px 5px;
-  font-size:13px;
+/* Chips */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+ border:1px solid var(--border);background:rgba(255,255,255,.06);
+ color:#fff;border-radius:30px;padding:9px 13px
 }
+.chip.active{background:linear-gradient(90deg,#8b5cf6,#ec4899);border-color:transparent}
 
-/* ================= PROGRESS ================= */
-
-.progress{
-  display:flex;
-  gap:4px;
-  margin-bottom:12px;
+/* Buttons */
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.btn{
+ border:0;border-radius:15px;padding:14px 16px;color:white;font-weight:800;
+ transition:.2s
 }
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:linear-gradient(100deg,#8b5cf6,#ec4899);box-shadow:0 10px 30px rgba(139,92,246,.3)}
+.btn-whatsapp{background:#25d366}
+.btn-dark{background:rgba(255,255,255,.1);border:1px solid var(--border)}
+.btn-gold{background:linear-gradient(100deg,#f59e0b,#ef4444)}
+.full{grid-column:1/-1}
 
-.progress i{
-  flex:1;
-  height:3px;
-  border-radius:4px;
-  background:#242735;
+/* Preview */
+.preview{
+ display:none;margin-top:20px;animation:up .5s ease
 }
-
-.progress i.active{
-  background:linear-gradient(90deg,#8b5cf6,#ec4899);
+.preview.show{display:block}
+.preview-card{
+ text-align:center;padding:30px 20px;border-radius:24px;
+ background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(255,255,255,.04));
+ border:1px solid var(--border)
 }
-
-/* ================= FIELDS ================= */
-
-.field{
-  margin-bottom:12px;
-}
-
-.field label{
-  display:block;
-  color:#c6c8d2;
-  font-size:12px;
-  font-weight:600;
-  margin:0 0 6px 2px;
-}
-
-.input,
-textarea{
-  width:100%;
-  border:1px solid var(--line);
-  border-radius:13px;
-  outline:none;
-  color:white;
-  background:#0d0f18;
-  padding:12px 13px;
-}
-
-.input{
-  height:46px;
-}
-
-textarea{
-  min-height:105px;
-  resize:vertical;
-  line-height:1.55;
-}
-
-.input:focus,
-textarea:focus{
-  border-color:rgba(167,139,250,.55);
-}
-
-.row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:9px;
-}
-
-/* ================= RELATIONS ================= */
-
-.relationGrid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:6px;
-}
-
-.relation{
-  min-height:40px;
-  border-radius:10px;
-  border:1px solid var(--line);
-  color:#bfc1cd;
-  background:#11131d;
-  font-size:11px;
-  padding:5px 3px;
-}
-
-.relation.selected{
-  color:white;
-  border-color:#9675ef;
-  background:rgba(124,58,237,.18);
-}
-
-/* ================= SHAYARI ================= */
-
-.shayariList{
-  display:flex;
-  flex-direction:column;
-  gap:7px;
-  max-height:405px;
-  overflow:auto;
-}
-
+.preview-emoji{font-size:4.5rem}
+.preview-card h2{margin:10px 0;color:#ffd166}
 .shayari{
-  text-align:left;
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:12px;
-  color:#e4e4e9;
-  background:#10121b;
-  line-height:1.55;
-  font-family:"Noto Sans Devanagari",sans-serif;
-  font-size:13px;
+ background:rgba(0,0,0,.25);border-radius:16px;padding:18px;
+ line-height:1.9;color:#fff;font-size:1.05rem;white-space:pre-line
 }
+.sender{color:#ddd;margin-top:15px}
 
-.shayari.selected{
-  border-color:#9878f1;
-  background:linear-gradient(145deg,rgba(124,58,237,.17),rgba(236,72,153,.07));
-}
-
-.customLabel{
-  margin-top:12px;
-  margin-bottom:6px;
-  color:#a9abb7;
-  font-size:11px;
-  font-weight:600;
-}
-
-.counter{
-  text-align:right;
-  color:#676b7a;
-  font-size:10px;
-  margin-top:4px;
-}
-
-/* ================= PREVIEW ================= */
-
-.previewCard{
-  position:relative;
-  overflow:hidden;
-  border-radius:25px;
-  padding:25px 17px 18px;
-  text-align:center;
-  background:
-    radial-gradient(circle at 50% 0%,rgba(167,139,250,.16),transparent 37%),
-    linear-gradient(150deg,#151827,#0d0f18);
-  border:1px solid var(--line);
-}
-
-.previewLine{
-  width:40px;
-  height:3px;
-  border-radius:5px;
-  background:linear-gradient(90deg,#8b5cf6,#ec4899);
-  margin:0 auto 17px;
-}
-
-.previewIcon{
-  font-size:37px;
-  margin-bottom:7px;
-}
-
-.previewTitle{
-  margin:0;
-  font-family:"Playfair Display",serif;
-  font-size:30px;
-  line-height:1.2;
-}
-
-.previewTo{
-  color:#a997e9;
-  font-size:12px;
-  margin-top:6px;
-}
-
-.previewShayari{
-  margin:19px auto 14px;
-  max-width:550px;
-  font-family:"Noto Sans Devanagari",sans-serif;
-  font-size:17px;
-  line-height:1.75;
-  white-space:pre-line;
-}
-
-.previewMessage{
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.035);
-  border-radius:14px;
-  padding:12px;
-  color:#aaaebb;
-  font-size:12px;
-  line-height:1.55;
-}
-
-.previewSign{
-  color:var(--gold);
-  margin-top:14px;
-  font-family:"Noto Sans Devanagari",sans-serif;
-  font-size:14px;
-  font-weight:700;
-}
-
-/* ================= READY ================= */
-
-.ready{
-  text-align:center;
-  padding:34px 20px 22px;
-}
-
-.readyMark{
-  width:65px;
-  height:65px;
-  border-radius:20px;
-  display:grid;
-  place-items:center;
-  margin:0 auto 14px;
-  font-size:31px;
-  background:linear-gradient(135deg,#7c3aed,#db2777);
-}
-
-.ready h2{
-  margin:0;
-  font-family:"Playfair Display",serif;
-  font-size:29px;
-}
-
-.ready p{
-  color:#9195a5;
-  font-size:13px;
-  line-height:1.6;
-  margin:8px auto 18px;
-  max-width:400px;
-}
-
-.twoButtons{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-}
-
-/* ================= RECEIVER ================= */
-
+/* Receiver */
+#receiverPage{display:none}
 .receiver{
-  min-height:calc(100vh - 42px);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:14px 0 28px;
+ min-height:100vh;display:flex;align-items:center;justify-content:center;
+ padding:20px
+}
+.receiver-card{width:min(620px,100%);text-align:center}
+.receiver-card h1{font-size:clamp(2rem,7vw,4rem)}
+.gift{
+ font-size:7rem;display:inline-block;animation:float 2s ease-in-out infinite;
+ filter:drop-shadow(0 10px 25px rgba(255,209,102,.25))
+}
+.reveal-hidden{display:none}
+.countdown{font-size:4rem;font-weight:900;color:#ffd166}
+.final-wish{
+ background:rgba(0,0,0,.28);padding:22px;border-radius:20px;
+ line-height:1.9;font-size:1.08rem;white-space:pre-line
 }
 
-.receiver.active{
-  display:flex;
-}
-
-.receiverBox{
-  width:100%;
-  position:relative;
-  overflow:hidden;
-  padding:30px 19px 22px;
-  text-align:center;
-  border-radius:27px;
-  border:1px solid var(--line);
-  background:
-    radial-gradient(circle at 50% 0%,rgba(139,92,246,.15),transparent 42%),
-    #10121d;
-  box-shadow:0 25px 70px rgba(0,0,0,.40);
-}
-
-.receiverSmall{
-  color:#8d91a2;
-  font-size:10px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  margin-bottom:16px;
-}
-
-.receiverIcon{
-  width:68px;
-  height:68px;
-  margin:0 auto 16px;
-  border-radius:21px;
-  display:grid;
-  place-items:center;
-  font-size:34px;
-  background:#19172a;
-  border:1px solid rgba(255,255,255,.08);
-}
-
-.receiverBox h1{
-  margin:0;
-  font-family:"Playfair Display",serif;
-  font-size:33px;
-  line-height:1.18;
-}
-
-.receiverBox p{
-  color:#969aaa;
-  font-size:13px;
-  line-height:1.65;
-  margin:11px 0 20px;
-}
-
-.receiverName{
-  color:#b69cff;
-  font-weight:700;
-}
-
-.receiverButton{
-  margin-top:3px;
-}
-
-/* ================= COUNTDOWN ================= */
-
-.countNumber{
-  font-family:"Playfair Display",serif;
-  font-size:72px;
-  line-height:1;
-  margin:10px 0 8px;
-  background:linear-gradient(120deg,#fff,#b99cff,#f3a7d2);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-}
-
-/* ================= FINAL ================= */
-
-.finalWrap{
-  padding:8px 0 18px;
-}
-
-.finalCard{
-  position:relative;
-  overflow:hidden;
-  border-radius:30px;
-  padding:27px 17px 18px;
-  background:
-    radial-gradient(circle at 50% -5%,rgba(236,72,153,.17),transparent 34%),
-    radial-gradient(circle at 0% 100%,rgba(124,58,237,.12),transparent 35%),
-    linear-gradient(155deg,#171a2a,#0d101a 75%);
-  border:1px solid rgba(255,255,255,.10);
-  box-shadow:0 30px 100px rgba(0,0,0,.50);
-  text-align:center;
-}
-
-.finalCard:before{
-  content:"";
-  position:absolute;
-  width:120px;
-  height:1px;
-  background:linear-gradient(90deg,transparent,#8f7bea,transparent);
-  top:18px;
-  left:50%;
-  transform:translateX(-50%);
-}
-
-.finalOccasion{
-  margin-top:6px;
-  color:#979ba9;
-  font-size:9px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-}
-
-.finalIcon{
-  font-size:42px;
-  margin:13px 0 5px;
-}
-
-.finalCard h1{
-  margin:0;
-  font-family:"Playfair Display",serif;
-  font-size:35px;
-  line-height:1.2;
-}
-
-.finalFor{
-  color:#ad99f4;
-  font-size:13px;
-  font-weight:600;
-  margin-top:7px;
-}
-
-.finalShayari{
-  margin:20px auto 15px;
-  max-width:580px;
-  font-family:"Noto Sans Devanagari",sans-serif;
-  font-size:18px;
-  line-height:1.75;
-  white-space:pre-line;
-}
-
-.finalMessage{
-  text-align:left;
-  padding:14px 14px 13px;
-  border-left:2px solid #8b5cf6;
-  border-radius:0 13px 13px 0;
-  background:rgba(255,255,255,.035);
-  color:#b6bac7;
-  font-size:12px;
-  line-height:1.6;
-}
-
-.finalSign{
-  margin:16px 0;
-  color:#f4c451;
-  font-family:"Noto Sans Devanagari",sans-serif;
-  font-size:14px;
-  font-weight:700;
-}
-
-.finalButtons{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-}
-
-.finalButtons .primary{
-  grid-column:1/-1;
-}
-
-/* ================= TOAST ================= */
-
+/* Toast */
 .toast{
-  position:fixed;
-  left:50%;
-  bottom:20px;
-  transform:translate(-50%,20px);
-  opacity:0;
-  pointer-events:none;
-  z-index:100;
-  padding:10px 15px;
-  border-radius:12px;
-  color:white;
-  background:#202333;
-  border:1px solid rgba(255,255,255,.10);
-  font-size:12px;
-  transition:.22s;
+ position:fixed;left:50%;bottom:25px;transform:translate(-50%,120px);
+ background:#fff;color:#21192d;padding:12px 18px;border-radius:50px;
+ font-weight:700;z-index:9999;transition:.3s;box-shadow:0 10px 30px #0005
 }
+.toast.show{transform:translate(-50%,0)}
 
-.toast.show{
-  opacity:1;
-  transform:translate(-50%,0);
-}
+/* Footer */
+footer{text-align:center;color:#aaa1b7;font-size:.8rem;margin-top:28px}
 
-/* ================= CONFETTI ================= */
-
+/* effects */
 .confetti{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  overflow:hidden;
-  z-index:90;
+ position:fixed;top:-15px;width:9px;height:14px;z-index:9998;
+ animation:fall linear forwards;pointer-events:none
 }
-
-.confetti span{
-  position:absolute;
-  top:-15px;
-  width:6px;
-  height:11px;
-  animation:drop 2.8s linear forwards;
+.heart{
+ position:fixed;bottom:-30px;z-index:9997;animation:heartUp linear forwards;
+ pointer-events:none
 }
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+@keyframes heartUp{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}
+@keyframes float{50%{transform:translateY(-14px) rotate(2deg)}}
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 
-@keyframes drop{
-  to{
-    transform:translateY(110vh) rotate(650deg);
-  }
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:430px){
-
-  .app{
-    padding:10px 11px 23px;
-  }
-
-  .home{
-    padding-top:9px;
-  }
-
-  .homeHero{
-    padding:27px 15px 19px;
-    border-radius:23px;
-  }
-
-  .homeHero h1{
-    font-size:29px;
-  }
-
-  .occasionGrid{
-    grid-template-columns:repeat(4,1fr);
-  }
-
-  .relationGrid{
-    grid-template-columns:repeat(3,1fr);
-  }
-
-  .receiver{
-    min-height:calc(100vh - 25px);
-  }
-
-  .receiverBox{
-    padding:27px 15px 19px;
-    border-radius:23px;
-  }
-
-  .receiverBox h1{
-    font-size:30px;
-  }
-
-  .finalCard{
-    padding:25px 14px 17px;
-    border-radius:25px;
-  }
-
-  .finalCard h1{
-    font-size:31px;
-  }
-
-  .finalShayari{
-    font-size:16px;
-  }
-}
-
-@media(min-width:600px){
-
-  .occasionGrid{
-    grid-template-columns:repeat(6,1fr);
-  }
-
-  .relationGrid{
-    grid-template-columns:repeat(6,1fr);
-  }
+@media(max-width:650px){
+ .occasion-grid{grid-template-columns:repeat(2,1fr)}
+ .actions{grid-template-columns:1fr}
+ .full{grid-column:auto}
+ .card{padding:17px}
 }
 </style>
 </head>
 
 <body>
 
+<!-- ================= CREATOR APP ================= -->
+<div id="creatorPage">
 <div class="app">
 
-<!-- ================= CREATOR HOME ================= -->
+<header class="topbar">
+ <div class="logo">✨ Magic<span>Wish</span></div>
+ <button class="lang-btn" onclick="toggleLanguage()" id="langBtn">हिंदी</button>
+</header>
 
-<section id="home" class="screen active">
-
-  <div class="header">
-    <div class="logo">
-      <div class="logoMark">💌</div>
-      <div>
-        Wish Studio
-        <small>MAKE IT PERSONAL</small>
-      </div>
-    </div>
-  </div>
-
-  <div class="home">
-    <div class="homeHero">
-
-      <div class="homeInner">
-
-        <div class="miniBrand">
-          ✦ A LITTLE SOMETHING FOR SOMEONE SPECIAL ✦
-        </div>
-
-        <div class="homeSymbol">💌</div>
-
-        <h1>
-          किसी अपने के लिए<br>
-          कुछ खास लिखिए
-        </h1>
-
-        <p>
-          एक occasion चुनिए, रिश्ता बताइए और अपने दिल की बात
-          एक खूबसूरत Wish में बदल दीजिए।
-        </p>
-
-        <button class="primary" id="start">
-          ✨ Wish बनाना शुरू करें
-        </button>
-
-      </div>
-
-    </div>
-  </div>
-
+<section class="hero">
+ <span class="badge">💝 FREE • NO LOGIN • SHAREABLE</span>
+ <h1 id="heroTitle">किसी खास के लिए<br>कुछ खास बनाइए ✨</h1>
+ <p id="heroSub">
+  जन्मदिन, त्योहार, प्यार और हर खास मौके के लिए
+  खूबसूरत शायरी और Magical Surprise बनाइए।
+ </p>
 </section>
 
+<div class="card">
 
-<!-- ================= OCCASION ================= -->
+ <h2 class="section-title">🎯 Occasion चुनें</h2>
 
-<section id="occasionScreen" class="screen">
+ <div class="search">
+  <span class="search-icon">🔎</span>
+  <input id="occasionSearch" oninput="filterOccasions()" placeholder="Occasion खोजें...">
+ </div>
 
-  <div class="header">
-    <button class="back" id="backHome">← वापस</button>
-    <span class="step">01 / 05</span>
+ <div class="occasion-grid" id="occasionGrid"></div>
+
+ <div style="height:20px"></div>
+
+ <h2 class="section-title">👤 किसके लिए?</h2>
+
+ <div class="chips" id="relationChips">
+  <button class="chip active" data-rel="friend">👫 दोस्त</button>
+  <button class="chip" data-rel="mother">👩 माँ</button>
+  <button class="chip" data-rel="father">👨 पिता</button>
+  <button class="chip" data-rel="brother">👦 भाई</button>
+  <button class="chip" data-rel="sister">👧 बहन</button>
+  <button class="chip" data-rel="partner">❤️ Partner</button>
+  <button class="chip" data-rel="family">👨‍👩‍👧 परिवार</button>
+  <button class="chip" data-rel="teacher">👨‍🏫 Teacher</button>
+ </div>
+
+ <div style="height:20px"></div>
+
+ <h2 class="section-title">🎭 Wish का अंदाज़</h2>
+
+ <div class="chips" id="moodChips">
+  <button class="chip active" data-mood="emotional">🥹 Emotional</button>
+  <button class="chip" data-mood="cute">🥰 Cute</button>
+  <button class="chip" data-mood="romantic">❤️ Romantic</button>
+  <button class="chip" data-mood="funny">😂 Funny</button>
+  <button class="chip" data-mood="royal">👑 Royal</button>
+  <button class="chip" data-mood="traditional">🙏 Traditional</button>
+ </div>
+
+ <div style="height:20px"></div>
+
+ <div class="field">
+  <label>✍️ आपका नाम</label>
+  <input id="sender" placeholder="जैसे: Nitin">
+ </div>
+
+ <div class="field">
+  <label>💌 जिसे भेजना है उसका नाम</label>
+  <input id="receiver" placeholder="जैसे: Rahul">
+ </div>
+
+ <div class="field">
+  <label>📝 अपना Personal Message <small>(optional)</small></label>
+  <textarea id="personal" placeholder="अपनी तरफ से कुछ खास लिखें..."></textarea>
+ </div>
+
+ <div class="field">
+  <label>🎨 Theme</label>
+  <select id="theme">
+   <option value="dream">💜 Dreamy Purple</option>
+   <option value="love">❤️ Romantic Love</option>
+   <option value="gold">👑 Royal Gold</option>
+   <option value="festive">🎉 Festive</option>
+   <option value="night">🌌 Midnight</option>
+  </select>
+ </div>
+
+ <div class="actions">
+  <button class="btn btn-primary" onclick="surpriseMe()">🎲 Surprise Me</button>
+  <button class="btn btn-gold" onclick="generateWish()">✨ Wish तैयार करें</button>
+ </div>
+
+ <!-- PREVIEW -->
+ <div class="preview" id="preview">
+  <div class="preview-card" id="previewCard">
+   <div class="preview-emoji" id="pEmoji">🎁</div>
+   <h2 id="pTitle">आपके लिए एक खास संदेश</h2>
+   <div class="shayari" id="pShayari"></div>
+   <div class="sender" id="pSender"></div>
   </div>
 
-  <div class="progress">
-    <i class="active"></i><i></i><i></i><i></i><i></i>
+  <div class="actions">
+   <button class="btn btn-whatsapp" onclick="shareWhatsApp()">💚 WhatsApp पर भेजें</button>
+   <button class="btn btn-dark" onclick="copyLink()">🔗 Link Copy करें</button>
+   <button class="btn btn-dark" onclick="copyMessage()">📋 Message Copy करें</button>
+   <button class="btn btn-primary" onclick="nativeShare()">📤 Share</button>
   </div>
-
-  <div class="section">
-
-    <div class="sectionHead">
-      <h2>Occasion चुनें</h2>
-      <p id="occasionTotal"></p>
-    </div>
-
-    <div class="searchWrap">
-      <span>⌕</span>
-      <input
-        id="occasionSearch"
-        class="search"
-        type="search"
-        placeholder="Birthday, Diwali, Eid..."
-      >
-    </div>
-
-    <div id="occasionGrid" class="occasionGrid"></div>
-
-  </div>
-
-  <button class="primary full" id="occasionNext">
-    आगे बढ़ें
-  </button>
-
-</section>
-
-
-<!-- ================= DETAILS ================= -->
-
-<section id="detailsScreen" class="screen">
-
-  <div class="header">
-    <button class="back" id="backOccasion">← वापस</button>
-    <span class="step">02 / 05</span>
-  </div>
-
-  <div class="progress">
-    <i class="active"></i><i class="active"></i><i></i><i></i><i></i>
-  </div>
-
-  <div class="section">
-
-    <div class="sectionHead">
-      <h2>किसके लिए?</h2>
-      <p id="chosenOccasion"></p>
-    </div>
-
-    <div class="field">
-      <label>रिश्ता चुनें</label>
-      <div id="relationGrid" class="relationGrid"></div>
-    </div>
-
-    <div class="row">
-
-      <div class="field">
-        <label>उनका नाम</label>
-        <input id="receiverName" class="input" placeholder="जैसे Rahul">
-      </div>
-
-      <div class="field">
-        <label>आपका नाम</label>
-        <input id="senderName" class="input" placeholder="जैसे Nitin">
-      </div>
-
-    </div>
-
-  </div>
-
-  <button class="primary full" id="detailsNext">
-    Shayari चुनें
-  </button>
-
-</section>
-
-
-<!-- ================= SHAYARI ================= -->
-
-<section id="shayariScreen" class="screen">
-
-  <div class="header">
-    <button class="back" id="backDetails">← वापस</button>
-    <span class="step">03 / 05</span>
-  </div>
-
-  <div class="progress">
-    <i class="active"></i><i class="active"></i><i class="active"></i><i></i><i></i>
-  </div>
-
-  <div class="section">
-
-    <div class="sectionHead">
-      <h2>Shayari चुनें</h2>
-      <p id="shayariTotal">10 Shayari</p>
-    </div>
-
-    <div id="shayariList" class="shayariList"></div>
-
-    <div class="customLabel">
-      ✍️ अपनी Shayari लिखना चाहते हैं?
-    </div>
-
-    <textarea
-      id="customShayari"
-      maxlength="500"
-      placeholder="अपनी दिल की बात यहाँ लिखें..."
-    ></textarea>
-
-    <div class="counter">
-      <span id="shayariCounter">0</span>/500
-    </div>
-
-  </div>
-
-  <button class="primary full" id="shayariNext">
-    Personal Message
-  </button>
-
-</section>
-
-
-<!-- ================= MESSAGE ================= -->
-
-<section id="messageScreen" class="screen">
-
-  <div class="header">
-    <button class="back" id="backShayari">← वापस</button>
-    <span class="step">04 / 05</span>
-  </div>
-
-  <div class="progress">
-    <i class="active"></i><i class="active"></i><i class="active"></i><i class="active"></i><i></i>
-  </div>
-
-  <div class="section">
-
-    <div class="sectionHead">
-      <h2>दिल की बात</h2>
-      <p>Optional</p>
-    </div>
-
-    <div class="field">
-      <label>Personal Message</label>
-
-      <textarea
-        id="personalMessage"
-        maxlength="350"
-        placeholder="जैसे — बस हमेशा ऐसे ही मुस्कुराते रहना..."
-      ></textarea>
-
-      <div class="counter">
-        <span id="messageCounter">0</span>/350
-      </div>
-    </div>
-
-  </div>
-
-  <button class="primary full" id="previewNext">
-    Wish Preview
-  </button>
-
-</section>
-
-
-<!-- ================= PREVIEW ================= -->
-
-<section id="previewScreen" class="screen">
-
-  <div class="header">
-    <button class="back" id="backMessage">← वापस</button>
-    <span class="step">05 / 05</span>
-  </div>
-
-  <div class="progress">
-    <i class="active"></i><i class="active"></i><i class="active"></i><i class="active"></i><i class="active"></i>
-  </div>
-
-  <div class="previewCard">
-
-    <div class="previewLine"></div>
-
-    <div class="previewIcon" id="previewIcon">🎂</div>
-
-    <h2 class="previewTitle" id="previewTitle">
-      जन्मदिन मुबारक
-    </h2>
-
-    <div class="previewTo">
-      <span id="previewRelation">Dost</span>
-      ·
-      <span id="previewReceiver">Rahul</span>
-    </div>
-
-    <div class="previewShayari" id="previewShayari"></div>
-
-    <div class="previewMessage" id="previewMessage"></div>
-
-    <div class="previewSign" id="previewSign">
-      प्यार से — Nitin
-    </div>
-
-  </div>
-
-  <button class="primary full" id="createWish">
-    💖 Wish तैयार करें
-  </button>
-
-</section>
-
-
-<!-- ================= READY ================= -->
-
-<section id="readyScreen" class="screen">
-
-  <div class="header">
-    <button class="back" id="readyBack">← वापस</button>
-  </div>
-
-  <div class="section ready">
-
-    <div class="readyMark">✓</div>
-
-    <h2>Wish तैयार है</h2>
-
-    <p>
-      अब इसे अपने खास इंसान तक पहुँचाइए।
-      Link खोलते ही उनके लिए एक छोटा सा surprise शुरू होगा।
-    </p>
-
-    <div class="twoButtons">
-
-      <button class="secondary" id="copyLink">
-        🔗 Copy Link
-      </button>
-
-      <button class="secondary" id="shareLink">
-        📤 Share
-      </button>
-
-    </div>
-
-    <button class="primary full" id="openWish">
-      👀 Wish देखें
-    </button>
-
-    <button class="back full" id="newCreator">
-      + नई Wish बनाएं
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- ================= RECEIVER 1 ================= -->
-
-<section id="receiver1" class="screen receiver">
-
-  <div class="receiverBox">
-
-    <div class="receiverSmall">
-      SOMETHING SPECIAL
-    </div>
-
-    <div class="receiverIcon">💌</div>
-
-    <h1>
-      आपके लिए<br>
-      कुछ खास है
-    </h1>
-
-    <p>
-      किसी ने आपके लिए<br>
-      दिल से एक Wish बनाई है।
-    </p>
-
-    <button class="primary receiverButton" id="receiver1Next">
-      खोलें ✦
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- ================= RECEIVER 2 ================= -->
-
-<section id="receiver2" class="screen receiver">
-
-  <div class="receiverBox">
-
-    <div class="receiverSmall">
-      JUST FOR YOU
-    </div>
-
-    <div class="receiverIcon">♡</div>
-
-    <h1>
-      किसी ने आपको<br>
-      याद किया है
-    </h1>
-
-    <p>
-      और आपके लिए कुछ ऐसे शब्द चुने हैं<br>
-      जिन्हें शायद आप याद रखेंगे।
-    </p>
-
-    <div class="receiverName" id="r2Name"></div>
-
-    <button class="primary full" id="receiver2Next">
-      आगे देखें →
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- ================= RECEIVER 3 ================= -->
-
-<section id="receiver3" class="screen receiver">
-
-  <div class="receiverBox">
-
-    <div class="receiverSmall">
-      ONE LITTLE SURPRISE
-    </div>
-
-    <div class="receiverIcon" id="r3Icon">🎁</div>
-
-    <h1>
-      आपके लिए<br>
-      एक छोटा सा Surprise
-    </h1>
-
-    <p>
-      इसे खोलने से पहले<br>
-      बस एक बार मुस्कुरा दीजिए।
-    </p>
-
-    <button class="primary full" id="receiver3Next">
-      Surprise खोलें
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- ================= RECEIVER 4 ================= -->
-
-<section id="receiver4" class="screen receiver">
-
-  <div class="receiverBox">
-
-    <div class="receiverSmall">
-      ONE MOMENT
-    </div>
-
-    <div class="receiverIcon">✦</div>
-
-    <div class="countNumber" id="countNumber">3</div>
-
-    <h1>
-      बस एक पल...
-    </h1>
-
-    <p>
-      आपकी Wish खुलने वाली है।
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ================= RECEIVER 5 ================= -->
-
-<section id="receiver5" class="screen receiver">
-
-  <div class="receiverBox">
-
-    <div class="receiverSmall">
-      WRITTEN FOR YOU
-    </div>
-
-    <div class="receiverIcon">✉</div>
-
-    <h1>
-      कुछ शब्द<br>
-      सिर्फ आपके लिए
-    </h1>
-
-    <p>
-      हर शब्द के पीछे<br>
-      एक छोटी सी भावना है।
-    </p>
-
-    <button class="primary full" id="receiver5Next">
-      Wish खोलें ♥
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- ================= FINAL ================= -->
-
-<section id="finalWish" class="screen finalWrap">
-
-  <div class="finalCard">
-
-    <div class="finalOccasion" id="finalOccasion">
-      A SPECIAL WISH
-    </div>
-
-    <div class="finalIcon" id="finalIcon">🎂</div>
-
-    <h1 id="finalTitle">
-      जन्मदिन मुबारक
-    </h1>
-
-    <div class="finalFor">
-      <span id="finalRelation">Dost</span>
-      ·
-      <span id="finalReceiver">Rahul</span>
-    </div>
-
-    <div class="finalShayari" id="finalShayari"></div>
-
-    <div class="finalMessage" id="finalMessage"></div>
-
-    <div class="finalSign" id="finalSign">
-      प्यार से — Nitin
-    </div>
-
-    <div class="finalButtons">
-
-      <button class="secondary" id="again">
-        ↩ फिर से देखें
-      </button>
-
-      <button class="secondary" id="finalShare">
-        📤 Share
-      </button>
-
-      <button class="primary" id="newWish">
-        ✨ अपनी Wish बनाएं
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
+ </div>
 
 </div>
 
-<div id="toast" class="toast"></div>
-<div id="confetti" class="confetti"></div>
+<footer>
+ ✨ MagicWish • Free wishing experience • Made for sharing
+</footer>
+
+</div>
+</div>
+
+
+<!-- ================= RECEIVER EXPERIENCE ================= -->
+<div id="receiverPage">
+ <div class="receiver">
+  <div class="card receiver-card">
+
+   <div id="secretScreen">
+    <div class="gift">🎁</div>
+    <h1>आपके लिए एक<br>Magical Surprise है ✨</h1>
+    <p id="secretText" style="color:#d4ccdf;line-height:1.7">
+     किसी खास ने आपके लिए एक खूबसूरत संदेश भेजा है।
+    </p>
+    <button class="btn btn-primary full" onclick="openSurprise()">
+     🎁 SURPRISE खोलें
+    </button>
+   </div>
+
+   <div id="countdownScreen" class="reveal-hidden">
+    <p>आपका surprise तैयार हो रहा है...</p>
+    <div class="countdown" id="countdown">3</div>
+   </div>
+
+   <div id="finalScreen" class="reveal-hidden">
+    <div id="rEmoji" class="gift">🎉</div>
+    <h1 id="rTitle">बधाई हो!</h1>
+    <div class="final-wish" id="rWish"></div>
+
+    <p id="rSender" style="margin-top:18px;color:#ddd"></p>
+
+    <div class="actions">
+     <button class="btn btn-whatsapp" onclick="receiverShare()">💚 इसे आगे भेजें</button>
+     <button class="btn btn-primary" onclick="createOwnWish()">✨ अपनी Wish बनाएं</button>
+    </div>
+   </div>
+
+  </div>
+ </div>
+</div>
+
+<div class="toast" id="toast">Copied!</div>
 
 
 <script>
+/* ============================================================
+   MAGIC WISH - SINGLE FILE APP
+   No backend / no paid API required
+============================================================ */
 
-/* =========================================================
-   OCCASIONS
-========================================================= */
+/* ---------- OCCASIONS ---------- */
+const occasions = {
 
-const occasions=[
+ birthday:{
+  emoji:"🎂",name:"Birthday",hi:"जन्मदिन",
+  title:"जन्मदिन मुबारक!",
+  shayari:{
+   emotional:"उम्र के हर पड़ाव पर खुशियों का साथ मिले,\nज़िंदगी के हर रास्ते पर प्यार का हाथ मिले।\nचेहरे की मुस्कान कभी कम न हो आपकी,\nहर आने वाला साल पहले से भी खास मिले। ❤️",
+   cute:"केक मीठा हो, मुस्कान प्यारी हो,\nआज की हर खुशी तुम्हारी हो।\nजन्मदिन पर बस इतनी सी दुआ है,\nहर सुबह तुम्हारे लिए खुशियों की सवारी हो। 🎂🥰",
+   romantic:"तुम्हारा जन्मदिन सिर्फ एक तारीख नहीं,\nमेरे लिए तुम्हारी मुस्कान का त्योहार है।\nरब से बस यही दुआ है हर साल,\nतुम्हारी जिंदगी प्यार से गुलज़ार रहे। ❤️",
+   funny:"केक काटो, calories की चिंता छोड़ो,\nआज उम्र पूछने वालों से रिश्ता तोड़ो! 😂\nआज का दिन है सिर्फ तुम्हारे नाम,\nजन्मदिन की ढेर सारी बधाई जनाब! 🎂",
+   royal:"सितारों से भी रोशन आपका हर साल हो,\nहर कदम पर सफलता आपके साथ हो।\nजन्मदिन की इस खूबसूरत घड़ी में,\nआपकी हर ख्वाहिश पूरी हो। 👑",
+   traditional:"ईश्वर आपको उत्तम स्वास्थ्य, सुख और समृद्धि प्रदान करें।\nआपका जीवन प्रेम, शांति और खुशियों से सदैव भरा रहे।\nजन्मदिन की हार्दिक शुभकामनाएं। 🙏"
+  }
+ },
 
-["birthday","जन्मदिन","🎂","Birthday birthday bday"],
-["anniversary","सालगिरह","💍","Anniversary anniversary"],
-["wedding","शादी","💒","Wedding शादी विवाह"],
-["engagement","सगाई","💎","Engagement सगाई"],
-["friendship","दोस्ती","🫶","Friendship दोस्त दोस्ती"],
-["thankyou","धन्यवाद","🙏","Thank You धन्यवाद शुक्रिया"],
-["sorry","माफ़ी","🥺","Sorry माफ़ी माफी"],
-["goodmorning","सुप्रभात","🌅","Good Morning सुबह"],
-["goodnight","शुभ रात्रि","🌙","Good Night रात"],
-["diwali","दीवाली","🪔","Diwali दीपावली"],
-["holi","होली","🌈","Holi रंग"],
-["raksha","रक्षाबंधन","🪢","Raksha Bandhan Rakhi राखी"],
-["janmashtami","जन्माष्टमी","🦚","Janmashtami Krishna कृष्ण"],
-["navratri","नवरात्रि","🌺","Navratri Durga दुर्गा"],
-["dussehra","दशहरा","🏹","Dussehra Vijayadashami"],
-["ganesh","गणेश चतुर्थी","🐘","Ganesh Chaturthi गणेश"],
-["shivratri","महाशिवरात्रि","🔱","Maha Shivratri शिव"],
-["eid","ईद","🌙","Eid ईद मुबारक"],
-["ramadan","रमज़ान","☪️","Ramadan रमजान"],
-["gurunanak","गुरु नानक जयंती","🙏","Guru Nanak"],
-["christmas","क्रिसमस","🎄","Christmas"],
-["newyear","नववर्ष","🎆","New Year नया साल"],
-["republic","गणतंत्र दिवस","🇮🇳","Republic Day 26 January"],
-["independence","स्वतंत्रता दिवस","🇮🇳","Independence Day 15 August"],
-["teachers","शिक्षक दिवस","📚","Teachers Day Teacher"],
-["mothers","मदर्स डे","🌷","Mother Mothers Day माँ"],
-["fathers","फादर्स डे","💙","Father Fathers Day Papa पापा"],
-["womens","महिला दिवस","🌸","Women's Day महिला"],
-["childrens","बाल दिवस","🧸","Children's Day बाल दिवस"],
-["valentine","वैलेंटाइन डे","❤️","Valentine Love प्यार"],
-["congrats","बधाई","🎉","Congratulations बधाई"],
-["newbaby","नन्हा मेहमान","👶","New Baby बच्चा"],
-["success","सफलता","🏆","Success सफलता जीत"],
-["farewell","विदाई","🌻","Farewell Goodbye विदाई"]
+ anniversary:{
+  emoji:"💍",name:"Anniversary",hi:"सालगिरह",
+  title:"शादी की सालगिरह मुबारक!",
+  shayari:{
+   emotional:"साथ आपका यूँ ही उम्र भर बना रहे,\nप्यार का ये रिश्ता हर पल नया रहे।\nहर खुशी मिले आपके इस सफर में,\nऔर आपका संसार हमेशा मुस्कुराता रहे। ❤️",
+   cute:"दो दिल, एक कहानी और हजारों प्यारी यादें,\nयूँ ही बनती रहें आपकी मोहब्बत की बातें।\nसालगिरह पर दुआ है मेरी,\nआप दोनों की जोड़ी हमेशा यूँ ही प्यारी रहे। 💍",
+   romantic:"तुम साथ हो तो हर मौसम बहार लगता है,\nतुम्हारा साथ ही मेरा संसार लगता है।\nहर साल मोहब्बत और गहरी होती जाए,\nयही रिश्ता उम्र भर बरकरार रहे। ❤️",
+   funny:"एक और साल साथ निभा लिया,\nमतलब प्यार ने फिर बाज़ी मार ली! 😄\nऐसे ही नोकझोंक और प्यार चलता रहे,\nसालगिरह की बहुत-बहुत बधाई! 💍",
+   royal:"आप दोनों का साथ प्रेम और सम्मान की मिसाल बने,\nहर नया वर्ष आपके रिश्ते में नई खुशियां भरे।\nसालगिरह पर हार्दिक शुभकामनाएं। 👑",
+   traditional:"ईश्वर से प्रार्थना है कि आपका दांपत्य जीवन\nसुख, शांति, प्रेम और समृद्धि से सदैव परिपूर्ण रहे। 🙏"
+  }
+ },
 
-].map(x=>({
- id:x[0],
- name:x[1],
- icon:x[2],
- search:x[3]
-}));
+ diwali:{
+  emoji:"🪔",name:"Diwali",hi:"दीपावली",
+  title:"शुभ दीपावली!",
+  shayari:{
+   emotional:"दीपों की रोशनी हर अंधेरा मिटा दे,\nखुशियों की हर किरण जीवन सजा दे।\nमाँ लक्ष्मी की कृपा बनी रहे सदा,\nआपके आंगन में सुख-समृद्धि आ जाए। 🪔",
+   cute:"दीये जलें, मिठाइयां आएं,\nखुशियां आपके घर मुस्कुराएं।\nहर दिन हो रोशन दिवाली जैसा,\nढेरों खुशियां आपके हिस्से आएं। ✨",
+   romantic:"रोशनी से सजे ये रात के नज़ारे,\nऔर साथ हों तुम्हारे तो क्या कहने हमारे।\nइस दिवाली बस इतनी सी दुआ है,\nप्यार की रोशनी रहे दिल में तुम्हारे। ❤️🪔",
+   funny:"पटाखे कम, मिठाई ज्यादा खाना,\nऔर पड़ोसी की मिठाई बिल्कुल मत छोड़ना! 😄\nआपको और आपके परिवार को,\nशुभ दीपावली! 🪔",
+   royal:"दीपों की अनगिनत रोशनी आपके जीवन को प्रकाशित करे,\nमाँ लक्ष्मी की कृपा आपके घर को समृद्ध करे।\nशुभ दीपावली! 👑🪔",
+   traditional:"माँ लक्ष्मी एवं भगवान गणेश की कृपा से\nआपके जीवन में सुख, शांति और समृद्धि का वास हो।\nदीपावली की हार्दिक शुभकामनाएं। 🙏"
+  }
+ },
 
+ holi:{
+  emoji:"🎨",name:"Holi",hi:"होली",
+  title:"होली की शुभकामनाएं!",
+  shayari:{
+   emotional:"रंगों की तरह जिंदगी भी खूबसूरत हो,\nहर दिन खुशियों से भरपूर हो।\nदूर हों सारे गिले-शिकवे,\nआपका हर पल प्यार से भरपूर हो। 🌈",
+   cute:"गुलाल की खुशबू, रंगों की बहार,\nखुशियों से भर जाए आपका संसार।\nहंसी-मजाक और प्यार के साथ,\nमुबारक हो आपको रंगों का त्योहार। 🎨",
+   romantic:"तेरे रंग में रंग जाऊं मैं,\nतेरी मुस्कान में खो जाऊं मैं।\nइस होली बस इतना चाहूं,\nहर रंग में तुझे अपना पाऊं। ❤️",
+   funny:"रंग लगाना है तो दिल से लगाना,\nलेकिन सफेद कपड़े देखकर थोड़ा संभल जाना! 😂\nखूब रंग उड़ाओ, खूब मुस्कुराओ,\nHappy Holi! 🌈",
+   royal:"रंगों की फुहार आपके जीवन में नई उमंग लाए,\nहर रंग आपकी जिंदगी में खुशियां सजाए।\nहोली की हार्दिक शुभकामनाएं। 👑",
+   traditional:"प्रेम, सौहार्द और भाईचारे के रंगों से\nआपका जीवन सदैव रंगीन रहे।\nहोली की हार्दिक शुभकामनाएं। 🙏"
+  }
+ },
 
-/* =========================================================
-   RELATIONS
-========================================================= */
+ eid:{
+  emoji:"🌙",name:"Eid",hi:"ईद",
+  title:"ईद मुबारक!",
+  shayari:{
+   emotional:"दुआओं में आपकी खुशियां शामिल रहें,\nहर कदम पर रहमतें आपके साथ रहें।\nचेहरे पर मुस्कान और दिल में सुकून रहे,\nआपको ईद की ढेरों मुबारकबाद। 🌙",
+   cute:"चांद की रोशनी, खुशियों की बहार,\nईद लाए आपके लिए प्यार ही प्यार।\nदुआ है हर खुशी मिले आपको,\nईद मुबारक बार-बार। 🌙✨",
+   romantic:"चांद भी आज कुछ ज्यादा खूबसूरत है,\nशायद उसे भी आपकी मुस्कान की जरूरत है।\nदुआ है मोहब्बत यूँ ही बनी रहे,\nईद का हर पल आपके नाम रहे। ❤️",
+   funny:"सेवइयां तैयार रखिए,\nमुस्कुराने का सामान रखिए! 😄\nखुशियां बांटिए और दुआएं लीजिए,\nईद मुबारक! 🌙",
+   royal:"अल्लाह आपकी जिंदगी को रहमत,\nबरकत, खुशियों और सुकून से भर दे।\nआपको और आपके परिवार को ईद मुबारक। ✨",
+   traditional:"अल्लाह आपकी हर नेक दुआ कबूल फरमाए,\nघर में अमन, बरकत और खुशियां कायम रखे।\nईद-उल-फितर की दिली मुबारकबाद। 🤲"
+  }
+ },
 
-const relations=[
-"Mr.",
-"Mrs.",
-"Dost",
-"Best Friend",
-"Wife",
-"Husband",
-"Girlfriend",
-"Boyfriend",
-"Bhai",
-"Bahen",
-"Maa",
-"Papa",
-"Son",
-"Daughter",
-"Teacher",
-"Colleague",
-"Special Person",
-"Partner",
-"Family",
-"Cousin",
-"Uncle",
-"Aunty",
-"Brother",
-"Sister"
-];
+ christmas:{
+  emoji:"🎄",name:"Christmas",hi:"क्रिसमस",
+  title:"Merry Christmas!",
+  shayari:{
+   emotional:"क्रिसमस की रोशनी जीवन में उजाला लाए,\nहर दिल में प्रेम और हर घर में खुशियां आएं।\nआपका हर दिन मुस्कान से भरा रहे,\nMerry Christmas! 🎄",
+   cute:"Christmas की lights चमकती रहें,\nखुशियां आपके घर में झूमती रहें।\nSanta ढेरों खुशियां लेकर आए,\nMerry Christmas! 🎅🎄",
+   romantic:"सितारों से सजी ये रात,\nऔर तुम्हारा साथ हो मेरे साथ।\nइस Christmas बस इतनी सी दुआ,\nमोहब्बत रहे हमेशा हमारे साथ। ❤️🎄",
+   funny:"Santa से gift मांग लेना,\nलेकिन मेरा नाम मत देना! 😂\nखुश रहो, मुस्कुराते रहो,\nMerry Christmas! 🎅",
+   royal:"क्रिसमस आपके जीवन में प्रेम,\nशांति, आशा और नई खुशियां लेकर आए।\nMerry Christmas! ✨",
+   traditional:"प्रभु यीशु की कृपा आपके जीवन में\nप्रेम, शांति और आशा का प्रकाश फैलाए।\nMerry Christmas! 🙏🎄"
+  }
+ },
 
+ newyear:{
+  emoji:"🎆",name:"New Year",hi:"नया साल",
+  title:"नववर्ष की शुभकामनाएं!",
+  shayari:{
+   emotional:"बीता हुआ हर गम पीछे छूट जाए,\nनया साल नई खुशियां लेकर आए।\nहर सपना आपका हकीकत बन जाए,\nनववर्ष जीवन को रोशन कर जाए। ✨",
+   cute:"नई सुबह, नई उम्मीदें,\nनई खुशियां और नई तरंगें।\nआपका हर दिन खूबसूरत हो,\nHappy New Year! 🎆",
+   romantic:"नया साल आए और तुम साथ रहो,\nहर पल मेरे दिल के पास रहो।\nसाल बदले, मौसम बदलें,\nबस हमारा प्यार न बदले। ❤️",
+   funny:"पुराने बहाने छोड़ो,\nनए resolutions फिर से तोड़ो! 😂\nहंसते रहो और खुश रहो,\nHappy New Year! 🎆",
+   royal:"नया वर्ष आपके लिए सफलता,\nसम्मान, समृद्धि और अनगिनत अवसर लेकर आए।\nनववर्ष की हार्दिक शुभकामनाएं। 👑",
+   traditional:"ईश्वर करे नववर्ष आपके जीवन में\nआरोग्य, सुख, शांति और समृद्धि लेकर आए। 🙏"
+  }
+ },
 
-/* =========================================================
-   10 SHAYARI PER OCCASION
-========================================================= */
+ rakhi:{
+  emoji:"🎀",name:"Raksha Bandhan",hi:"रक्षाबंधन",
+  title:"रक्षाबंधन की हार्दिक शुभकामनाएं!",
+  shayari:{
+   emotional:"कलाई पर बंधा ये धागा सिर्फ धागा नहीं,\nभाई-बहन के प्यार की पहचान है।\nदूरी चाहे कितनी भी हो जाए,\nदिलों में हमेशा एक-दूसरे का स्थान है। ❤️",
+   cute:"थोड़ी नोकझोंक, ढेर सारा प्यार,\nभाई-बहन का रिश्ता सबसे शानदार।\nराखी के इस प्यारे त्योहार पर,\nढेरों खुशियां हों बारंबार। 🎀",
+   romantic:"हमारी कहानी थोड़ी अलग सही,\nपर तेरे बिना अधूरी है कहीं।\nरिश्ता हमारा हमेशा यूँ ही रहे,\nखुशियों से भरी रहे हर घड़ी। ❤️",
+   funny:"लड़ाई भी होगी, शिकायत भी होगी,\nराखी पर gift की मांग भी होगी! 😂\nभाई-बहन का रिश्ता ही ऐसा है,\nप्यार भी और तकरार भी होगी। 🎀",
+   royal:"रिश्तों की इस खूबसूरत डोर में\nप्यार और विश्वास हमेशा बना रहे।\nरक्षाबंधन की हार्दिक शुभकामनाएं। 👑",
+   traditional:"भाई-बहन का पवित्र रिश्ता\nसदा प्रेम, सम्मान और विश्वास से परिपूर्ण रहे।\nरक्षाबंधन की हार्दिक शुभकामनाएं। 🙏"
+  }
+ },
 
-const shayari={
+ navratri:{
+  emoji:"🌺",name:"Navratri",hi:"नवरात्रि",
+  title:"नवरात्रि की शुभकामनाएं!",
+  shayari:{
+   emotional:"माँ की भक्ति में मन रम जाए,\nहर चिंता माँ के चरणों में थम जाए।\nमाँ दुर्गा की कृपा बनी रहे सदा,\nहर जीवन खुशियों से भर जाए। 🌺",
+   cute:"माँ के नौ रूपों का आशीर्वाद मिले,\nहर कदम पर खुशियों का साथ मिले।\nनवरात्रि के पावन पर्व पर,\nआपको ढेरों शुभकामनाएं मिले। 🌸",
+   romantic:"माँ की कृपा से हर सपना साकार हो,\nआपके जीवन में प्रेम और बहार हो।\nनवरात्रि के पावन अवसर पर,\nहर पल खुशियों का त्योहार हो। ❤️",
+   funny:"गरबा की तैयारी पूरी रखो,\nडांडिया की practice मजबूती से रखो! 😄\nमाँ का आशीर्वाद और खूब सारी मस्ती,\nHappy Navratri! 🌺",
+   royal:"माँ दुर्गा की शक्ति आपके साथ रहे,\nहर संकट आपसे दूर रहे।\nनवरात्रि आपके जीवन में शक्ति और समृद्धि लाए। 👑",
+   traditional:"माँ दुर्गा आपके जीवन से सभी विघ्न दूर करें\nऔर सुख, शांति, शक्ति एवं समृद्धि प्रदान करें।\nजय माता दी। 🙏"
+  }
+ },
 
-birthday:[
-`आज का दिन आपके नाम रहे,
-हर खुशी आपके साथ रहे।
-जो सपना दिल में पलता है,
-वो हर सपना आज़ाद रहे।`,
-`केक से मीठी हो आपकी हर बात,
-फूलों से खूबसूरत हो हर मुलाकात।
-दुआ है इस जन्मदिन पर,
-खुशियों से भर जाए आपका हर दिन।`,
-`एक साल और खूबसूरत हो गया,
-ज़िंदगी का एक पन्ना और जुड़ गया।
-दुआ है आने वाला हर पल,
-पिछले पल से भी बेहतर हो जाए।`,
-`चेहरे की ये मुस्कान कभी कम न हो,
-आँखों में कोई ग़म न हो।
-जन्मदिन पर बस इतनी दुआ है,
-आपसे खूबसूरत आपका हर कल हो।`,
-`आज सितारे भी कुछ ज्यादा चमक रहे हैं,
-शायद आपके जन्मदिन की खुशी में दमक रहे हैं।
-दुआ है हर चाहत पूरी हो,
-और हर सपना आपका अपना हो।`,
-`उम्र बढ़े तो सिर्फ सालों में,
-खुशियाँ बढ़ें हर ख्यालों में।
-आपका हर आने वाला जन्मदिन,
-नई खुशियाँ लेकर आए।`,
-`फूलों जैसी महकती रहे ज़िंदगी,
-हर पल रहे थोड़ी और रंगीन।
-आज के इस खास दिन पर,
-मिले आपको हर खुशी हसीन।`,
-`जो माँगा है दिल ने वो मिल जाए,
-हर अधूरा सपना खिल जाए।
-जन्मदिन की इस प्यारी सुबह,
-आपकी दुनिया खुशियों से भर जाए।`,
-`आपकी हँसी हमेशा ऐसी ही रहे,
-हर मुश्किल आपसे दूर रहे।
-इस नए साल-ए-ज़िंदगी में,
-हर दिन आपका मशहूर रहे।`,
-`आज बस दिल से एक दुआ निकली है,
-आपकी हर राह खुशियों से मिली है।
-जन्मदिन मुबारक हो,
-आपकी ज़िंदगी हमेशा खिली रहे।`
-],
+ ganesh:{
+  emoji:"🐘",name:"Ganesh Chaturthi",hi:"गणेश चतुर्थी",
+  title:"गणेश चतुर्थी की शुभकामनाएं!",
+  shayari:{
+   emotional:"गणपति बप्पा का आशीर्वाद बना रहे,\nहर संकट जीवन से दूर रहे।\nसुख-समृद्धि आपके घर आए,\nहर सपना आपका पूरा हो जाए। 🙏",
+   cute:"गणपति आए हैं खुशियां लाए हैं,\nमोदक की मिठास साथ लाए हैं।\nबप्पा की कृपा बनी रहे सदा,\nहर दिन खुशियों से भर जाए। 🐘",
+   romantic:"बप्पा से बस यही दुआ है,\nआपकी हर खुशी में मेरा हिस्सा हो।\nहर सपना आपका पूरा हो,\nऔर हर पल मुस्कुराने का किस्सा हो। ❤️",
+   funny:"मोदक खाओ, मस्ती करो,\nबप्पा के आगे selfie करो! 😄\nसुख-समृद्धि घर आए,\nगणपति बप्पा मोरया! 🐘",
+   royal:"श्री गणेश आपके जीवन से सभी विघ्न हरें\nऔर सफलता के द्वार खोलें।\nगणेश चतुर्थी की हार्दिक शुभकामनाएं। 👑",
+   traditional:"वक्रतुंड महाकाय सूर्यकोटि समप्रभः,\nनिर्विघ्नं कुरु मे देव शुभ कार्येषु सर्वदा।\nगणेश चतुर्थी की शुभकामनाएं। 🙏"
+  }
+ },
 
-friendship:[
-`दोस्ती वो नहीं जो हर रोज़ बात करे,
-दोस्ती वो है जो बिना कहे दिल की बात समझे।`,
-`कुछ दोस्त रिश्तों से नहीं,
-किस्मत से मिला करते हैं।
-आप उन्हीं खूबसूरत किस्मतों में से एक हैं।`,
-`वक्त बदले, मौसम बदले,
-पर हमारी दोस्ती का रंग न बदले।
-दुआ है ये रिश्ता हर साल
-और गहरा होता जाए।`,
-`दोस्ती में कोई हिसाब नहीं होता,
-बस एक-दूसरे का साथ होता है।
-दूरी चाहे कितनी भी हो,
-दिल हमेशा पास होता है।`,
-`ज़िंदगी में बहुत लोग मिलते हैं,
-पर हर कोई अपना नहीं होता।
-आप जैसे दोस्त मिल जाएँ,
-तो सफर खूबसूरत हो जाता है।`,
-`हँसी के पीछे कई राज़ होते हैं,
-दोस्तों के साथ वो पल खास होते हैं।
-आप साथ हों तो
-साधारण दिन भी यादगार हो जाता है।`,
-`ना मतलब की दोस्ती,
-ना किसी शर्त का साथ।
-बस यूँ ही बना रहे
-हम दोनों के बीच ये रिश्ता खास।`,
-`जब दुनिया समझ न पाए,
-एक दोस्त समझ लेता है।
-शायद इसलिए सच्ची दोस्ती
-सबसे खूबसूरत रिश्ता होती है।`,
-`कुछ यादें तस्वीरों में नहीं,
-दिल में हमेशा रहती हैं।
-और कुछ दोस्त
-ज़िंदगी भर खास रहते हैं।`,
-`दोस्ती का कोई मौसम नहीं होता,
-इसका कोई कारण नहीं होता।
-जहाँ दिल मिल जाएँ,
-वहीं से खूबसूरत कहानी शुरू होती है।`
-],
+ janmashtami:{
+  emoji:"🦚",name:"Janmashtami",hi:"जन्माष्टमी",
+  title:"श्री कृष्ण जन्माष्टमी की शुभकामनाएं!",
+  shayari:{
+   emotional:"कृष्ण की बांसुरी में प्रेम की मिठास हो,\nराधा-कृष्ण की कृपा से जीवन में उल्लास हो।\nहर मनोकामना पूरी हो आपकी,\nजन्माष्टमी का पर्व खास हो। 🦚",
+   cute:"माखन की खुशबू, बांसुरी की तान,\nकृष्ण कन्हैया का प्यारा सा नाम।\nखुशियों से भर जाए आपका संसार,\nजन्माष्टमी की शुभकामनाएं बारंबार। 💙",
+   romantic:"कृष्ण की बांसुरी जैसी मधुर हो बात,\nराधा के प्रेम जैसी खूबसूरत हो हर रात।\nआपकी जिंदगी में प्रेम यूँ ही बना रहे। ❤️",
+   funny:"माखन मिश्री तैयार रखना,\nकन्हैया को थोड़ा share करना! 😄\nजय श्री कृष्ण! 🦚",
+   royal:"श्री कृष्ण आपके जीवन में प्रेम,\nज्ञान, साहस और सफलता का प्रकाश भरें।\nजन्माष्टमी की हार्दिक शुभकामनाएं। 👑",
+   traditional:"नंद के आनंद भयो, जय कन्हैया लाल की।\nभगवान श्री कृष्ण की कृपा आपके परिवार पर सदैव बनी रहे। 🙏"
+  }
+ },
 
-anniversary:[
-`साथ बिताए हुए हर पल की
-अपनी एक खूबसूरत कहानी है।
-दुआ है ये रिश्ता यूँ ही मुस्कुराता रहे,
-और हर साल पहले से ज्यादा सुहाना हो।`,
-`रिश्ता वही खूबसूरत है,
-जहाँ प्यार के साथ समझ भी हो।
-दुआ है आपका साथ
-हर मौसम में यूँ ही बना रहे।`,
-`दो दिल जब एक-दूसरे को समझते हैं,
-तभी रिश्ते सच में खूबसूरत होते हैं।
-आप दोनों का साथ
-हर साल और मजबूत हो।`,
-`साल गुजरते जाएँ,
-प्यार बढ़ता जाए।
-हर आने वाला साल
-नई खुशियाँ लेकर आए।`,
-`एक-दूसरे की मुस्कान की वजह बने रहना,
-हर मुश्किल में साथ खड़े रहना।
-यही तो रिश्ते की असली खूबसूरती है।`,
-`आज उस खूबसूरत सफर का दिन है,
-जिसमें दो दिल साथ चले।
-दुआ है आगे का हर रास्ता
-और भी खूबसूरत हो।`,
-`मोहब्बत सिर्फ शब्द नहीं,
-हर दिन निभाया हुआ एहसास है।
-आपका साथ इसी तरह
-हमेशा खास बना रहे।`,
-`हर साल की तरह आज भी
-दिल यही दुआ करता है,
-आप दोनों के बीच का प्यार
-कभी कम न हो।`,
-`रिश्ते वक्त से पुराने नहीं,
-प्यार से गहरे होते हैं।
-आपका रिश्ता हमेशा
-ऐसे ही खूबसूरत रहे।`,
-`साथ का ये सफर यूँ ही चलता रहे,
-हर पल में प्यार पलता रहे।
-सालगिरह पर दिल से
-बहुत सारी खुशियाँ आपके नाम।`
-],
+ makar:{
+  emoji:"🪁",name:"Makar Sankranti",hi:"मकर संक्रांति",
+  title:"मकर संक्रांति की शुभकामनाएं!",
+  shayari:{
+   emotional:"नई किरण नई उम्मीदें लेकर आए,\nजीवन में खुशियों के रंग भर जाए।\nमकर संक्रांति का यह पावन पर्व,\nआपके जीवन को सुख से भर जाए। 🪁",
+   cute:"तिल की मिठास, गुड़ का प्यार,\nपतंगों से सजा आसमान अपार।\nखुशियों से भरा रहे आपका संसार,\nमकर संक्रांति की शुभकामनाएं! 🪁",
+   romantic:"आसमान में पतंगें उड़ती रहें,\nदिल में मोहब्बत बढ़ती रहे।\nइस संक्रांति हर दुआ पूरी हो,\nऔर मुस्कान यूँ ही खिलती रहे। ❤️",
+   funny:"पतंग उड़ाओ लेकिन पड़ोसी की मत काटो! 😂\nतिल-गुड़ खाओ और खुशियां मनाओ।\nHappy Makar Sankranti! 🪁",
+   royal:"सूर्य देव की कृपा से आपके जीवन में\nऊर्जा, सफलता और समृद्धि का प्रकाश फैले। 👑",
+   traditional:"सूर्य देव की आराधना और शुभ संकल्पों का\nयह पावन पर्व आपके जीवन में मंगल लाए। 🙏"
+  }
+ },
 
-goodmorning:[
-`नई सुबह नई उम्मीदें लेकर आए,
-आपकी हर चिंता दूर हो जाए।
-आज का दिन इतना खूबसूरत हो,
-कि शाम तक चेहरा मुस्कुराता रहे।`,
-`सूरज की पहली किरण
-आपके चेहरे पर मुस्कान लाए।
-आज का हर पल
-आपके लिए खुशियाँ लाए।`,
-`सुबह की हवा कुछ कह रही है,
-आज की दुनिया कुछ नई लग रही है।
-बस मुस्कुराकर दिन शुरू कीजिए,
-खुशियाँ आपका इंतज़ार कर रही हैं।`,
-`हर सुबह एक नया मौका है,
-कल से बेहतर आज बनाने का।
-दुआ है आज का दिन
-आपके लिए बेहद खास हो।`,
-`सुबह की रोशनी की तरह
-आपकी ज़िंदगी भी चमकती रहे।
-हर कदम पर सुकून मिले,
-हर पल खुशी मिलती रहे।`,
-`नींद से जागिए,
-नई उम्मीदों को जगाइए।
-आज की सुबह को
-एक खूबसूरत याद बनाइए।`,
-`सुप्रभात उस इंसान को,
-जिसकी मुस्कान दिन बना देती है।
-दुआ है आज की सुबह
-आपके लिए खुशियों से भरी हो।`,
-`एक प्यारी सी सुबह,
-एक प्यारी सी दुआ।
-आज आपको मिले
-हर खुशी बिना किसी वजह।`,
-`बीता हुआ कल वापस नहीं आता,
-पर आज को खूबसूरत बनाया जा सकता है।
-सुबह की यही दुआ है,
-आज आपका दिन शानदार हो।`,
-`सुबह की चाय से भी मीठी हो मुस्कान,
-दिल में रहे सुकून और आँखों में अरमान।
-आपको प्यारा सा सुप्रभात।`
-],
+ dushera:{
+  emoji:"🏹",name:"Dussehra",hi:"दशहरा",
+  title:"विजयादशमी की शुभकामनाएं!",
+  shayari:{
+   emotional:"हर बुराई पर अच्छाई की जीत हो,\nजीवन में सत्य की हमेशा जीत हो।\nदशहरा आपके लिए खुशियां लेकर आए,\nहर राह आपकी सुखमय हो। 🏹",
+   cute:"रावण जले, खुशियां खिलें,\nहर चेहरे पर मुस्कान मिले।\nविजयादशमी के पावन पर्व पर,\nआपको ढेरों शुभकामनाएं मिलें। ✨",
+   romantic:"हर नकारात्मकता दूर हो जाए,\nहर सपना आपका पूरा हो जाए।\nसच्चाई और प्रेम की जीत हो,\nआपकी जिंदगी खूबसूरत हो जाए। ❤️",
+   funny:"रावण तो हर साल जलता है,\nइस बार अपनी आलस को भी जला देना! 😂\nHappy Dussehra! 🏹",
+   royal:"धर्म और सत्य की विजय आपके जीवन में\nनई शक्ति और सफलता लेकर आए। 👑",
+   traditional:"अधर्म पर धर्म और असत्य पर सत्य की विजय\nका यह पर्व आपके जीवन में मंगल और शांति लाए। 🙏"
+  }
+ },
 
-goodnight:[
-`दिन भर की सारी थकान
-आज रात यहीं छोड़ दीजिए।
-आँखें बंद कीजिए,
-कल के लिए नई खुशी लेकर सोइए।`,
-`चाँद की रोशनी सुकून दे,
-सितारे मीठे सपने दें।
-आज की रात
-आपके लिए बेहद खूबसूरत हो।`,
-`जो बातें आज अधूरी रह गईं,
-उन्हें कल पूरा कर लेना।
-फिलहाल आँखें बंद करो,
-और सुकून से सो जाना।`,
-`रात खामोश है,
-चाँद भी पास है।
-दुआ है नींद के हर पल में
-बस खुशियों का एहसास हो।`,
-`दिन जैसा भी रहा हो,
-रात सुकून वाली हो।
-आने वाली सुबह
-खुशियों वाली हो।`,
-`थकान को तकिए पर रख दो,
-चिंताओं को आज भूल जाओ।
-कल एक नई सुबह होगी,
-आज चैन से सो जाओ।`,
-`चाँद तुम्हारी रात सजाए,
-सितारे तुम्हारे सपने सजाएँ।
-शुभ रात्रि की ये दुआ
-हर ग़म को तुमसे दूर ले जाए।`,
-`कुछ सपने आँखों में रखना,
-कुछ दुआएँ दिल में रखना।
-आज रात बस मुस्कुराकर
-सुकून से सो जाना।`,
-`रात की खामोशी में
-दिल को थोड़ा आराम देना।
-जो तुम्हारे बस में नहीं,
-उसे आज छोड़ देना।`,
-`शुभ रात्रि उस खास इंसान को,
-जिसके लिए एक छोटी सी दुआ है —
-नींद सुकून की हो,
-और सुबह मुस्कान की हो।`
-],
+ eidAdha:{
+  emoji:"🐑",name:"Eid al-Adha",hi:"ईद-उल-अजहा",
+  title:"ईद-उल-अजहा मुबारक!",
+  shayari:{
+   emotional:"दुआओं में सुकून, दिल में विश्वास रहे,\nहर घर में मोहब्बत और खुशियों का वास रहे।\nईद का यह पावन दिन आपके लिए खास रहे। 🌙",
+   cute:"खुशियों की मिठास, अपनों का प्यार,\nईद लाए खुशियां हजार।\nआपको और आपके परिवार को\nईद-उल-अजहा मुबारक। 🌙",
+   romantic:"दुआ है इस पावन दिन पर,\nहर खुशी आपके करीब आए।\nमोहब्बत और सुकून से भरा,\nहर नया सवेरा मुस्कुराए। ❤️",
+   funny:"आज दुआ भी होगी, दावत भी होगी,\nऔर खाने की तैयारी शानदार होगी! 😄\nईद मुबारक! 🌙",
+   royal:"अल्लाह आपकी जिंदगी में बरकत,\nअमन, खुशियां और रहमतें अता फरमाए।\nईद-उल-अजहा मुबारक। ✨",
+   traditional:"अल्लाह आपकी कुर्बानी और नेक दुआओं को कबूल फरमाए\nऔर आपके घर में अमन एवं बरकत बनाए रखे। 🤲"
+  }
+ },
 
-diwali:[
-`दीयों की रोशनी आपके घर को रोशन करे,
-हर अंधेरा खुशियों में बदल जाए।
-इस दीपावली आपके जीवन में
-सुख और समृद्धि आए।`,
-`हर दीप एक नई उम्मीद जगाए,
-हर रोशनी नया उजाला लाए।
-दीपावली का ये पर्व
-आपके जीवन में खुशियाँ भर जाए।`,
-`मिट्टी के दीप से लेकर
-दिल की दुआ तक,
-हर रोशनी आपके हिस्से में
-सिर्फ खुशियाँ लेकर आए।`,
-`लक्ष्मी जी का आशीर्वाद रहे,
-गणेश जी की कृपा बनी रहे।
-आपके घर में हर दिन
-दीपावली जैसी खुशी रहे।`,
-`रिश्तों में मिठास बनी रहे,
-घर में खुशियों की बरसात रहे।
-दीपावली का हर दीप
-आपके सपनों को रोशन करे।`,
-`रोशनी से रोशन हो आँगन,
-खुशियों से भर जाए जीवन।
-आपको और आपके परिवार को
-दीपावली की हार्दिक शुभकामनाएँ।`,
-`हर दीप कहे एक नई कहानी,
-हर रंग दे खुशियों की निशानी।
-इस दीपावली आपकी दुनिया
-और भी खूबसूरत हो।`,
-`दूर हों सारे अंधेरे,
-पास आएँ खुशियों के सवेरे।
-दीपावली का ये पर्व
-आपके जीवन को उजाला दे।`,
-`मिठास रहे हर रिश्ते में,
-सुकून रहे हर दिल में।
-इस दीपावली बस यही दुआ,
-खुशियाँ रहें आपके घर में।`,
-`दीप जलें तो उम्मीद जले,
-दिल मिले तो प्यार बढ़े।
-इस शुभ दीपावली पर
-आपकी हर मनोकामना पूरी हो।`
-],
+ ramnavami:{
+  emoji:"🏹",name:"Ram Navami",hi:"राम नवमी",
+  title:"राम नवमी की हार्दिक शुभकामनाएं!",
+  shayari:{
+   emotional:"श्री राम का नाम जीवन में प्रकाश करे,\nहर संकट से आपकी रक्षा करे।\nसत्य और धर्म की राह पर चलते हुए,\nआपका जीवन सुखमय रहे। 🏹",
+   cute:"राम नाम की मिठास रहे,\nहर दिन आपके पास खुशियां खास रहे।\nश्री राम की कृपा बनी रहे,\nराम नवमी की शुभकामनाएं। 🙏",
+   romantic:"प्रेम में राम जैसा विश्वास हो,\nरिश्तों में सच्चाई का एहसास हो।\nश्री राम की कृपा से हर पल सुंदर हो। ❤️",
+   funny:"आज सिर्फ एक ही नाम याद रखना,\nबाकी सारे passwords भूल जाना! 😄\nजय श्री राम! 🏹",
+   royal:"मर्यादा पुरुषोत्तम श्री राम का आदर्श\nआपके जीवन में सत्य, साहस और धर्म का प्रकाश करे। 👑",
+   traditional:"श्री रामचंद्र जी की कृपा से आपके जीवन में\nसुख, शांति, समृद्धि और धर्म का वास हो। 🙏"
+  }
+ },
 
-holi:[
-`रंगों की तरह खूबसूरत हो हर दिन,
-खुशियों से रंगीन हो आपका जीवन।
-होली के इस त्योहार पर
-दिल से ढेरों शुभकामनाएँ।`,
-`गुलाल की खुशबू,
-रंगों की बहार।
-आपकी ज़िंदगी में
-खुशियाँ हों अपार।`,
-`हर रंग आपके चेहरे पर मुस्कान लाए,
-हर रंग आपके जीवन में खुशी लाए।
-होली का ये त्योहार
-आपके लिए यादगार बन जाए।`,
-`दुश्मनी के सारे रंग मिट जाएँ,
-प्यार के रंग गहरे हो जाएँ।
-होली का त्योहार
-रिश्तों में मिठास भर जाए।`,
-`लाल रंग प्यार दे,
-हरा रंग उम्मीद।
-हर रंग मिलकर
-आपकी दुनिया करे रंगीन।`,
-`आज रंग सिर्फ चेहरे पर नहीं,
-दिलों पर भी चढ़ने दीजिए।
-पुरानी नाराज़गी भूलकर
-नए रिश्ते बनने दीजिए।`,
-`होली की हर बौछार
-खुशियों का पैगाम लाए।
-आपके जीवन का हर दिन
-रंगों से भर जाए।`,
-`गुलाल से भी ज्यादा प्यारी
-आपकी मुस्कान रहे।
-होली का हर पल
-आपके नाम रहे।`,
-`रंग बदलते रहें,
-मौसम बदलते रहें,
-बस रिश्तों की मिठास
-कभी न बदले।`,
-`होली के रंगों जैसी
-आपकी ज़िंदगी भी खिलती रहे।
-हर आने वाला दिन
-नई खुशी से मिलती रहे।`
-],
+ mahashivratri:{
+  emoji:"🔱",name:"Mahashivratri",hi:"महाशिवरात्रि",
+  title:"महाशिवरात्रि की शुभकामनाएं!",
+  shayari:{
+   emotional:"भोलेनाथ की भक्ति में मन रम जाए,\nहर चिंता शिव चरणों में थम जाए।\nमहादेव की कृपा बनी रहे सदा,\nजीवन में सुख और शांति आ जाए। 🔱",
+   cute:"हर हर महादेव की गूंज हो,\nदिल में भक्ति और चेहरे पर मुस्कान हो।\nमहादेव का आशीर्वाद बना रहे,\nमहाशिवरात्रि शुभ हो। 🕉️",
+   romantic:"शिव जैसा विश्वास मिले,\nपार्वती जैसा प्रेम मिले।\nमहादेव की कृपा से जिंदगी में\nहर रिश्ता खूबसूरत मिले। ❤️",
+   funny:"भोले के भक्त हैं भाई,\nआज diet की छुट्टी भाई! 😄\nहर हर महादेव! 🔱",
+   royal:"महादेव की शक्ति आपके साथ रहे,\nहर बाधा आपके मार्ग से दूर रहे।\nमहाशिवरात्रि की हार्दिक शुभकामनाएं। 👑",
+   traditional:"ॐ नमः शिवाय।\nभगवान शिव एवं माता पार्वती की कृपा\nआप और आपके परिवार पर सदैव बनी रहे। 🙏"
+  }
+ },
 
-eid:[
-`ईद की सुबह आपके लिए
-सुकून और खुशियाँ लेकर आए।
-हर दुआ कबूल हो,
-हर चेहरा मुस्कुराए।`,
-`ईद का चाँद
-आपके जीवन में रोशनी लाए।
-हर खुशी आपके घर आए,
-हर ग़म दूर चला जाए।`,
-`दुआओं में बरकत हो,
-रिश्तों में मोहब्बत हो।
-ईद का हर पल
-आपके लिए खूबसूरत हो।`,
-`माफ़ी में मिठास हो,
-दिल में सुकून हो।
-ईद का ये त्योहार
-हर रिश्ते को और मजबूत करे।`,
-`ईद के चाँद की तरह
-आपकी किस्मत भी चमके।
-हर नई सुबह
-खुशियों की खबर लेकर आए।`,
-`आज दुआओं का दिन है,
-मोहब्बत बाँटने का दिन है।
-ईद आपके जीवन में
-हर अच्छी चीज़ लेकर आए।`,
-`सेवइयों की मिठास जैसी
-मीठी हो आपकी ज़िंदगी।
-ईद का हर पल
-खुशियों से भरा रहे।`,
-`दिल साफ रहे,
-दुआ कबूल हो।
-आपकी हर सुबह
-सुकून से शुरू हो।`,
-`रिश्तों में प्यार रहे,
-दिलों में उजाला रहे।
-ईद के इस खास दिन
-हर चेहरा मुस्कुराता रहे।`,
-`चाँद की रोशनी,
-दुआओं की खुशबू,
-और अपनों का साथ —
-ईद इससे ज्यादा खूबसूरत क्या होगी।`
-],
+ gurunanak:{
+  emoji:"☬",name:"Guru Nanak Jayanti",hi:"गुरु नानक जयंती",
+  title:"गुरु नानक देव जी के प्रकाश पर्व की शुभकामनाएं!",
+  shayari:{
+   emotional:"सच्चाई की राह पर कदम बढ़ते रहें,\nसेवा और प्रेम के दीप जलते रहें।\nगुरु की कृपा से जीवन रोशन रहे। ☬",
+   cute:"नाम जपो, किरत करो, वंड छको,\nहर दिल में प्रेम और सेवा रखो।\nप्रकाश पर्व की हार्दिक शुभकामनाएं। ✨",
+   romantic:"प्रेम, सेवा और सच्चाई का प्रकाश,\nआपके जीवन में बनाए रखे विश्वास।\nगुरु की कृपा सदा साथ रहे। ❤️",
+   funny:"आज लंगर में थोड़ा extra प्रसाद लेना,\nऔर सेवा में भी अपना हाथ बंटाना! 😊\nवाहेगुरु जी का खालसा, वाहेगुरु जी की फतेह।",
+   royal:"गुरु नानक देव जी की शिक्षाओं का प्रकाश\nआपके जीवन में शांति, सेवा और सद्भाव लाए। 👑",
+   traditional:"वाहेगुरु जी की कृपा आपके परिवार पर सदैव बनी रहे।\nप्रकाश पर्व की हार्दिक शुभकामनाएं। 🙏"
+  }
+ },
 
-valentine:[
-`तुम्हारा होना ही
-मेरे लिए सबसे खूबसूरत बात है।
-तुम पास रहो या दूर,
-दिल के हमेशा पास हो।`,
-`प्यार सिर्फ साथ रहने का नाम नहीं,
-हर हाल में एक-दूसरे को समझने का नाम है।`,
-`तुम्हारी एक मुस्कान
-मेरे पूरे दिन को बदल देती है।
-शायद यही प्यार है।`,
-`कुछ लोग जिंदगी में आते हैं,
-और जिंदगी को खूबसूरत बना जाते हैं।
-तुम मेरे लिए वही हो।`,
-`तुमसे बात हो जाए
-तो दिन थोड़ा और अच्छा लगता है।
-तुम्हारा नाम आते ही
-चेहरे पर मुस्कान आ जाती है।`,
-`ना कोई बड़ा वादा चाहिए,
-ना कोई महँगा तोहफा।
-बस तुम्हारा साथ
-मेरे लिए काफी है।`,
-`मेरी हर छोटी सी खुशी में
-कहीं न कहीं तुम शामिल हो।
-और यही एहसास
-बहुत खास है।`,
-`तुम्हारे साथ बिताया हर पल
-दिल में एक खूबसूरत याद बन जाता है।`,
-`प्यार की सबसे खूबसूरत बात यही है,
-किसी की खुशी अपनी खुशी लगने लगे।`,
-`अगर मेरी जिंदगी की कहानी में
-कोई सबसे खूबसूरत पन्ना है,
-तो उस पन्ने पर
-तुम्हारा नाम जरूर है।`
-]
+ buddha:{
+  emoji:"☸️",name:"Buddha Purnima",hi:"बुद्ध पूर्णिमा",
+  title:"बुद्ध पूर्णिमा की शुभकामनाएं!",
+  shayari:{
+   emotional:"मन में शांति, जीवन में करुणा रहे,\nहर कदम पर सत्य की राह मिले।\nबुद्ध के विचारों का प्रकाश\nआपके जीवन को प्रकाशित करे। ☸️",
+   cute:"शांति मिले, सुकून मिले,\nहर मन को नई रोशनी मिले।\nबुद्ध पूर्णिमा की शुभकामनाएं। 🌸",
+   romantic:"मन में प्रेम, शब्दों में शांति,\nरिश्तों में करुणा और जीवन में क्रांति।\nबुद्ध का प्रकाश सदा साथ रहे। ❤️",
+   funny:"आज थोड़ा कम गुस्सा करना,\nऔर ज्यादा मुस्कुराना! 😊\nशांति ही शांति। ☸️",
+   royal:"भगवान बुद्ध के ज्ञान और करुणा का प्रकाश\nआपके जीवन में शांति और संतुलन लाए। 👑",
+   traditional:"बुद्धं शरणं गच्छामि।\nआपके जीवन में मैत्री, करुणा और शांति बनी रहे। 🙏"
+  }
+ },
 
+ mahavir:{
+  emoji:"🕊️",name:"Mahavir Jayanti",hi:"महावीर जयंती",
+  title:"महावीर जयंती की शुभकामनाएं!",
+  shayari:{
+   emotional:"अहिंसा और सत्य की राह पर चलते रहें,\nमन में करुणा के दीप जलते रहें।\nभगवान महावीर की शिक्षाएं जीवन में प्रकाश भरें। 🕊️",
+   cute:"प्रेम हो, शांति हो, करुणा हो,\nहर दिल में सच्चाई और सरलता हो।\nमहावीर जयंती की शुभकामनाएं। 🌸",
+   romantic:"जहाँ प्रेम हो वहाँ हिंसा नहीं,\nजहाँ करुणा हो वहाँ दूरी नहीं।\nसत्य की राह हमेशा सुंदर रहे। ❤️",
+   funny:"गुस्सा थोड़ा कम करना,\nशांति थोड़ा ज्यादा रखना! 😊\nमहावीर जयंती की शुभकामनाएं।",
+   royal:"भगवान महावीर के सिद्धांत\nआपके जीवन में संयम, शांति और करुणा लाएं। 👑",
+   traditional:"अहिंसा परमो धर्मः।\nभगवान महावीर की कृपा से जीवन में सत्य,\nसंयम और शांति का वास हो। 🙏"
+  }
+ },
+
+ teachers:{
+  emoji:"📚",name:"Teacher's Day",hi:"शिक्षक दिवस",
+  title:"शिक्षक दिवस की हार्दिक शुभकामनाएं!",
+  shayari:{
+   emotional:"जो अंधेरों में रोशनी दिखाते हैं,\nवही सच्चे शिक्षक कहलाते हैं।\nज्ञान का दीप जलाकर जीवन संवारने वाले,\nआपको शिक्षक दिवस की शुभकामनाएं। 📚",
+   cute:"किताबों से आगे जिंदगी सिखाई,\nगलतियों पर सही राह दिखाई।\nआप जैसे शिक्षक मिलना सौभाग्य है। ❤️",
+   romantic:"आपके शब्दों में ज्ञान की रोशनी है,\nआपकी सीख में जिंदगी की कहानी है।\nशिक्षक दिवस पर दिल से धन्यवाद। 🌸",
+   funny:"Homework से बचने का रास्ता नहीं बताया,\nलेकिन जिंदगी में आगे बढ़ना जरूर सिखाया! 😄\nHappy Teacher's Day!",
+   royal:"आपका ज्ञान और मार्गदर्शन\nहमारे भविष्य की सबसे बड़ी पूंजी है।\nशिक्षक दिवस की हार्दिक शुभकामनाएं। 👑",
+   traditional:"गुरुर्ब्रह्मा गुरुर्विष्णुः गुरुर्देवो महेश्वरः।\nगुरु को सादर नमन एवं शिक्षक दिवस की शुभकामनाएं। 🙏"
+  }
+ },
+
+ mothers:{
+  emoji:"👩‍👦",name:"Mother's Day",hi:"मदर्स डे",
+  title:"माँ को समर्पित ❤️",
+  shayari:{
+   emotional:"दुनिया में सबसे खूबसूरत नाम है माँ,\nहर दर्द में सबसे पहला आराम है माँ।\nमेरी हर खुशी का कारण है तू,\nमेरी दुनिया, मेरा सम्मान है माँ। ❤️",
+   cute:"माँ की गोद से प्यारी कोई जगह नहीं,\nमाँ की दुआ से बड़ी कोई दौलत नहीं।\nHappy Mother's Day! 🌸",
+   romantic:"तेरी दुआओं से मेरी दुनिया रोशन है,\nतेरी मुस्कान से मेरा हर दिन खूबसूरत है।\nमाँ, तू है तो सब कुछ है। ❤️",
+   funny:"बचपन में डांट भी आपकी,\nऔर छुपाकर chocolate देने वाली भी आप! 😄\nHappy Mother's Day माँ! ❤️",
+   royal:"माँ केवल एक रिश्ता नहीं,\nबल्कि पूरी दुनिया की सबसे खूबसूरत ताकत है।\nमाँ को सादर प्रणाम। 👑",
+   traditional:"मातृ देवो भवः।\nमाँ के चरणों में संसार की सारी खुशियां हैं।\nमाँ को कोटि-कोटि प्रणाम। 🙏"
+  }
+ },
+
+ fathers:{
+  emoji:"👨‍👧",name:"Father's Day",hi:"फादर्स डे",
+  title:"पापा को समर्पित ❤️",
+  shayari:{
+   emotional:"खुद धूप में रहकर हमें छांव देते हैं,\nपापा वो हैं जो खामोशी से सब कुछ दे देते हैं।\nउनकी मेहनत का कोई हिसाब नहीं,\nउनका प्यार दुनिया में सबसे खास है। ❤️",
+   cute:"पापा की डांट में भी प्यार छुपा होता है,\nउनका हर फैसला हमारे लिए दुआ होता है।\nHappy Father's Day! 👨‍👧",
+   romantic:"मेरी हर उड़ान के पीछे आपका विश्वास है,\nमेरी हर जीत में आपका प्रयास है।\nपापा, आप मेरे असली hero हैं। ❤️",
+   funny:"पापा के सामने budget हमेशा tight,\nलेकिन बच्चों की जरूरतें हमेशा right! 😂\nHappy Father's Day!",
+   royal:"आपका साहस, आपकी मेहनत और आपका आशीर्वाद\nहमारी जिंदगी की सबसे बड़ी ताकत है। 👑",
+   traditional:"पितृ देवो भवः।\nपिता के चरणों में सम्मान और कृतज्ञता अर्पित है। 🙏"
+  }
+ },
+
+ friendship:{
+  emoji:"👫",name:"Friendship Day",hi:"फ्रेंडशिप डे",
+  title:"Happy Friendship Day!",
+  shayari:{
+   emotional:"कुछ रिश्ते नाम के मोहताज नहीं होते,\nकुछ दोस्त जिंदगी से कभी दूर नहीं होते।\nदूरी चाहे जितनी भी हो जाए,\nसच्चे दोस्त दिल से कभी दूर नहीं होते। ❤️",
+   cute:"हंसी भी तेरे साथ, मस्ती भी तेरे साथ,\nहर मुश्किल में चाहिए बस तेरा हाथ।\nऐसे ही दोस्ती बनी रहे उम्र भर। 🥰",
+   romantic:"दोस्ती में जो अपनापन मिला,\nवो किसी रिश्ते में कहाँ मिला।\nतू दोस्त है इसलिए जिंदगी खूबसूरत है। ❤️",
+   funny:"दोस्ती हमारी ऐसी है,\nएक की बेइज्जती में दोनों की खुशी है! 😂\nHappy Friendship Day!",
+   royal:"सच्ची दोस्ती जिंदगी की सबसे खूबसूरत दौलत है।\nमेरी जिंदगी में होने के लिए धन्यवाद। 👑",
+   traditional:"मित्रता विश्वास, सम्मान और अपनापन है।\nआप जैसे मित्र का साथ मेरे लिए अनमोल है। 🙏"
+  }
+ },
+
+ independence:{
+  emoji:"🇮🇳",name:"Independence Day",hi:"स्वतंत्रता दिवस",
+  title:"स्वतंत्रता दिवस की शुभकामनाएं!",
+  shayari:{
+   emotional:"तिरंगे की शान हमेशा ऊंची रहे,\nभारत की पहचान हमेशा ऊंची रहे।\nदेश के वीरों को शत-शत नमन,\nमेरा भारत महान हमेशा रहे। 🇮🇳",
+   cute:"तीन रंगों में सजी हमारी पहचान,\nभारत देश है हम सबकी जान।\nHappy Independence Day! 🇮🇳",
+   romantic:"इस मिट्टी से प्यार है,\nइस तिरंगे पर नाज़ है।\nभारत की धरती हमारी शान है। 🇮🇳❤️",
+   funny:"आज status में तिरंगा लगाना मत भूलना! 😄\nदेशभक्ति दिल में रखो और मिठाई हाथ में। 🇮🇳",
+   royal:"भारत की स्वतंत्रता हमारे वीरों के बलिदान की अमर निशानी है।\nजय हिंद! 🇮🇳",
+   traditional:"राष्ट्र की एकता, अखंडता और गौरव सदैव अक्षुण्ण रहे।\nसभी देशवासियों को स्वतंत्रता दिवस की हार्दिक शुभकामनाएं। 🙏🇮🇳"
+  }
+ },
+
+ republic:{
+  emoji:"🇮🇳",name:"Republic Day",hi:"गणतंत्र दिवस",
+  title:"गणतंत्र दिवस की शुभकामनाएं!",
+  shayari:{
+   emotional:"संविधान हमारा गौरव है,\nभारत हमारी पहचान है।\nएकता और अखंडता के साथ,\nमेरा देश महान है। 🇮🇳",
+   cute:"तिरंगा लहराए आसमान में,\nभारत मुस्कुराए हर इंसान में।\nगणतंत्र दिवस की शुभकामनाएं। 🇮🇳",
+   romantic:"इस देश की मिट्टी में खुशबू प्यार की,\nहर दिल में भावना हो देश के सम्मान की। 🇮🇳❤️",
+   funny:"आज छुट्टी है लेकिन देशभक्ति की attendance जरूरी है! 😄🇮🇳",
+   royal:"भारत का संविधान हमारे लोकतंत्र की आत्मा है।\nगणतंत्र दिवस की हार्दिक शुभकामनाएं। 👑🇮🇳",
+   traditional:"हमारे संविधान और लोकतांत्रिक मूल्यों का सम्मान करते हुए\nगणतंत्र दिवस की हार्दिक शुभकामनाएं। 🙏"
+  }
+ }
 };
 
-
-/* =========================================================
-   GENERIC 10 FOR REMAINING OCCASIONS
-   Each occasion gets 10 distinct compositions
-========================================================= */
-
-const genericTemplates=[
-
-(o)=>`${o} के इस खास दिन पर,
-दिल से बस यही दुआ है —
-आपकी ज़िंदगी में खुशियाँ आएँ
-और हर पल मुस्कुराता जाए।`,
-
-(o)=>`आज का दिन खास है,
-क्योंकि खुशी मनाने का एक बहाना है।
-दुआ है ${o} की ये खुशी
-हमेशा आपके साथ रहे।`,
-
-(o)=>`कुछ दिन कैलेंडर पर होते हैं,
-और कुछ दिल में याद रह जाते हैं।
-दुआ है आज का दिन
-आपके लिए हमेशा खास रहे।`,
-
-(o)=>`खुशियों की कोई सीमा न हो,
-सुकून की कोई कमी न हो।
-${o} का ये खूबसूरत दिन
-आपके लिए यादगार हो।`,
-
-(o)=>`हर अच्छी शुरुआत
-एक छोटी सी उम्मीद से होती है।
-दुआ है आज की ये खुशी
-आपकी जिंदगी में लंबे समय तक रहे।`,
-
-(o)=>`चेहरे पर मुस्कान रहे,
-दिल में सुकून रहे।
-${o} का ये अवसर
-आपके लिए ढेरों खुशियाँ लेकर आए।`,
-
-(o)=>`रिश्ते बने रहें,
-प्यार बढ़ता रहे।
-आज की ये खूबसूरत खुशी
-हर आने वाले कल तक चलती रहे।`,
-
-(o)=>`जो दिल चाहता है,
-वो आपको मिलता रहे।
-जो ग़म है,
-वो धीरे-धीरे दूर होता रहे।`,
-
-(o)=>`आज बस खुश रहने का दिन है,
-पुरानी चिंताएँ भूलने का दिन है।
-${o} की इस खुशी में
-हर पल मुस्कुराने का दिन है।`,
-
-(o)=>`दिल से निकली छोटी सी दुआ है —
-आप जहाँ रहें खुश रहें।
-${o} का ये खास दिन
-आपकी जिंदगी में रोशनी भर दे।`
-
+/* More generic occasions */
+const extra = [
+ ["ramadan","🌙","Ramadan Mubarak","रमज़ान मुबारक"],
+ ["muharram","🌙","Muharram","मुहर्रम"],
+ ["easter","✝️","Easter","ईस्टर"],
+ ["goodfriday","✝️","Good Friday","गुड फ्राइडे"],
+ ["baisakhi","🌾","Baisakhi","बैसाखी"],
+ ["paryushan","🙏","Paryushan","पर्युषण"],
+ ["karwachauth","🌙","Karwa Chauth","करवा चौथ"],
+ ["teej","🌿","Teej","तीज"],
+ ["basant","🌼","Basant Panchami","बसंत पंचमी"],
+ ["chhath","🌅","Chhath Puja","छठ पूजा"],
+ ["guru","📚","Guru Purnima","गुरु पूर्णिमा"],
+ ["womens","🌷","Women's Day","महिला दिवस"],
+ ["childrens","🧸","Children's Day","बाल दिवस"],
+ ["newbaby","👶","New Baby","नवजात शिशु"],
+ ["congrats","🎉","Congratulations","बधाई"],
+ ["goodluck","🍀","Good Luck","शुभकामनाएं"]
 ];
 
-
-/* =========================================================
-   STATE
-========================================================= */
-
-let state={
-  occasion:"",
-  relation:"Dost",
-  receiver:"",
-  sender:"",
-  shayari:"",
-  custom:"",
-  message:""
-};
-
-let countdownTimer;
-
-
-/* =========================================================
-   HELPERS
-========================================================= */
-
-const $=id=>document.getElementById(id);
-
-function show(id){
-
-  document.querySelectorAll(".screen").forEach(x=>{
-    x.classList.remove("active");
-  });
-
-  const el=$(id);
-
-  if(el){
-    el.classList.add("active");
-    window.scrollTo({top:0,behavior:"smooth"});
-  }
-}
-
-function toast(text){
-
-  const t=$("toast");
-
-  t.textContent=text;
-  t.classList.add("show");
-
-  clearTimeout(window.toastTimer);
-
-  window.toastTimer=setTimeout(()=>{
-    t.classList.remove("show");
-  },2100);
-}
-
-function getOccasion(){
-
-  return occasions.find(
-    x=>x.id===state.occasion
-  );
-}
-
-
-/* =========================================================
-   OCCASION RENDER
-========================================================= */
-
-function renderOccasions(filter=""){
-
-  const q=filter.trim().toLowerCase();
-
-  const result=occasions.filter(o=>
-    (o.name+" "+o.search)
-    .toLowerCase()
-    .includes(q)
-  );
-
-  $("occasionTotal").textContent=
-    result.length+" options";
-
-  if(!result.length){
-
-    $("occasionGrid").innerHTML=
-      `<div class="noResult">
-        कोई occasion नहीं मिला
-      </div>`;
-
-    return;
-  }
-
-  $("occasionGrid").innerHTML=
-    result.map(o=>`
-
-      <button
-        class="occasion ${state.occasion===o.id?"selected":""}"
-        data-id="${o.id}"
-      >
-        <span class="icon">${o.icon}</span>
-        <span class="name">${o.name}</span>
-      </button>
-
-    `).join("");
-
-  document
-    .querySelectorAll(".occasion")
-    .forEach(btn=>{
-
-      btn.onclick=()=>{
-
-        state.occasion=btn.dataset.id;
-
-        renderOccasions(
-          $("occasionSearch").value
-        );
-
-      };
-
-    });
-}
-
-
-/* =========================================================
-   RELATION
-========================================================= */
-
-function renderRelations(){
-
-  $("relationGrid").innerHTML=
-    relations.map(r=>`
-
-      <button
-        class="relation ${state.relation===r?"selected":""}"
-        data-relation="${r}"
-      >
-        ${r}
-      </button>
-
-    `).join("");
-
-  document
-    .querySelectorAll(".relation")
-    .forEach(btn=>{
-
-      btn.onclick=()=>{
-
-        state.relation=
-          btn.dataset.relation;
-
-        renderRelations();
-
-      };
-
-    });
-}
-
-
-/* =========================================================
-   SHAYARI
-========================================================= */
-
-function getShayari(){
-
-  const o=getOccasion();
-
-  if(!o) return [];
-
-  if(shayari[o.id]){
-    return shayari[o.id];
-  }
-
-  return genericTemplates.map(fn=>
-    fn(o.name)
-  );
-}
-
-function renderShayari(){
-
-  const list=getShayari();
-
-  $("shayariTotal").textContent=
-    list.length+" Shayari";
-
-  $("shayariList").innerHTML=
-    list.map((s,i)=>`
-
-      <button
-        class="shayari ${state.shayari===s&&!state.custom?"selected":""}"
-        data-index="${i}"
-      >
-        ${s.replace(/\n/g,"<br>")}
-      </button>
-
-    `).join("");
-
-  document
-    .querySelectorAll(".shayari")
-    .forEach(btn=>{
-
-      btn.onclick=()=>{
-
-        state.shayari=
-          list[Number(btn.dataset.index)];
-
-        state.custom="";
-
-        $("customShayari").value="";
-
-        renderShayari();
-
-      };
-
-    });
-}
-
-
-/* =========================================================
-   ENCODE
-========================================================= */
-
-function encode(obj){
-
-  const bytes=
-    new TextEncoder().encode(
-      JSON.stringify(obj)
-    );
-
-  let binary="";
-
-  bytes.forEach(b=>{
-    binary+=String.fromCharCode(b);
-  });
-
-  return btoa(binary)
-    .replace(/\+/g,"-")
-    .replace(/\//g,"_")
-    .replace(/=+$/,"");
-}
-
-function decode(str){
-
-  try{
-
-    str=str
-      .replace(/-/g,"+")
-      .replace(/_/g,"/");
-
-    while(str.length%4)
-      str+="=";
-
-    const binary=atob(str);
-
-    const bytes=
-      Uint8Array.from(
-        binary,
-        c=>c.charCodeAt(0)
-      );
-
-    return JSON.parse(
-      new TextDecoder().decode(bytes)
-    );
-
-  }catch(e){
-
-    return null;
-
-  }
-}
-
-function wishURL(){
-
-  return location.origin+
-    location.pathname+
-    "#wish="+
-    encode(state);
-}
-
-
-/* =========================================================
-   PREVIEW
-========================================================= */
-
-function fillPreview(){
-
-  const o=getOccasion();
-
-  if(!o)return;
-
-  $("previewIcon").textContent=o.icon;
-
-  $("previewTitle").textContent=
-    occasionTitle(o.id,o.name);
-
-  $("previewRelation").textContent=
-    state.relation;
-
-  $("previewReceiver").textContent=
-    state.receiver;
-
-  $("previewShayari").textContent=
-    state.custom.trim()
-      ? state.custom.trim()
-      : state.shayari;
-
-  $("previewMessage").textContent=
-    state.message.trim()
-      ? state.message.trim()
-      : "आप हमेशा खुश रहें और यूँ ही मुस्कुराते रहें।";
-
-  $("previewSign").textContent=
-    "प्यार से — "+state.sender;
-}
-
-
-/* =========================================================
-   TITLES
-========================================================= */
-
-function occasionTitle(id,name){
-
-  const titles={
-
-    birthday:"जन्मदिन मुबारक",
-    anniversary:"सालगिरह मुबारक",
-    wedding:"शादी की शुभकामनाएँ",
-    engagement:"सगाई की शुभकामनाएँ",
-    friendship:"दोस्ती के नाम",
-    thankyou:"दिल से धन्यवाद",
-    sorry:"दिल से Sorry",
-    goodmorning:"सुप्रभात",
-    goodnight:"शुभ रात्रि",
-    diwali:"दीपावली की शुभकामनाएँ",
-    holi:"होली की शुभकामनाएँ",
-    raksha:"रक्षाबंधन की शुभकामनाएँ",
-    janmashtami:"जन्माष्टमी की शुभकामनाएँ",
-    navratri:"नवरात्रि की शुभकामनाएँ",
-    dussehra:"विजयदशमी की शुभकामनाएँ",
-    ganesh:"गणेश चतुर्थी की शुभकामनाएँ",
-    shivratri:"महाशिवरात्रि की शुभकामनाएँ",
-    eid:"ईद मुबारक",
-    ramadan:"रमज़ान मुबारक",
-    gurunanak:"गुरु नानक जयंती की शुभकामनाएँ",
-    christmas:"Merry Christmas",
-    newyear:"नववर्ष की शुभकामनाएँ",
-    republic:"गणतंत्र दिवस की शुभकामनाएँ",
-    independence:"स्वतंत्रता दिवस की शुभकामनाएँ",
-    teachers:"शिक्षक दिवस की शुभकामनाएँ",
-    mothers:"मदर्स डे की शुभकामनाएँ",
-    fathers:"फादर्स डे की शुभकामनाएँ",
-    womens:"महिला दिवस की शुभकामनाएँ",
-    childrens:"बाल दिवस की शुभकामनाएँ",
-    valentine:"प्यार के नाम",
-    congrats:"बहुत-बहुत बधाई",
-    newbaby:"नन्हे मेहमान के आने की बधाई",
-    success:"सफलता के लिए शुभकामनाएँ",
-    farewell:"नई राहों के लिए शुभकामनाएँ"
-
+const genericShayari = [
+ "आपके जीवन का हर दिन खुशियों से भरा रहे,\nहर सपना आपका हकीकत में बदला रहे।\nदिल में उम्मीद और चेहरे पर मुस्कान रहे,\nहर आने वाला पल आपके लिए खास रहे। ✨",
+ "खुशियों की रोशनी आपके आंगन में रहे,\nहर दुआ आपकी पूरी हो और हर पल सुनहरा रहे।\nआप यूँ ही मुस्कुराते रहें,\nयही दिल से शुभकामना है। ❤️"
+];
+
+extra.forEach(x=>{
+ if(!occasions[x[0]]){
+  occasions[x[0]]={
+   emoji:x[1],name:x[2],hi:x[3],title:x[3]+" की शुभकामनाएं!",
+   shayari:{
+    emotional:genericShayari[0],cute:genericShayari[1],
+    romantic:genericShayari[1],funny:genericShayari[0],
+    royal:genericShayari[0],traditional:genericShayari[0]
+   }
   };
-
-  return titles[id]||name;
-}
-
-
-/* =========================================================
-   FINAL
-========================================================= */
-
-function fillFinal(){
-
-  const o=getOccasion();
-
-  if(!o)return;
-
-  $("finalOccasion").textContent=
-    o.name.toUpperCase();
-
-  $("finalIcon").textContent=
-    o.icon;
-
-  $("finalTitle").textContent=
-    occasionTitle(o.id,o.name);
-
-  $("finalRelation").textContent=
-    state.relation;
-
-  $("finalReceiver").textContent=
-    state.receiver;
-
-  $("finalShayari").textContent=
-    state.custom.trim()
-      ? state.custom.trim()
-      : state.shayari;
-
-  $("finalMessage").textContent=
-    state.message.trim()
-      ? state.message.trim()
-      : "आप हमेशा खुश रहें, मुस्कुराते रहें और आपकी ज़िंदगी में खुशियों की कभी कमी न हो।";
-
-  $("finalSign").textContent=
-    "प्यार से — "+state.sender;
-}
-
-
-/* =========================================================
-   COPY
-========================================================= */
-
-async function copyLink(){
-
-  const url=wishURL();
-
-  try{
-
-    await navigator.clipboard.writeText(url);
-
-  }catch(e){
-
-    const area=document.createElement("textarea");
-
-    area.value=url;
-
-    document.body.appendChild(area);
-
-    area.select();
-
-    document.execCommand("copy");
-
-    area.remove();
-
-  }
-
-  toast("Wish Link copy हो गया ✓");
-}
-
-
-/* =========================================================
-   SHARE
-========================================================= */
-
-async function share(){
-
-  const url=wishURL();
-
-  if(navigator.share){
-
-    try{
-
-      await navigator.share({
-        title:"आपके लिए एक खास Wish 💌",
-        text:"आपके लिए किसी ने एक खास Wish बनाई है।",
-        url
-      });
-
-    }catch(e){}
-
-  }else{
-
-    await copyLink();
-
-  }
-}
-
-
-/* =========================================================
-   CONFETTI
-========================================================= */
-
-function launchConfetti(){
-
-  const box=$("confetti");
-
-  box.innerHTML="";
-
-  const colors=[
-    "#a78bfa",
-    "#ec4899",
-    "#f6c453",
-    "#6ee7b7",
-    "#ffffff"
-  ];
-
-  for(let i=0;i<38;i++){
-
-    const x=document.createElement("span");
-
-    x.style.left=
-      Math.random()*100+"%";
-
-    x.style.background=
-      colors[
-        Math.floor(
-          Math.random()*colors.length
-        )
-      ];
-
-    x.style.animationDelay=
-      Math.random()*1.2+"s";
-
-    x.style.transform=
-      `rotate(${Math.random()*360}deg)`;
-
-    box.appendChild(x);
-
-  }
-
-  setTimeout(()=>{
-    box.innerHTML="";
-  },3500);
-}
-
-
-/* =========================================================
-   RESET
-========================================================= */
-
-function reset(){
-
-  clearInterval(countdownTimer);
-
-  state={
-    occasion:"",
-    relation:"Dost",
-    receiver:"",
-    sender:"",
-    shayari:"",
-    custom:"",
-    message:""
-  };
-
-  $("occasionSearch").value="";
-  $("receiverName").value="";
-  $("senderName").value="";
-  $("customShayari").value="";
-  $("personalMessage").value="";
-
-  $("shayariCounter").textContent="0";
-  $("messageCounter").textContent="0";
-
-  history.replaceState(
-    null,
-    "",
-    location.pathname
-  );
-
-  renderOccasions();
-  renderRelations();
-
-  show("home");
-}
-
-
-/* =========================================================
-   RECEIVER COUNTDOWN
-========================================================= */
-
-function startCountdown(){
-
-  show("receiver4");
-
-  let n=3;
-
-  $("countNumber").textContent=n;
-
-  clearInterval(countdownTimer);
-
-  countdownTimer=setInterval(()=>{
-
-    n--;
-
-    $("countNumber").textContent=n;
-
-    if(n<=0){
-
-      clearInterval(countdownTimer);
-
-      setTimeout(()=>{
-        show("receiver5");
-      },350);
-
-    }
-
-  },850);
-}
-
-
-/* =========================================================
-   URL RECEIVER
-========================================================= */
-
-function loadFromURL(){
-
-  if(!location.hash.startsWith("#wish=")){
-
-    show("home");
-
-    return;
-
-  }
-
-  const data=
-    decode(
-      location.hash.substring(6)
-    );
-
-  if(!data||!data.occasion){
-
-    history.replaceState(
-      null,
-      "",
-      location.pathname
-    );
-
-    show("home");
-
-    return;
-
-  }
-
-  state=data;
-
-  fillFinal();
-
-  $("r2Name").textContent=
-    state.receiver;
-
-  const o=getOccasion();
-
-  if(o){
-    $("r3Icon").textContent=o.icon;
-  }
-
-  show("receiver1");
-}
-
-
-/* =========================================================
-   EVENTS
-========================================================= */
-
-document.addEventListener("DOMContentLoaded",()=>{
-
-  renderOccasions();
-  renderRelations();
-
-
-  /* HOME */
-
-  $("start").onclick=()=>{
-    renderOccasions();
-    show("occasionScreen");
-  };
-
-
-  /* OCCASION */
-
-  $("backHome").onclick=()=>{
-    show("home");
-  };
-
-  $("occasionSearch").oninput=e=>{
-    renderOccasions(e.target.value);
-  };
-
-  $("occasionNext").onclick=()=>{
-
-    if(!state.occasion){
-
-      toast("पहले Occasion चुनें");
-
-      return;
-    }
-
-    const o=getOccasion();
-
-    $("chosenOccasion").textContent=
-      o.name;
-
-    renderRelations();
-
-    show("detailsScreen");
-  };
-
-
-  /* DETAILS */
-
-  $("backOccasion").onclick=()=>{
-    show("occasionScreen");
-  };
-
-  $("detailsNext").onclick=()=>{
-
-    const receiver=
-      $("receiverName").value.trim();
-
-    const sender=
-      $("senderName").value.trim();
-
-    if(!receiver){
-
-      toast("उनका नाम लिखें");
-
-      $("receiverName").focus();
-
-      return;
-    }
-
-    if(!sender){
-
-      toast("अपना नाम लिखें");
-
-      $("senderName").focus();
-
-      return;
-    }
-
-    state.receiver=receiver;
-    state.sender=sender;
-
-    renderShayari();
-
-    show("shayariScreen");
-  };
-
-
-  /* SHAYARI */
-
-  $("backDetails").onclick=()=>{
-    show("detailsScreen");
-  };
-
-  $("customShayari").oninput=e=>{
-
-    state.custom=e.target.value;
-
-    $("shayariCounter").textContent=
-      e.target.value.length;
-
-  };
-
-  $("shayariNext").onclick=()=>{
-
-    if(
-      !state.custom.trim() &&
-      !state.shayari
-    ){
-
-      toast("एक Shayari चुनें");
-
-      return;
-    }
-
-    show("messageScreen");
-  };
-
-
-  /* MESSAGE */
-
-  $("backShayari").onclick=()=>{
-    show("shayariScreen");
-  };
-
-  $("personalMessage").oninput=e=>{
-
-    state.message=e.target.value;
-
-    $("messageCounter").textContent=
-      e.target.value.length;
-
-  };
-
-  $("previewNext").onclick=()=>{
-
-    state.message=
-      $("personalMessage").value;
-
-    fillPreview();
-
-    show("previewScreen");
-  };
-
-
-  /* PREVIEW */
-
-  $("backMessage").onclick=()=>{
-    show("messageScreen");
-  };
-
-  $("createWish").onclick=()=>{
-
-    state.custom=
-      $("customShayari").value.trim();
-
-    state.message=
-      $("personalMessage").value.trim();
-
-    const url=wishURL();
-
-    history.replaceState(
-      null,
-      "",
-      "#wish="+url.split("#wish=")[1]
-    );
-
-    show("readyScreen");
-
-    toast("आपकी Wish तैयार है ✓");
-  };
-
-
-  /* READY */
-
-  $("copyLink").onclick=copyLink;
-
-  $("shareLink").onclick=share;
-
-  $("openWish").onclick=()=>{
-
-    fillFinal();
-
-    $("r2Name").textContent=
-      state.receiver;
-
-    const o=getOccasion();
-
-    if(o){
-      $("r3Icon").textContent=o.icon;
-    }
-
-    show("receiver1");
-  };
-
-  $("readyBack").onclick=()=>{
-    show("previewScreen");
-  };
-
-  $("newCreator").onclick=reset;
-
-
-  /* RECEIVER */
-
-  $("receiver1Next").onclick=()=>{
-    show("receiver2");
-  };
-
-  $("receiver2Next").onclick=()=>{
-    show("receiver3");
-  };
-
-  $("receiver3Next").onclick=()=>{
-    startCountdown();
-  };
-
-  $("receiver5Next").onclick=()=>{
-
-    fillFinal();
-
-    show("finalWish");
-
-    setTimeout(
-      launchConfetti,
-      120
-    );
-  };
-
-
-  /* FINAL */
-
-  $("again").onclick=()=>{
-    show("receiver1");
-  };
-
-  $("finalShare").onclick=share;
-
-  $("newWish").onclick=reset;
-
-
-  /* INITIAL */
-
-  loadFromURL();
-
+ }
 });
 
+/* ---------- STATE ---------- */
+let selectedOcc="birthday";
+let selectedRelation="friend";
+let selectedMood="emotional";
+let currentWish=null;
+let hindi=true;
 
-window.addEventListener(
-  "hashchange",
-  loadFromURL
-);
+/* ---------- RENDER OCCASIONS ---------- */
+function renderOccasions(filter=""){
+ const grid=document.getElementById("occasionGrid");
+ grid.innerHTML="";
+ Object.entries(occasions)
+ .filter(([id,o])=>(o.name+" "+o.hi).toLowerCase().includes(filter.toLowerCase()))
+ .forEach(([id,o])=>{
+  const b=document.createElement("button");
+  b.className="occasion"+(id===selectedOcc?" selected":"");
+  b.dataset.id=id;
+  b.innerHTML=`<span class="emoji">${o.emoji}</span><strong>${hindi?o.hi:o.name}</strong>`;
+  b.onclick=()=>selectOccasion(id);
+  grid.appendChild(b);
+ });
+}
 
+function selectOccasion(id){
+ selectedOcc=id;
+ renderOccasions(document.getElementById("occasionSearch").value);
+ document.getElementById("preview").classList.remove("show");
+}
+
+/* ---------- CHIPS ---------- */
+document.querySelectorAll("#relationChips .chip").forEach(b=>{
+ b.onclick=()=>{
+  document.querySelectorAll("#relationChips .chip").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");
+  selectedRelation=b.dataset.rel;
+ };
+});
+
+document.querySelectorAll("#moodChips .chip").forEach(b=>{
+ b.onclick=()=>{
+  document.querySelectorAll("#moodChips .chip").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");
+  selectedMood=b.dataset.mood;
+ };
+});
+
+/* ---------- GENERATE ---------- */
+function generateWish(){
+ const occ=occasions[selectedOcc];
+ const sender=document.getElementById("sender").value.trim()||"एक खास इंसान";
+ const receiver=document.getElementById("receiver").value.trim()||"आपके लिए";
+ const personal=document.getElementById("personal").value.trim();
+ const theme=document.getElementById("theme").value;
+
+ let wish=occ.shayari[selectedMood]||genericShayari[0];
+
+ if(personal) wish += "\n\n💌 मेरी तरफ से:\n"+personal;
+
+ currentWish={
+  occ:selectedOcc,
+  sender,receiver,personal,
+  mood:selectedMood,
+  theme,wish,
+  title:occ.title,
+  emoji:occ.emoji
+ };
+
+ document.getElementById("pEmoji").textContent=occ.emoji;
+ document.getElementById("pTitle").textContent=
+  receiver!=="आपके लिए" ? `${receiver}, ${occ.title}` : occ.title;
+ document.getElementById("pShayari").textContent=wish;
+ document.getElementById("pSender").textContent=`— ${sender} की तरफ से ❤️`;
+
+ applyTheme(theme,document.getElementById("previewCard"));
+ document.getElementById("preview").classList.add("show");
+
+ setTimeout(()=>document.getElementById("preview").scrollIntoView({behavior:"smooth",block:"center"}),50);
+}
+
+function surpriseMe(){
+ const keys=Object.keys(occasions);
+ selectedOcc=keys[Math.floor(Math.random()*keys.length)];
+
+ const moods=["emotional","cute","romantic","funny","royal","traditional"];
+ selectedMood=moods[Math.floor(Math.random()*moods.length)];
+
+ const moodButton=document.querySelector(`[data-mood="${selectedMood}"]`);
+ document.querySelectorAll("#moodChips .chip").forEach(x=>x.classList.remove("active"));
+ if(moodButton)moodButton.classList.add("active");
+
+ renderOccasions();
+ generateWish();
+}
+
+/* ---------- THEME ---------- */
+function applyTheme(theme,el){
+ const themes={
+  dream:["#35205f","#8b5cf6"],
+  love:["#5c123d","#ec4899"],
+  gold:["#4a2b05","#d97706"],
+  festive:["#064e3b","#10b981"],
+  night:["#0b102d","#2563eb"]
+ };
+ const c=themes[theme]||themes.dream;
+ el.style.background=`linear-gradient(145deg,${c[0]},${c[1]})`;
+}
+
+/* ---------- SHARE DATA ---------- */
+function encodeData(obj){
+ return btoa(unescape(encodeURIComponent(JSON.stringify(obj))));
+}
+
+function decodeData(str){
+ try{
+  return JSON.parse(decodeURIComponent(escape(atob(str))));
+ }catch(e){return null}
+}
+
+function makeShareURL(){
+ if(!currentWish) return location.href;
+ const base=location.href.split("?")[0].split("#")[0];
+ return base+"?wish="+encodeURIComponent(encodeData(currentWish));
+}
+
+function shareWhatsApp(){
+ if(!currentWish) return generateWish();
+
+ const url=makeShareURL();
+ const text=
+ `🎁 ${currentWish.receiver}, आपके लिए एक Magical Surprise है! ✨\n\n`+
+ `किसी खास ने आपके लिए एक खूबसूरत संदेश भेजा है।\n`+
+ `👇 खोलकर देखिए:\n${url}`;
+
+ window.open("https://wa.me/?text="+encodeURIComponent(text),"_blank");
+}
+
+function copyLink(){
+ const url=makeShareURL();
+ navigator.clipboard?.writeText(url).then(()=>{
+  toast("🔗 Magical link copied!");
+ }).catch(()=>fallbackCopy(url));
+}
+
+function copyMessage(){
+ if(!currentWish) return;
+ const text=`${currentWish.title}\n\n${currentWish.wish}\n\n— ${currentWish.sender}`;
+ navigator.clipboard?.writeText(text).then(()=>{
+  toast("📋 Message copied!");
+ }).catch(()=>fallbackCopy(text));
+}
+
+function fallbackCopy(text){
+ const t=document.createElement("textarea");
+ t.value=text;document.body.appendChild(t);
+ t.select();document.execCommand("copy");t.remove();
+ toast("📋 Copied!");
+}
+
+async function nativeShare(){
+ if(!currentWish)return;
+ const data={
+  title:"✨ Magic Wish",
+  text:`🎁 ${currentWish.receiver}, आपके लिए एक Magical Surprise है!`,
+  url:makeShareURL()
+ };
+ if(navigator.share){
+  try{await navigator.share(data)}catch(e){}
+ }else{
+  shareWhatsApp();
+ }
+}
+
+/* ---------- RECEIVER ---------- */
+function loadReceiver(){
+ const params=new URLSearchParams(location.search);
+ const encoded=params.get("wish");
+ if(!encoded)return;
+
+ const data=decodeData(decodeURIComponent(encoded));
+ if(!data)return;
+
+ currentWish=data;
+
+ document.getElementById("creatorPage").style.display="none";
+ document.getElementById("receiverPage").style.display="block";
+
+ document.getElementById("secretText").textContent=
+  `${data.sender || "किसी खास इंसान"} ने ${data.receiver || "आपके"} लिए एक खूबसूरत संदेश तैयार किया है।`;
+}
+
+function openSurprise(){
+ document.getElementById("secretScreen").classList.add("reveal-hidden");
+ document.getElementById("countdownScreen").classList.remove("reveal-hidden");
+
+ let n=3;
+ document.getElementById("countdown").textContent=n;
+
+ const timer=setInterval(()=>{
+  n--;
+  if(n>0){
+   document.getElementById("countdown").textContent=n;
+  }else{
+   clearInterval(timer);
+   showFinalWish();
+  }
+ },800);
+}
+
+function showFinalWish(){
+ document.getElementById("countdownScreen").classList.add("reveal-hidden");
+ document.getElementById("finalScreen").classList.remove("reveal-hidden");
+
+ const occ=occasions[currentWish.occ]||{
+  emoji:currentWish.emoji||"🎉",
+  title:currentWish.title||"विशेष शुभकामनाएं!"
+ };
+
+ document.getElementById("rEmoji").textContent=occ.emoji;
+ document.getElementById("rTitle").textContent=
+  currentWish.receiver ? `${currentWish.receiver} ❤️` : occ.title;
+ document.getElementById("rWish").textContent=currentWish.wish;
+ document.getElementById("rSender").textContent=
+  `✨ ${currentWish.sender||"आपके अपने"} की तरफ से`;
+
+ applyTheme(currentWish.theme||"dream",document.querySelector(".receiver-card"));
+ launchCelebration();
+}
+
+function receiverShare(){
+ if(!currentWish)return;
+ const url=makeShareURL();
+ const text=`🎁 मैंने एक Magical Wish बनाई है!\n👇 तुम भी देखो:\n${url}`;
+ window.open("https://wa.me/?text="+encodeURIComponent(text),"_blank");
+}
+
+function createOwnWish(){
+ location.href=location.href.split("?")[0];
+}
+
+/* ---------- EFFECTS ---------- */
+function launchCelebration(){
+ for(let i=0;i<80;i++){
+  setTimeout(()=>{
+   const c=document.createElement("div");
+   c.className="confetti";
+   c.style.left=Math.random()*100+"vw";
+   c.style.background=["#ffd166","#ff4f91","#8b5cf6","#25d366","#38bdf8","#fff"][Math.floor(Math.random()*6)];
+   c.style.animationDuration=(2+Math.random()*3)+"s";
+   document.body.appendChild(c);
+   setTimeout(()=>c.remove(),5500);
+  },Math.random()*1200);
+ }
+
+ for(let i=0;i<25;i++){
+  setTimeout(()=>{
+   const h=document.createElement("div");
+   h.className="heart";
+   h.textContent=["❤️","💖","✨","🎉"][Math.floor(Math.random()*4)];
+   h.style.left=Math.random()*100+"vw";
+   h.style.fontSize=(15+Math.random()*25)+"px";
+   h.style.animationDuration=(3+Math.random()*3)+"s";
+   document.body.appendChild(h);
+   setTimeout(()=>h.remove(),6000);
+  },Math.random()*1500);
+ }
+}
+
+/* ---------- UTIL ---------- */
+function filterOccasions(){
+ renderOccasions(document.getElementById("occasionSearch").value);
+}
+
+function toast(msg){
+ const t=document.getElementById("toast");
+ t.textContent=msg;t.classList.add("show");
+ setTimeout(()=>t.classList.remove("show"),2200);
+}
+
+function toggleLanguage(){
+ hindi=!hindi;
+ document.getElementById("langBtn").textContent=hindi?"हिंदी":"English";
+ document.getElementById("heroTitle").innerHTML=hindi?
+  "किसी खास के लिए<br>कुछ खास बनाइए ✨":
+  "Create Something<br>Special for Someone ✨";
+ document.getElementById("heroSub").textContent=hindi?
+  "जन्मदिन, त्योहार, प्यार और हर खास मौके के लिए खूबसूरत शायरी और Magical Surprise बनाइए।":
+  "Create beautiful wishes and magical surprises for birthdays, festivals, love and every special occasion.";
+ renderOccasions(document.getElementById("occasionSearch").value);
+}
+
+/* ---------- INIT ---------- */
+renderOccasions();
+loadReceiver();
 </script>
 
 </body>
